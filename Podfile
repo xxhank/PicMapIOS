@@ -26,3 +26,12 @@ pod 'UITableView+FDTemplateLayoutCell'
 pod 'PagingMenuController'
 pod 'SwiftTask'
 pod 'SwiftTryCatch', :git => 'https://github.com/ravero/SwiftTryCatch.git'
+
+target 'PicMapIOSTests' do
+    pod 'Quick'
+    pod 'Nimble'
+end
+
+target 'PicMapIOSUITests' do
+    #pod 'JAMTestHelper'
+end
