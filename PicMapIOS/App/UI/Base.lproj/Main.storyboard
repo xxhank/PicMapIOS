@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VKS-tE-zL9">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller Link-->
+        <scene sceneID="1aI-PP-UXx">
+            <objects>
+                <viewController id="G8u-IF-9wY" customClass="PMIViewControllerLink" customModule="PicMapIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ubm-nP-VUB"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Ms-td-th9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Khf-Mh-1Mk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_proflie" selectedImage="tabbar_profliesel" id="Ei5-PW-7hR"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="externalResource" value="sb://Profile"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="caU-8h-04f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="176" y="834"/>
+        </scene>
+        <!--View Controller Link-->
+        <scene sceneID="f65-6x-iUc">
+            <objects>
+                <viewController id="3rv-uD-eZm" customClass="PMIViewControllerLink" customModule="PicMapIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ATe-Gu-Fxu"/>
+                        <viewControllerLayoutGuide type="bottom" id="DwF-gW-34w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9T1-YZ-lYN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_plant" selectedImage="tabbar_plantsel" id="kdg-GJ-J78"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="externalResource" value="sb://Plant"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ecc-nj-4oE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="176" y="-292"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="fVa-dS-KDG">
+            <objects>
+                <tabBarController id="VKS-tE-zL9" customClass="PMITabBarController" customModule="PicMapIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="z9b-uA-uNN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="3rv-uD-eZm" kind="relationship" relationship="viewControllers" id="xV3-b0-JsZ"/>
+                        <segue destination="1GZ-GR-Fut" kind="relationship" relationship="viewControllers" id="Woh-TP-25y"/>
+                        <segue destination="G8u-IF-9wY" kind="relationship" relationship="viewControllers" id="IjV-91-wUk"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pr4-zR-ck1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-258" y="275"/>
+        </scene>
+        <!--View Controller Link-->
+        <scene sceneID="yuY-38-kUi">
+            <objects>
+                <viewController id="1GZ-GR-Fut" customClass="PMIViewControllerLink" customModule="PicMapIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gnj-o8-Kf7"/>
+                        <viewControllerLayoutGuide type="bottom" id="s13-F3-IHo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8qY-8B-9hm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_camera" selectedImage="tabbar_camerasel" id="TOY-dD-Fjf"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="externalResource" value="sb://Camera"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kXN-QV-WmL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="598" y="275"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tabbar_camera" width="32" height="27"/>
+        <image name="tabbar_camerasel" width="32" height="27"/>
+        <image name="tabbar_plant" width="23" height="23"/>
+        <image name="tabbar_plantsel" width="23" height="23"/>
+        <image name="tabbar_proflie" width="20" height="22"/>
+        <image name="tabbar_profliesel" width="20" height="22"/>
+    </resources>
+</document>
