@@ -16,8 +16,26 @@ enum PMIViewControllerLinkError : Int {
     case CannotInstantiateViewController
     case CannotCreateClass
     case NotSupportSyntax
+    case IncompleteLink
 }
 
+enum PMIViewControllerLinkPrefix : String{
+    case Storyboard = "sb://"
+    case XIBFile    = "xib://"
+    case Code       = "code://"
+    
+    init?(rawValue: String) {
+        if rawValue.hasPrefix(PMIViewControllerLinkPrefix.Storyboard.rawValue){
+            self = .Storyboard
+        }else if rawValue.hasPrefix(PMIViewControllerLinkPrefix.XIBFile.rawValue){
+            self = .XIBFile
+        }else if rawValue.hasPrefix(PMIViewControllerLinkPrefix.Code.rawValue){
+            self = .Code
+        }else{
+            return nil
+        }
+    }
+}
 
 extension String{
     func pmi_emptyAsNil()->String?{
@@ -27,41 +45,33 @@ extension String{
         return self;
     }
     func pmi_storyboard()->(storyboardName:String?, controllerName:String?){
-        if self.hasPrefix("sb://"){
-            let trimedString = self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-            let components = trimedString.componentsSeparatedByString("/");
-            switch components.count{
-            case 4: return (components[2].pmi_emptyAsNil(), components[3].pmi_emptyAsNil());
-            case 3: return (components[2].pmi_emptyAsNil(), nil);
-            default: return (nil,nil);
-            }
+        let trimedString = self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let components = trimedString.componentsSeparatedByString("/");
+        switch components.count{
+        case 4: return (components[2].pmi_emptyAsNil(), components[3].pmi_emptyAsNil());
+        case 3: return (components[2].pmi_emptyAsNil(), nil);
+        default: return (nil,nil);
         }
-        return (nil,nil);
+        
     }
     
     func pmi_nibName()->(nibName:String?, controllerName:String?){
-        if self.hasPrefix("xib://"){
-            let trimedString = self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-            let components = trimedString.componentsSeparatedByString("/");
-            switch components.count{
-            case 4: return (components[2].pmi_emptyAsNil(), components[3].pmi_emptyAsNil());
-            case 3: return (components[2].pmi_emptyAsNil(), components[2].pmi_emptyAsNil());
-            default: return (nil,nil);
-            }
+        let trimedString = self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let components = trimedString.componentsSeparatedByString("/");
+        switch components.count{
+        case 4: return (components[2].pmi_emptyAsNil(), components[3].pmi_emptyAsNil());
+        case 3: return (components[2].pmi_emptyAsNil(), components[2].pmi_emptyAsNil());
+        default: return (nil,nil);
         }
-        return (nil,nil);
     }
     
     func pmi_className()->String?{
-        if self.hasPrefix("code://"){
-            let trimedString = self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-            let components = trimedString.componentsSeparatedByString("/");
-            switch components.count{
-            case 3: return components[2].pmi_emptyAsNil();
-            default: return nil;
-            }
+        let trimedString = self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let components = trimedString.componentsSeparatedByString("/");
+        switch components.count{
+        case 3: return components[2].pmi_emptyAsNil();
+        default: return nil;
         }
-        return nil;
     }
     
     func pmi_controllerFromExternalStoryboard(bundle:NSBundle)->(controller:UIViewController?, error:NSError?,storyboard: UIStoryboard?){
@@ -69,11 +79,10 @@ extension String{
         if storyboardName != nil {
             var storyboard:UIStoryboard? = nil
             SwiftTryCatch.tryBlock({
-                    storyboard = UIStoryboard(name:storyboardName!, bundle:bundle);
+                storyboard = UIStoryboard(name:storyboardName!, bundle:bundle);
                 }, catchBlock: { (error) in
-                    // println("\(error.description)")
                 }, finallyBlock: {
-             })
+            })
             
             if storyboard == nil {
                 let error = NSError(domain: PMIViewControllerLinkErrorDomain
@@ -87,11 +96,11 @@ extension String{
                 controller = storyboard!.instantiateInitialViewController();
             } else {
                 SwiftTryCatch.tryBlock({ () -> Void in
-                     controller = storyboard!.instantiateViewControllerWithIdentifier(controllerName!);
+                    controller = storyboard!.instantiateViewControllerWithIdentifier(controllerName!);
                     }, catchBlock: { (exception) -> Void in
                     }, finallyBlock: { () -> Void in
                 })
-               
+                
             }
             
             if controller == nil {
@@ -103,12 +112,13 @@ extension String{
             return (controller!, nil, storyboard);
         }
         
-        return (nil,nil,nil)
+        let incompleteLinkError = NSError(domain: PMIViewControllerLinkErrorDomain
+            , code: PMIViewControllerLinkError.IncompleteLink.rawValue
+            , userInfo: nil)
+        return (nil,incompleteLinkError,nil)
     }
     
     func pmi_controllerFromExternalNib(bundle:NSBundle, var module:String? = nil)->(controller:UIViewController?, error:NSError?,storyboard: UIStoryboard?){
-        
-        
         let (nibName, controllerName) = self.pmi_nibName();
         if nibName != nil {
             if module == nil{
@@ -126,7 +136,10 @@ extension String{
             }
         }
         
-        return (nil,nil,nil)
+        let incompleteLinkError = NSError(domain: PMIViewControllerLinkErrorDomain
+            , code: PMIViewControllerLinkError.IncompleteLink.rawValue
+            , userInfo: nil)
+        return (nil,incompleteLinkError,nil)
     }
     
     func pmi_controllerFromCode(bundle:NSBundle, var module:String? = nil)->(controller:UIViewController?, error:NSError?,storyboard: UIStoryboard?){
@@ -146,8 +159,10 @@ extension String{
                 return(nil, error, nil)
             }
         }
-        
-        return (nil,nil,nil)
+        let incompleteLinkError = NSError(domain: PMIViewControllerLinkErrorDomain
+            , code: PMIViewControllerLinkError.IncompleteLink.rawValue
+            , userInfo: nil)
+        return (nil,incompleteLinkError,nil)
     }
     
     func pmi_controller(bundle:NSBundle? = nil, module:String? = nil)->(controller:UIViewController?, error:NSError?,storyboard: UIStoryboard?){
@@ -156,20 +171,15 @@ extension String{
             existBundle = NSBundle.mainBundle();
         }
         
-        var (controller, error, storyboard) = pmi_controllerFromExternalStoryboard(existBundle!);
-        if controller != nil || error != nil{
-            return (controller, error, storyboard);
-        }
-        
-        
-        (controller, error, storyboard) = pmi_controllerFromExternalNib(existBundle!, module: module);
-        if controller != nil || error != nil{
-            return (controller, error, storyboard);
-        }
-        
-        (controller, error, storyboard) = pmi_controllerFromCode(existBundle!, module: module);
-        if controller != nil || error != nil{
-            return (controller, error, storyboard);
+        if let prefix = PMIViewControllerLinkPrefix(rawValue: self){
+            switch prefix{
+            case .Storyboard:
+                return pmi_controllerFromExternalStoryboard(existBundle!)
+            case .XIBFile:
+                return pmi_controllerFromExternalNib(existBundle!, module: module);
+            case.Code:
+                return pmi_controllerFromCode(existBundle!, module: module)
+            }
         }
         
         let notSupportError = NSError(domain: PMIViewControllerLinkErrorDomain

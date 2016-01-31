@@ -6,8 +6,10 @@
 //  Copyright © 2016年 wangchaojs02. All rights reserved.
 //
 
-import XCTest
 @testable import PicMapIOS
+import XCTest
+import Quick
+import Nimble
 
 class PMIViewControllerLinkTests: PMITestCase {
     var link:PMIViewControllerLink?;
@@ -71,6 +73,21 @@ class PMIViewControllerLinkTests: PMITestCase {
         XCTAssertNil(error)
     }
     
+    func testLinkToANibFileWithClassName(){
+        link!.externalResource = "xib://TestViewController/TestViewController";
+        let (controller, error, _) = link!.externalResource.pmi_controller(self.bundle, module: self.module)
+        XCTAssertNotNil(controller)
+        XCTAssertTrue(controller?.isKindOfClass(TestViewController) == true)
+        XCTAssertNil(error)
+    }
+    
+    func testLinkToANibFileWithNotExistClass(){
+        link!.externalResource = "xib://TestViewController/TestViewController1";
+        let (controller, error, _) = link!.externalResource.pmi_controller(self.bundle, module: self.module)
+        XCTAssertNil(controller)
+        expect(error?.code).to(equal(PMIViewControllerLinkError.CannotInstantiateViewController.rawValue))
+    }
+    
     // MARK: - Instantiate Controller From Code
     func testLinkToCode(){
         link!.externalResource = "code://TestViewControllerNoNib";
@@ -80,54 +97,65 @@ class PMIViewControllerLinkTests: PMITestCase {
         XCTAssertNil(error)
     }
     
+    func testLinkToCodeNotExistClass(){
+        link!.externalResource = "code://NotExistClass";
+        let (controller, error, _) = link!.externalResource.pmi_controller(self.bundle, module: self.module)
+        XCTAssertNil(controller)
+        XCTAssertNotNil(error)
+        XCTAssertEqual(error?.code, PMIViewControllerLinkError.CannotCreateClass.rawValue)
+    }
+    
     func testLinkToEmpty(){
         link!.externalResource = "";
         
-        let (storyboard, controller) = link!.externalResource.pmi_storyboard();
+        var (controller, error, storyboard) = link!.externalResource.pmi_controller(self.bundle, module: self.module);
         XCTAssertNil(storyboard);
         XCTAssertNil(controller);
         
-        let (xibName,controllerName) = link!.externalResource.pmi_nibName();
-        XCTAssertNil(xibName);
-        XCTAssertNil(controllerName)
+        (controller, error, storyboard) = link!.externalResource.pmi_controller(self.bundle, module: self.module);
+        XCTAssertNil(controller);
         
-        let className = link!.externalResource.pmi_className();
-        XCTAssertNil(className);
+        (controller, error, storyboard) = link!.externalResource.pmi_controller(self.bundle, module: self.module);
+        XCTAssertNil(controller);
     }
     
     func testInvaidLink(){
         link!.externalResource = "sb://";
         
-        let (storyboard, controller) = link!.externalResource.pmi_storyboard();
+        var (controller, error, storyboard) = link!.externalResource.pmi_controller(self.bundle, module: self.module);
         XCTAssertNil(storyboard);
         XCTAssertNil(controller);
     
         link!.externalResource = "xib://";
-        let (xibName, controllerName) = link!.externalResource.pmi_nibName();
-        XCTAssertNil(xibName);
-        XCTAssertNil(controllerName)
-
+        (controller, error, _) = link!.externalResource.pmi_controller(self.bundle, module: self.module);
+        XCTAssertNil(controller);
+        expect(error?.code).to(equal(PMIViewControllerLinkError.IncompleteLink.rawValue))
+        
         link!.externalResource = "code://";
-        let className = link!.externalResource.pmi_className();
-        XCTAssertNil(className);
+        (controller, error, _) = link!.externalResource.pmi_controller(self.bundle, module: self.module);
+        expect(controller).to(beNil())
+        
+        link!.externalResource = "not-support-prefix://";
+        (controller, error, _) = link!.externalResource.pmi_controller(self.bundle, module: self.module);
+        expect(controller).to(beNil())
     }
     
     func testInvaidLinkWithSuffixSlash(){
         link!.externalResource = "sb://SomeStoryboard/SomeController/";
         
-        let (storyboard, controller) = link!.externalResource.pmi_storyboard();
+        var (controller, _, storyboard) = link!.externalResource.pmi_controller(self.bundle, module: self.module);
         XCTAssertNil(storyboard);
         XCTAssertNil(controller);
         
         link!.externalResource = "xib://SomeNibFile/SomeClass/";
-        let (xibName, controllerName) = link!.externalResource.pmi_nibName();
-        XCTAssertNil(xibName);
-        XCTAssertNil(controllerName)
+        (controller, _, _) = link!.externalResource.pmi_controller(self.bundle, module: self.module);
+        XCTAssertNil(controller);
 
         link!.externalResource = "code://SomeClass/";
-        let className = link!.externalResource.pmi_className();
-        XCTAssertNil(className);
+        (controller, _, _) = link!.externalResource.pmi_controller(self.bundle, module: self.module);
+        XCTAssertNil(controller);
     }
+    
     
     func testPerformanceForParse() {
         self.measureBlock {
