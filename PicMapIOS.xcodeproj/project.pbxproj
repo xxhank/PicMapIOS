@@ -7,12 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		521C1EDC1C5999A6004FBD89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521C1EDB1C5999A6004FBD89 /* ViewController.swift */; };
 		521C1EFA1C5999A6004FBD89 /* PicMapIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521C1EF91C5999A6004FBD89 /* PicMapIOSUITests.swift */; };
 		527C8CFE1C599A5C00BA8B0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C8CF71C599A5C00BA8B0A /* AppDelegate.swift */; };
 		527C8CFF1C599A5C00BA8B0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527C8CF91C599A5C00BA8B0A /* Assets.xcassets */; };
 		527C8D001C599A5C00BA8B0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527C8CFA1C599A5C00BA8B0A /* LaunchScreen.storyboard */; };
 		527C8D011C599A5C00BA8B0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527C8CFC1C599A5C00BA8B0A /* Main.storyboard */; };
+		52972ACE1C5E71F000AE7D4E /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52972ACD1C5E71F000AE7D4E /* Either.swift */; };
+		52CD8F2B1C5E532B002DC9DD /* Coordinate2DTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F1A1C5E532B002DC9DD /* Coordinate2DTransform.swift */; };
+		52CD8F2C1C5E532B002DC9DD /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F1B1C5E532B002DC9DD /* NSObject+ClassName.swift */; };
+		52CD8F2D1C5E532B002DC9DD /* Number+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F1C1C5E532B002DC9DD /* Number+Random.swift */; };
+		52CD8F2E1C5E532B002DC9DD /* MMArrayCollectionViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F1E1C5E532B002DC9DD /* MMArrayCollectionViewProxy.swift */; };
+		52CD8F2F1C5E532B002DC9DD /* MMArrayTableViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F1F1C5E532B002DC9DD /* MMArrayTableViewProxy.swift */; };
+		52CD8F301C5E532B002DC9DD /* MMTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F211C5E532B002DC9DD /* MMTabBarItem.swift */; };
+		52CD8F311C5E532B002DC9DD /* MPLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F221C5E532B002DC9DD /* MPLabel.swift */; };
+		52CD8F321C5E532B002DC9DD /* MPXIBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F231C5E532B002DC9DD /* MPXIBView.swift */; };
+		52CD8F331C5E532B002DC9DD /* UITabBarItem+UseOriginImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F251C5E532B002DC9DD /* UITabBarItem+UseOriginImage.m */; };
+		52CD8F341C5E532B002DC9DD /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F261C5E532B002DC9DD /* UITableView+Extension.swift */; };
+		52CD8F351C5E532B002DC9DD /* UIView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F271C5E532B002DC9DD /* UIView+Factory.swift */; };
+		52CD8F361C5E532B002DC9DD /* MMTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F2A1C5E532B002DC9DD /* MMTabBarController.m */; };
+		52CD8F3E1C5E54E2002DC9DD /* PlantConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F371C5E54E2002DC9DD /* PlantConfigurator.swift */; };
+		52CD8F3F1C5E54E2002DC9DD /* PlantInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F381C5E54E2002DC9DD /* PlantInteractor.swift */; };
+		52CD8F401C5E54E2002DC9DD /* PlantModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F391C5E54E2002DC9DD /* PlantModels.swift */; };
+		52CD8F411C5E54E2002DC9DD /* PlantPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F3A1C5E54E2002DC9DD /* PlantPresenter.swift */; };
+		52CD8F421C5E54E2002DC9DD /* PlantRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F3B1C5E54E2002DC9DD /* PlantRouter.swift */; };
+		52CD8F431C5E54E2002DC9DD /* PlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F3C1C5E54E2002DC9DD /* PlantViewController.swift */; };
+		52CD8F441C5E54E2002DC9DD /* PlantWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F3D1C5E54E2002DC9DD /* PlantWorker.swift */; };
 		52FCDE9A1C5CA1CD00ABC19D /* CameraConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE931C5CA1CD00ABC19D /* CameraConfigurator.swift */; };
 		52FCDE9B1C5CA1CD00ABC19D /* CameraInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE941C5CA1CD00ABC19D /* CameraInteractor.swift */; };
 		52FCDE9C1C5CA1CD00ABC19D /* CameraModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE951C5CA1CD00ABC19D /* CameraModels.swift */; };
@@ -58,7 +77,6 @@
 		17993C673BBA09D2D110D922 /* Pods_PicMapIOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicMapIOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50AB1794B443698F5EF3E39D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		521C1ED61C5999A6004FBD89 /* PicMapIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicMapIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		521C1EDB1C5999A6004FBD89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		521C1EE51C5999A6004FBD89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		521C1EEA1C5999A6004FBD89 /* PicMapIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicMapIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		521C1EF01C5999A6004FBD89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,6 +87,28 @@
 		527C8CF91C599A5C00BA8B0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		527C8CFB1C599A5C00BA8B0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		527C8CFD1C599A5C00BA8B0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		52972ACD1C5E71F000AE7D4E /* Either.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
+		52CD8F1A1C5E532B002DC9DD /* Coordinate2DTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate2DTransform.swift; sourceTree = "<group>"; };
+		52CD8F1B1C5E532B002DC9DD /* NSObject+ClassName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
+		52CD8F1C1C5E532B002DC9DD /* Number+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Random.swift"; sourceTree = "<group>"; };
+		52CD8F1E1C5E532B002DC9DD /* MMArrayCollectionViewProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMArrayCollectionViewProxy.swift; sourceTree = "<group>"; };
+		52CD8F1F1C5E532B002DC9DD /* MMArrayTableViewProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMArrayTableViewProxy.swift; sourceTree = "<group>"; };
+		52CD8F211C5E532B002DC9DD /* MMTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMTabBarItem.swift; sourceTree = "<group>"; };
+		52CD8F221C5E532B002DC9DD /* MPLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPLabel.swift; sourceTree = "<group>"; };
+		52CD8F231C5E532B002DC9DD /* MPXIBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPXIBView.swift; sourceTree = "<group>"; };
+		52CD8F241C5E532B002DC9DD /* UITabBarItem+UseOriginImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarItem+UseOriginImage.h"; sourceTree = "<group>"; };
+		52CD8F251C5E532B002DC9DD /* UITabBarItem+UseOriginImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarItem+UseOriginImage.m"; sourceTree = "<group>"; };
+		52CD8F261C5E532B002DC9DD /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		52CD8F271C5E532B002DC9DD /* UIView+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Factory.swift"; sourceTree = "<group>"; };
+		52CD8F291C5E532B002DC9DD /* MMTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTabBarController.h; sourceTree = "<group>"; };
+		52CD8F2A1C5E532B002DC9DD /* MMTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTabBarController.m; sourceTree = "<group>"; };
+		52CD8F371C5E54E2002DC9DD /* PlantConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantConfigurator.swift; path = Scenes/Plant/PlantConfigurator.swift; sourceTree = "<group>"; };
+		52CD8F381C5E54E2002DC9DD /* PlantInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantInteractor.swift; path = Scenes/Plant/PlantInteractor.swift; sourceTree = "<group>"; };
+		52CD8F391C5E54E2002DC9DD /* PlantModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantModels.swift; path = Scenes/Plant/PlantModels.swift; sourceTree = "<group>"; };
+		52CD8F3A1C5E54E2002DC9DD /* PlantPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantPresenter.swift; path = Scenes/Plant/PlantPresenter.swift; sourceTree = "<group>"; };
+		52CD8F3B1C5E54E2002DC9DD /* PlantRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantRouter.swift; path = Scenes/Plant/PlantRouter.swift; sourceTree = "<group>"; };
+		52CD8F3C1C5E54E2002DC9DD /* PlantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantViewController.swift; path = Scenes/Plant/PlantViewController.swift; sourceTree = "<group>"; };
+		52CD8F3D1C5E54E2002DC9DD /* PlantWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantWorker.swift; path = Scenes/Plant/PlantWorker.swift; sourceTree = "<group>"; };
 		52FCDE931C5CA1CD00ABC19D /* CameraConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraConfigurator.swift; sourceTree = "<group>"; };
 		52FCDE941C5CA1CD00ABC19D /* CameraInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraInteractor.swift; sourceTree = "<group>"; };
 		52FCDE951C5CA1CD00ABC19D /* CameraModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraModels.swift; sourceTree = "<group>"; };
@@ -93,6 +133,7 @@
 		52FCDED91C5D05A500ABC19D /* PMITestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMITestCase.swift; sourceTree = "<group>"; };
 		5E0128B0EF191FDFD7D99233 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6B117A7EF90D449A2A47C384 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BAE29B09F03FADB483809E0 /* SuggestedColors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = SuggestedColors.plist; sourceTree = "<group>"; };
 		EB5B78C81664C93A9086EB41 /* Pods-PicMapIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicMapIOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PicMapIOSTests/Pods-PicMapIOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,12 +200,13 @@
 		521C1ED81C5999A6004FBD89 /* PicMapIOS */ = {
 			isa = PBXGroup;
 			children = (
+				52CD8F171C5E532B002DC9DD /* Vendor */,
 				52FCDEC41C5CDEBF00ABC19D /* Support */,
 				52FCDEC81C5CDEBF00ABC19D /* Resource */,
 				52B5B6F71C5C4E1E007A2807 /* Scenes */,
 				527C8CF61C599A5C00BA8B0A /* App */,
-				521C1EDB1C5999A6004FBD89 /* ViewController.swift */,
 				521C1EE51C5999A6004FBD89 /* Info.plist */,
+				6BAE29B09F03FADB483809E0 /* SuggestedColors.plist */,
 			);
 			path = PicMapIOS;
 			sourceTree = "<group>";
@@ -215,6 +257,68 @@
 				52FCDE921C5CA1CD00ABC19D /* Camera */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		52CD8F171C5E532B002DC9DD /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				52CD8F181C5E532B002DC9DD /* MagicPocket */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		52CD8F181C5E532B002DC9DD /* MagicPocket */ = {
+			isa = PBXGroup;
+			children = (
+				52CD8F191C5E532B002DC9DD /* Foundation */,
+				52CD8F1D1C5E532B002DC9DD /* Proxy */,
+				52CD8F201C5E532B002DC9DD /* View */,
+				52CD8F281C5E532B002DC9DD /* ViewController */,
+			);
+			path = MagicPocket;
+			sourceTree = "<group>";
+		};
+		52CD8F191C5E532B002DC9DD /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				52CD8F1A1C5E532B002DC9DD /* Coordinate2DTransform.swift */,
+				52CD8F1B1C5E532B002DC9DD /* NSObject+ClassName.swift */,
+				52CD8F1C1C5E532B002DC9DD /* Number+Random.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		52CD8F1D1C5E532B002DC9DD /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				52CD8F1E1C5E532B002DC9DD /* MMArrayCollectionViewProxy.swift */,
+				52CD8F1F1C5E532B002DC9DD /* MMArrayTableViewProxy.swift */,
+			);
+			path = Proxy;
+			sourceTree = "<group>";
+		};
+		52CD8F201C5E532B002DC9DD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52CD8F211C5E532B002DC9DD /* MMTabBarItem.swift */,
+				52CD8F221C5E532B002DC9DD /* MPLabel.swift */,
+				52CD8F231C5E532B002DC9DD /* MPXIBView.swift */,
+				52CD8F241C5E532B002DC9DD /* UITabBarItem+UseOriginImage.h */,
+				52CD8F251C5E532B002DC9DD /* UITabBarItem+UseOriginImage.m */,
+				52CD8F261C5E532B002DC9DD /* UITableView+Extension.swift */,
+				52CD8F271C5E532B002DC9DD /* UIView+Factory.swift */,
+				52972ACD1C5E71F000AE7D4E /* Either.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		52CD8F281C5E532B002DC9DD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				52CD8F291C5E532B002DC9DD /* MMTabBarController.h */,
+				52CD8F2A1C5E532B002DC9DD /* MMTabBarController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		52FCDE921C5CA1CD00ABC19D /* Camera */ = {
@@ -268,6 +372,13 @@
 			isa = PBXGroup;
 			children = (
 				52FCDEB81C5CC30F00ABC19D /* UI */,
+				52CD8F371C5E54E2002DC9DD /* PlantConfigurator.swift */,
+				52CD8F381C5E54E2002DC9DD /* PlantInteractor.swift */,
+				52CD8F391C5E54E2002DC9DD /* PlantModels.swift */,
+				52CD8F3A1C5E54E2002DC9DD /* PlantPresenter.swift */,
+				52CD8F3B1C5E54E2002DC9DD /* PlantRouter.swift */,
+				52CD8F3C1C5E54E2002DC9DD /* PlantViewController.swift */,
+				52CD8F3D1C5E54E2002DC9DD /* PlantWorker.swift */,
 			);
 			name = Plant;
 			sourceTree = "<group>";
@@ -560,17 +671,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52CD8F331C5E532B002DC9DD /* UITabBarItem+UseOriginImage.m in Sources */,
+				52CD8F351C5E532B002DC9DD /* UIView+Factory.swift in Sources */,
+				52CD8F3F1C5E54E2002DC9DD /* PlantInteractor.swift in Sources */,
+				52CD8F401C5E54E2002DC9DD /* PlantModels.swift in Sources */,
+				52972ACE1C5E71F000AE7D4E /* Either.swift in Sources */,
 				527C8CFE1C599A5C00BA8B0A /* AppDelegate.swift in Sources */,
+				52CD8F2C1C5E532B002DC9DD /* NSObject+ClassName.swift in Sources */,
+				52CD8F301C5E532B002DC9DD /* MMTabBarItem.swift in Sources */,
 				52FCDE9C1C5CA1CD00ABC19D /* CameraModels.swift in Sources */,
 				52FCDEA31C5CA37900ABC19D /* PMITabBarController.swift in Sources */,
+				52CD8F441C5E54E2002DC9DD /* PlantWorker.swift in Sources */,
+				52CD8F321C5E532B002DC9DD /* MPXIBView.swift in Sources */,
+				52CD8F431C5E54E2002DC9DD /* PlantViewController.swift in Sources */,
+				52CD8F411C5E54E2002DC9DD /* PlantPresenter.swift in Sources */,
+				52CD8F341C5E532B002DC9DD /* UITableView+Extension.swift in Sources */,
 				52FCDE9E1C5CA1CD00ABC19D /* CameraRouter.swift in Sources */,
 				52FCDE9B1C5CA1CD00ABC19D /* CameraInteractor.swift in Sources */,
+				52CD8F361C5E532B002DC9DD /* MMTabBarController.m in Sources */,
+				52CD8F3E1C5E54E2002DC9DD /* PlantConfigurator.swift in Sources */,
+				52CD8F2D1C5E532B002DC9DD /* Number+Random.swift in Sources */,
+				52CD8F421C5E54E2002DC9DD /* PlantRouter.swift in Sources */,
+				52CD8F2F1C5E532B002DC9DD /* MMArrayTableViewProxy.swift in Sources */,
 				52FCDE9D1C5CA1CD00ABC19D /* CameraPresenter.swift in Sources */,
 				52FCDE9F1C5CA1CD00ABC19D /* CameraViewController.swift in Sources */,
 				52FCDE9A1C5CA1CD00ABC19D /* CameraConfigurator.swift in Sources */,
+				52CD8F2E1C5E532B002DC9DD /* MMArrayCollectionViewProxy.swift in Sources */,
+				52CD8F311C5E532B002DC9DD /* MPLabel.swift in Sources */,
 				52FCDEA01C5CA1CD00ABC19D /* CameraWorker.swift in Sources */,
+				52CD8F2B1C5E532B002DC9DD /* Coordinate2DTransform.swift in Sources */,
 				52FCDEA51C5CA53E00ABC19D /* PMIViewControllerLink.swift in Sources */,
-				521C1EDC1C5999A6004FBD89 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
