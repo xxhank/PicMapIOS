@@ -27,11 +27,11 @@ pod 'PagingMenuController'
 pod 'SwiftTask'
 pod 'SwiftTryCatch', :git => 'https://github.com/ravero/SwiftTryCatch.git'
 
-target 'PicMapIOSTests' do
+target :PicMapIOSTests do
     pod 'Quick'
     pod 'Nimble'
 end
 
-target 'PicMapIOSUITests' do
+target :PicMapIOSUITests do
     #pod 'JAMTestHelper'
 end
