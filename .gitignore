@@ -1,0 +1,6 @@
+.DS_Store
+Podfile.lock
+PicMapIOS.xcworkspace
+Pods
+doc
+docset
