@@ -1,0 +1,11 @@
+#/bin/sh
+
+cd `dirname $0`
+echo "PWD:$PWD"
+
+if [[ -e ./Pods ]]; then
+    pod update
+else
+    pod install
+fi
+
