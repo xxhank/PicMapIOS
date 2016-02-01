@@ -13,12 +13,12 @@ enum Either<T1, T2> {
     case Right(T2)
 }
 
-enum Response<T1, T2> {
+enum Response<T1> {
     case Result(T1)
-    case Error(T2)
+    case Error(NSError)
 }
 
-enum ViewModel<T1, T2> {
+enum ViewModel < T1 > {
     case Result(T1)
-    case Error(T2)
+    case Error(NSError)
 }

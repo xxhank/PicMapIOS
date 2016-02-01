@@ -11,6 +11,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 struct PlantRequest
 {
@@ -40,4 +41,30 @@ struct LocationViewModel
     var city: String?
     var street: String?
     var location: String?
+}
+
+// MARK: - FetchSightsData
+struct Plant_FetchSightList_Request
+{
+    var region: MKCoordinateRegion;
+}
+
+struct Plant_FetchSightList_Response
+{
+    var sightList: [[String: AnyObject]]
+}
+
+struct SightListViewModel
+{
+    struct SightViewModel {
+        var longitude: Double
+        var latitude: Double
+        var timestamp: UInt64
+        var thumbnail: String?
+        var sid: String?
+        var uid: String?
+        var imageCount: UInt
+    }
+
+    var sightList: [SightViewModel]
 }

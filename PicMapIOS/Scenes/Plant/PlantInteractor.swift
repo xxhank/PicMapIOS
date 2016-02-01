@@ -12,6 +12,7 @@
 import UIKit
 import CoreLocation
 import XCGLogger
+import SwiftTask
 
 let PlantInteractorErrorDomain = "PlantInteractor"
 enum PlantInteractorError: Int {
@@ -22,11 +23,13 @@ enum PlantInteractorError: Int {
 protocol PlantInteractorInput
 {
     func fetchLocationInformation(request: Plant_FormatLocation_Requset)
+    func fetchSightList(request: Plant_FetchSightList_Request)
 }
 
 protocol PlantInteractorOutput
 {
-    func presentLocationInformation(response: Response<Plant_FormatLocation_Response, NSError>)
+    func presentLocationInformation(response: Response<Plant_FormatLocation_Response>)
+    func presentSightList(response: Response<Plant_FetchSightList_Response>)
 }
 
 class PlantInteractor: PlantInteractorInput
@@ -46,7 +49,7 @@ class PlantInteractor: PlantInteractorInput
 
         self.geocoder.reverseGeocodeLocation(request.location) { (placemarks, error: NSError?) -> Void in
             // CLPlacemark
-            var response: Response<Plant_FormatLocation_Response, NSError> = .Error(
+            var response: Response<Plant_FormatLocation_Response> = .Error(
                 NSError(domain: PlantInteractorErrorDomain,
                 code: PlantInteractorError.General.rawValue,
                 userInfo: [:]))
@@ -73,6 +76,20 @@ class PlantInteractor: PlantInteractorInput
 
             response = .Result(Plant_FormatLocation_Response(information: information))
         }
+    }
+
+    func fetchSightList(request: Plant_FetchSightList_Request) {
+        PMIAPI.fetchJSON("sight-list.json", parameters: [:])
+            .success { (input: AnyObject) -> Void in
+                if let sightList = input as? [[String : AnyObject]] {
+                    let response = Response<Plant_FetchSightList_Response>.Result(Plant_FetchSightList_Response(sightList: sightList))
+                    self.output.presentSightList(response)
+                }
+            }.failure { (error, isCancelled) -> Void in
+                if !isCancelled {
+                    self.output.presentSightList(Response<Plant_FetchSightList_Response>.Error(error!))
+                }
+            }
     }
 }
 

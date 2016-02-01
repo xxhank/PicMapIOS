@@ -52,7 +52,7 @@ class MMArrayTableViewProxy: NSObject  {
 extension MMArrayTableViewProxy:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let datas = self.datas {
-            return 5;//datas.count;
+            return datas.count;
         }
         return 0;
     }

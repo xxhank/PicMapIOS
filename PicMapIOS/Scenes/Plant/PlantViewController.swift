@@ -15,41 +15,42 @@ import SnapKit
 import CoreLocation
 import XCGLogger
 import PKHUD
+import FBAnnotationClustering
 
 protocol PlantViewControllerInput
 {
-    func displayLocationInformation(viewModel: ViewModel<LocationViewModel, NSError>)
+    func displayLocationInformation(viewModel: ViewModel<LocationViewModel>)
+    func displaySightList(viewModel: ViewModel<SightListViewModel>)
 }
 
 protocol PlantViewControllerOutput
 {
     func fetchLocationInformation(request: Plant_FormatLocation_Requset)
+    func fetchSightList(request: Plant_FetchSightList_Request)
 }
 
 class PlantViewController: UIViewController, PlantViewControllerInput
 {
+    // MARK: - CleanSwift
     var output: PlantViewControllerOutput!
     var router: PlantRouter!
 
     // MARK: - Outlet
-
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var sightNameLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var sightLocationLabel: UILabel!
-
-    // MARK: - Action
-    @IBAction func centerMe() {
-        self.centerMapOnLocation(initialLocation, regionRadius: self.regionRadius)
-    }
 
     // MARK: - Location
     var locationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000 * 1000 // 默认1000
     var initialLocation = CLLocation(latitude: 39.9, longitude: 116.3)
 
-    // MARK: Object lifecycle
+    // MARK: - cluster annotations
+    var clusteringManager: FBClusteringManager = FBClusteringManager(annotations: [])
+    var queue = NSOperationQueue()
 
+    // MARK: Object lifecycle
     override func awakeFromNib()
     {
         super.awakeFromNib()
@@ -57,7 +58,6 @@ class PlantViewController: UIViewController, PlantViewControllerInput
     }
 
     // MARK: View lifecycle
-
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -68,7 +68,6 @@ class PlantViewController: UIViewController, PlantViewControllerInput
     }
 
     // MARK: Event handling
-
     func doSomethingOnLoad()
     {
         // NOTE: Ask the Interactor to do some work
@@ -76,18 +75,43 @@ class PlantViewController: UIViewController, PlantViewControllerInput
     }
 
     // MARK: Display logic
-
-    func displayLocationInformation(viewModel: ViewModel<LocationViewModel, NSError>) {
+    func displayLocationInformation(viewModel: ViewModel<LocationViewModel>) {
         switch viewModel {
         case .Result(let result):
             self.cityNameLabel.text = result.city;
             self.sightNameLabel.text = result.location;
             self.sightLocationLabel.text = result.street;
+            break;
+        case .Error:
+
+            // PKHUD.sharedHUD.contentView = PKHUDTextView(text: error.localizedDescription)
+            // PKHUD.sharedHUD.show()
+            // PKHUD.sharedHUD.hide(afterDelay: 2.0)
+            break;
+        }
+    }
+
+    func displaySightList(viewModel: ViewModel<SightListViewModel>) {
+        switch viewModel {
         case .Error(let error):
             PKHUD.sharedHUD.contentView = PKHUDTextView(text: error.localizedDescription)
             PKHUD.sharedHUD.show()
             PKHUD.sharedHUD.hide(afterDelay: 2.0)
+            break;
+        case .Result(let result):
+            let annotations = result.sightList.map({ (viewModel) -> SightAnnotation in
+                return SightAnnotation(viewModel: viewModel) ;
+            })
+
+            self.clusteringManager.addAnnotations(annotations)
+            self.addAnnotations(onMapView: self.mapView)
+            break;
         }
+    }
+
+    // MARK: - Action
+    @IBAction func centerMe() {
+        self.centerMapOnLocation(initialLocation, regionRadius: self.regionRadius)
     }
 }
 
@@ -126,6 +150,17 @@ extension PlantViewController: MKMapViewDelegate, CLLocationManagerDelegate {
         mapView.setRegion(corrdinateRegion, animated: true)
     }
 
+    func addAnnotations(onMapView mapView: MKMapView)
+    {
+        self.queue.cancelAllOperations()
+        self.queue.addOperationWithBlock { () -> Void in
+            let width = Double(mapView.bounds.size.width)
+            let visibleWidth = mapView.visibleMapRect.size.width
+            let scale = width / visibleWidth
+            let annotations = self.clusteringManager.clusteredAnnotationsWithinMapRect(mapView.visibleMapRect, withZoomScale: scale)
+            self.clusteringManager.displayAnnotations(annotations, onMapView: mapView)
+        }
+    }
     // MARK: - CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation: CLLocation = locations.last!;
@@ -138,21 +173,24 @@ extension PlantViewController: MKMapViewDelegate, CLLocationManagerDelegate {
 
     // MARK: - MKMapViewDelegate
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-//        if let annotation = annotation as? AnnotationGroup {
-//            let pinView = ArtWorkAnnotationView.annotationView(mapView, annotation: annotation)
-//            pinView.pinSelected = false
-//            return pinView
-//        }
-//        else{
-//            return nil
-//        }
-        return nil
+        let identifier = NSStringFromClass(annotation.dynamicType)
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? SightAnnotationView
+        if annotationView == nil {
+            annotationView = SightAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        }
+        else {
+            annotationView?.annotation = annotation
+        }
+
+        annotationView?.update()
+
+        return annotationView
     }
 
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         mapView.deselectAnnotation(view.annotation, animated: true)
-//        if view .isKindOfClass(ArtWorkAnnotationView ) {
-//            let pinView = view as! ArtWorkAnnotationView
+//        if view .isKindOfClass(SightAnnotationView ) {
+//            let pinView = view as! SightAnnotationView
 //            //点击不同的大头针还原之前的大头针
 //            if self.pinView != nil && self.pinView != pinView {
 //                self.pinView.selected = false
@@ -191,9 +229,10 @@ extension PlantViewController: MKMapViewDelegate, CLLocationManagerDelegate {
 //        }
     }
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        guard let centerLocation = mapView.userLocation.location else { return } // CLLocation(latitude: mapView.centerCoordinate.latitude
-        // , longitude: mapView.centerCoordinate.longitude)
+        let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude,
+            longitude: mapView.centerCoordinate.longitude)
         output.fetchLocationInformation(Plant_FormatLocation_Requset(location: centerLocation))
+        self.addAnnotations(onMapView: self.mapView)
     }
 
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
@@ -201,6 +240,7 @@ extension PlantViewController: MKMapViewDelegate, CLLocationManagerDelegate {
         /**
          * 根据地理位置,解析出城市名称
          */
-        output.fetchLocationInformation(Plant_FormatLocation_Requset(location: userLocation.location!))
+        // output.fetchLocationInformation(Plant_FormatLocation_Requset(location: userLocation.location!))
+        output.fetchSightList(Plant_FetchSightList_Request(region: mapView.region))
     }
 }

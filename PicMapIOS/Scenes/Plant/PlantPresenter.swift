@@ -13,12 +13,14 @@ import UIKit
 
 protocol PlantPresenterInput
 {
-    func presentLocationInformation(response: Response<Plant_FormatLocation_Response, NSError>)
+    func presentLocationInformation(response: Response<Plant_FormatLocation_Response>)
+    func presentSightList(response: Response<Plant_FetchSightList_Response>)
 }
 
 protocol PlantPresenterOutput: class
 {
-    func displayLocationInformation(viewModel: ViewModel<LocationViewModel, NSError>)
+    func displayLocationInformation(viewModel: ViewModel<LocationViewModel>)
+    func displaySightList(viewModel: ViewModel<SightListViewModel>)
 }
 
 class PlantPresenter: PlantPresenterInput
@@ -26,17 +28,41 @@ class PlantPresenter: PlantPresenterInput
     weak var output: PlantPresenterOutput!
 
     // MARK: Presentation logic
-    func presentLocationInformation(response: Response<Plant_FormatLocation_Response, NSError>) {
+    func presentLocationInformation(response: Response<Plant_FormatLocation_Response>) {
         switch response {
         case .Error(let error):
-            output.displayLocationInformation(ViewModel<LocationViewModel, NSError>.Error(error))
+            output.displayLocationInformation(ViewModel<LocationViewModel>.Error(error))
+            break
         case .Result(let result):
             let viewModel = LocationViewModel(
-                city: result.information["City"] as? String
-            , street: result.information["Street"] as? String
-            , location: result.information["SubLocality"] as? String)
+                city: result.information["City"] as? String,
+                street: result.information["Street"] as? String,
+                location: result.information["SubLocality"] as? String)
 
-            output.displayLocationInformation(ViewModel<LocationViewModel, NSError>.Result(viewModel))
+            output.displayLocationInformation(ViewModel<LocationViewModel>.Result(viewModel))
+        }
+    }
+
+    func presentSightList(response: Response<Plant_FetchSightList_Response>) {
+        switch response {
+        case .Error(let error):
+            output.displaySightList(ViewModel<SightListViewModel>.Error(error))
+            break
+        case .Result(let result):
+            let sightList = result.sightList.map({ (sight) -> SightListViewModel.SightViewModel in
+                return SightListViewModel.SightViewModel(
+                    longitude: sight["longitude"] as! Double,
+                    latitude: sight["latitude"] as! Double,
+                    timestamp: (sight["timestamp"] as! NSNumber).unsignedLongLongValue,
+                    thumbnail: sight["thumbnail"] as? String,
+                    sid: sight["sid"] as? String,
+                    uid: sight["uid"] as? String,
+                    imageCount: UInt.random(min: 0, max: 10000)
+                )
+            })
+            let viewModel = SightListViewModel(sightList: sightList)
+            output.displaySightList(ViewModel<SightListViewModel>.Result(viewModel))
+            break
         }
     }
 }

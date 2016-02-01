@@ -11,7 +11,7 @@ pod 'ObjectMapper' #, :git => 'https://github.com/Hearst-DD/ObjectMapper.git'
 pod 'ReactiveCocoa', '= 4.0.2-alpha-3'
 pod 'Moya/ReactiveCocoa'
 #pod 'IDAlertController'
-#pod 'FBAnnotationClustering'
+pod 'FBAnnotationClustering'
 
 #https://github.com/Haneke/HanekeSwift 缓存
 pod 'HanekeSwift'
