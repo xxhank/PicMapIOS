@@ -40,6 +40,8 @@ class SightAnnotationView: MKAnnotationView {
                 self.addSubview(contentView)
             }
         }
+
+        self.contentView?.badgeLabel.text = "1"
     }
 
     required init?(coder aDecoder: NSCoder) {

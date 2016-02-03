@@ -57,7 +57,7 @@ class PlantPresenter: PlantPresenterInput
                     thumbnail: sight["thumbnail"] as? String,
                     sid: sight["sid"] as? String,
                     uid: sight["uid"] as? String,
-                    imageCount: UInt.random(min: 0, max: 10000)
+                    imageCount: 1
                 )
             })
             let viewModel = SightListViewModel(sightList: sightList)
