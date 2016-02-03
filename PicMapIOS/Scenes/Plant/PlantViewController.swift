@@ -40,7 +40,8 @@ class PlantViewController: UIViewController, PlantViewControllerInput
     @IBOutlet weak var sightNameLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var sightLocationLabel: UILabel!
-
+    @IBOutlet weak var detailPanelHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var detailPanel: UIView!
     // MARK: - Location
     var locationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000 * 1000 // 默认1000
@@ -216,6 +217,17 @@ extension PlantViewController: MKMapViewDelegate, CLLocationManagerDelegate {
 //            }
 //
 //        }
+
+        self.view.userInteractionEnabled = false;
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            let MapViewPanelHeight: CGFloat = 200;
+            let ViewPadding: CGFloat = 64 + 49;
+            let detailPanelHeight = CGRectGetHeight(self.view.bounds) - ViewPadding - MapViewPanelHeight;
+            self.detailPanelHeightConstraint.constant = detailPanelHeight;
+            self.view.layoutIfNeeded() ;
+        }) { (finished) -> Void in
+            self.view.userInteractionEnabled = true;
+        } ;
     }
     func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
 //        if self.scrollView != nil {
