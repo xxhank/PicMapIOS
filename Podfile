@@ -27,6 +27,7 @@ pod 'PagingMenuController'
 pod 'SwiftTask'
 pod 'SwiftTryCatch', :git => 'https://github.com/ravero/SwiftTryCatch.git'
 pod "PKHUD"
+pod 'TagListView'
 
 target :PicMapIOSTests do
     pod 'Quick'

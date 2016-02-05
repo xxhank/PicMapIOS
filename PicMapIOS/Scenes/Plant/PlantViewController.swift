@@ -42,14 +42,19 @@ class PlantViewController: UIViewController, PlantViewControllerInput
     @IBOutlet weak var sightLocationLabel: UILabel!
     @IBOutlet weak var detailPanelHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var detailPanel: UIView!
+    @IBOutlet var touristListView: UITableView!
+
     // MARK: - Location
     var locationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000 * 1000 // 默认1000
     var initialLocation = CLLocation(latitude: 39.9, longitude: 116.3)
 
-    // MARK: - cluster annotations
+    // MARK: - Cluster annotations
     var clusteringManager: FBClusteringManager = FBClusteringManager(annotations: [])
     var queue = NSOperationQueue()
+
+    // MARK: - Detail View
+    var proxy: MMArrayTableViewProxy?
 
     // MARK: Object lifecycle
     override func awakeFromNib()
@@ -64,7 +69,7 @@ class PlantViewController: UIViewController, PlantViewControllerInput
         super.viewDidLoad()
 
         setupMapView()
-
+        setupDetailView()
         doSomethingOnLoad()
     }
 
@@ -190,33 +195,8 @@ extension PlantViewController: MKMapViewDelegate, CLLocationManagerDelegate {
 
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         mapView.deselectAnnotation(view.annotation, animated: true)
-//        if view .isKindOfClass(SightAnnotationView ) {
-//            let pinView = view as! SightAnnotationView
-//            //点击不同的大头针还原之前的大头针
-//            if self.pinView != nil && self.pinView != pinView {
-//                self.pinView.selected = false
-//                self.pinView = pinView
-//
-//            } else {
-//                self.pinView = pinView
-//            }
-//
-//
-//
-//            pinView.selected = false
-//            pinView.pinSelected = !pinView.pinSelected
-//            if pinView.pinSelected == false {
-//                UIView.animateWithDuration(0.5) { () -> Void in
-//                    self.scrollView.transform = CGAffineTransformIdentity
-//                }
-//            }else
-//            {
-//                UIView.animateWithDuration(0.5) { () -> Void in
-//                    self.scrollView.transform = CGAffineTransformMakeTranslation(0, -self.scrollViewHeight)
-//                }
-//            }
-//
-//        }
+
+        proxy?.datas = [1, 2, 3, 4, 5, 6, 7, 7, 8, 9] ;
 
         self.view.userInteractionEnabled = false;
         UIView.animateWithDuration(0.5, animations: { () -> Void in
@@ -254,5 +234,23 @@ extension PlantViewController: MKMapViewDelegate, CLLocationManagerDelegate {
          */
         // output.fetchLocationInformation(Plant_FormatLocation_Requset(location: userLocation.location!))
         output.fetchSightList(Plant_FetchSightList_Request(region: mapView.region))
+    }
+}
+
+// MARK: - DetailView
+extension PlantViewController
+{
+    func setupDetailView() {
+        self.detailPanel.addSubview(self.touristListView) ;
+        self.touristListView.snp_makeConstraints { (make) -> Void in
+            make.edges.equalTo(self.detailPanel)
+        }
+
+        proxy = MMArrayTableViewProxy(tableView: self.touristListView, identifier: { (tableView, indexPath) -> String in
+            return "TouristLatestCell"
+        }, builder: { (tableView, indexPath, identifier) -> UITableViewCell? in
+            return nil;
+        }, modifier: { (tableView, tableViewCell, cellData) -> () in
+        }) ;
     }
 }

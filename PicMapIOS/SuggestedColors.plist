@@ -4,6 +4,7 @@
 <dict>
 	<key>colors</key>
 	<dict>
+		<!--
 		<key>HEX alpha Format</key>
 		<string>ff7373,0.8</string>
 		<key>Hex Format</key>
@@ -12,6 +13,27 @@
 		<string>rgb(128,128,128)</string>
 		<key>RGBA Format</key>
 		<string>rgba(128,128,128,0.5</string>
+		-->
+<key>000000</key><string>000000</string>
+<key>0070D1</key><string>0070D1</string>
+<key>050F19</key><string>050F19</string>
+<key>19232D</key><string>19232D</string>
+<key>2D3741</key><string>2D3741</string>
+<key>414B55</key><string>414B55</string>
+<key>555F69</key><string>555F69</string>
+<key>69737D</key><string>69737D</string>
+<key>7D8791</key><string>7D8791</string>
+<key>9BA5AF</key><string>9BA5AF</string>
+<key>AFB9C3</key><string>AFB9C3</string>
+<key>B5BFC9</key><string>B5BFC9</string>
+
+<key>C3CDD7</key><string>C3CDD7</string>
+<key>CED6DE</key><string>CED6DE</string>
+
+<key>D7E1EB</key><string>D7E1EB</string>
+<key>EBF5FF</key><string>EBF5FF</string>
+<key>FF3A30</key><string>FF3A30</string>
+<key>FFFFFF</key><string>FFFFFF</string>
 	</dict>
 	<key>useMyColors</key>
 	<true/>
