@@ -12,6 +12,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import ObjectMapper
 
 struct PlantRequest
 {
@@ -54,17 +55,47 @@ struct Plant_FetchSightList_Response
     var sightList: [[String: AnyObject]]
 }
 
-struct SightListViewModel
-{
-    struct SightViewModel {
-        var longitude: Double
-        var latitude: Double
-        var timestamp: UInt64
-        var thumbnail: String?
-        var sid: String?
-        var uid: String?
-        var imageCount: UInt
+class SightViewModel: Mappable {
+    var coordinate: CLLocationCoordinate2D?
+    var thumbnail: String?
+    var imageCount: UInt?
+
+    required init?(_ map: Map) {
     }
 
+    func mapping(map: Map) -> () {
+        typealias CoordinateDictionary = [String: AnyObject]
+
+        let transform = TransformOf < CLLocationCoordinate2D, CoordinateDictionary >(fromJSON: { (dictionary) -> CLLocationCoordinate2D? in
+            if let dictionary = dictionary,
+                let latitude = dictionary["lat"] as! Double?,
+                let longitude = dictionary["lng"] as! Double? {
+                    return CLLocationCoordinate2DMake(latitude, longitude)
+                }
+            return nil
+        }, toJSON: { (coordinate) -> CoordinateDictionary? in
+            if let coordinate = coordinate {
+                return ["lat" : "\(coordinate.latitude)",
+                    "lng": "\(coordinate.longitude)"]
+            }
+            return nil
+        })
+
+        coordinate <- (map["coordinate"], transform)
+        thumbnail <- map["photo"]
+        imageCount <- map["count"]
+    }
+
+    class func viewModelFromJSONString(JSONString: String) -> SightViewModel? {
+        return Mapper<SightViewModel>().map(JSONString)
+    }
+
+    class func viewModelFromDictonary(dictonary: [String: AnyObject]) -> SightViewModel? {
+        return Mapper<SightViewModel>().map(dictonary)
+    }
+}
+
+struct SightListViewModel
+{
     var sightList: [SightViewModel]
 }

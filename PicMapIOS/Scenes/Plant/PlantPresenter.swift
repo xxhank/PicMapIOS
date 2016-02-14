@@ -49,17 +49,8 @@ class PlantPresenter: PlantPresenterInput
             output.displaySightList(ViewModel<SightListViewModel>.Error(error))
             break
         case .Result(let result):
-            let sightList = result.sightList.map({ (sight) -> SightListViewModel.SightViewModel in
-                return SightListViewModel.SightViewModel(
-                    longitude: sight["longitude"] as! Double,
-                    latitude: sight["latitude"] as! Double,
-                    timestamp: (sight["timestamp"] as! NSNumber).unsignedLongLongValue,
-                    thumbnail: sight["thumbnail"] as? String,
-                    sid: sight["sid"] as? String,
-                    uid: sight["uid"] as? String,
-                    imageCount: 1
-                )
-            })
+            let sightList = result.sightList.map({ (sight) -> SightViewModel in
+                return SightViewModel.viewModelFromDictonary(sight)! })
             let viewModel = SightListViewModel(sightList: sightList)
             output.displaySightList(ViewModel<SightListViewModel>.Result(viewModel))
             break

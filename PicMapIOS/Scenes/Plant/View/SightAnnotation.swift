@@ -11,11 +11,11 @@ import MapKit
 class SightAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D {
         get {
-            return CLLocationCoordinate2D(latitude: viewModel.latitude, longitude: viewModel.longitude)
+            return viewModel.coordinate!
         }
     }
-    var viewModel: SightListViewModel.SightViewModel
-    init(viewModel: SightListViewModel.SightViewModel) {
+    var viewModel: SightViewModel
+    init(viewModel: SightViewModel) {
         self.viewModel = viewModel;
     }
 }

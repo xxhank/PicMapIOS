@@ -79,7 +79,7 @@ class PlantInteractor: PlantInteractorInput
     }
 
     func fetchSightList(request: Plant_FetchSightList_Request) {
-        PMIAPI.fetchJSON("sight-list.json", parameters: [:])
+        PMIAPI.fetchJSON("sight_list.json", parameters: [:])
             .success { (input: AnyObject) -> Void in
                 if let sightList = input as? [[String : AnyObject]] {
                     let response = Response<Plant_FetchSightList_Response>.Result(Plant_FetchSightList_Response(sightList: sightList))
