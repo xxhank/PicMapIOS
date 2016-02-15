@@ -14,7 +14,8 @@ typealias PMIAPITask = Task<PMIAPIProgress, AnyObject, NSError>
 
 let PMIAPIErrorDomain = "PMIAPI"
 let PMIAPIErrorRequestKey = "request"
-enum PMIAPIError: Int {
+
+enum PMIAPIError: ErrorType {
     case NotResult
 }
 
@@ -29,13 +30,10 @@ class PMIAPI {
                         if let value = response.result.value {
                             fullfil(value)
                         } else {
-                            let error = NSError(
-                                domain: PMIAPIErrorDomain,
-                                code: PMIAPIError.NotResult.rawValue,
-                                userInfo: [
-                                NSLocalizedDescriptionKey: "not result value",
-                                PMIAPIErrorRequestKey: response.request!]
-                            )
+                            let error = NSError(domain: PMIAPIErrorDomain,
+                                code: PMIAPIError.NotResult,
+                                desc: "not result value",
+                                info: [PMIAPIErrorRequestKey: response.request!])
                             reject(error)
                         }
                     }

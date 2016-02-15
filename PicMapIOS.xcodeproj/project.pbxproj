@@ -16,6 +16,18 @@
 		52972AD21C5EE00100AE7D4E /* SightAnnotationContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52972AD01C5EE00100AE7D4E /* SightAnnotationContent.xib */; };
 		52972AD31C5EE00100AE7D4E /* SightAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52972AD11C5EE00100AE7D4E /* SightAnnotationView.swift */; };
 		52972AD91C5EECD300AE7D4E /* SightAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52972AD81C5EECD300AE7D4E /* SightAnnotation.swift */; };
+		5299045C1C703D0F00D0DF05 /* PlantTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299045B1C703D0F00D0DF05 /* PlantTripCell.swift */; };
+		529904791C7169EC00D0DF05 /* TripConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904701C7169EC00D0DF05 /* TripConfigurator.swift */; };
+		5299047A1C7169EC00D0DF05 /* TripInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904711C7169EC00D0DF05 /* TripInteractor.swift */; };
+		5299047B1C7169EC00D0DF05 /* TripModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904721C7169EC00D0DF05 /* TripModels.swift */; };
+		5299047C1C7169EC00D0DF05 /* TripPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904731C7169EC00D0DF05 /* TripPresenter.swift */; };
+		5299047D1C7169EC00D0DF05 /* TripRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904741C7169EC00D0DF05 /* TripRouter.swift */; };
+		5299047E1C7169EC00D0DF05 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904751C7169EC00D0DF05 /* TripViewController.swift */; };
+		5299047F1C7169EC00D0DF05 /* TripWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904761C7169EC00D0DF05 /* TripWorker.swift */; };
+		529904801C7169EC00D0DF05 /* TripLocationImageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904781C7169EC00D0DF05 /* TripLocationImageGridView.swift */; };
+		529904821C717F4E00D0DF05 /* LocationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904811C717F4E00D0DF05 /* LocationAnnotationView.swift */; };
+		529904841C717FAC00D0DF05 /* TripLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904831C717FAC00D0DF05 /* TripLocationCell.swift */; };
+		529904861C719CEF00D0DF05 /* NSError+PMIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904851C719A1100D0DF05 /* NSError+PMIExtension.swift */; };
 		52C25DB11C5F5A1B009BB4EC /* PMIAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C25DB01C5F5A1B009BB4EC /* PMIAPI.swift */; };
 		52CD8F2B1C5E532B002DC9DD /* Coordinate2DTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F1A1C5E532B002DC9DD /* Coordinate2DTransform.swift */; };
 		52CD8F2C1C5E532B002DC9DD /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F1B1C5E532B002DC9DD /* NSObject+ClassName.swift */; };
@@ -95,6 +107,18 @@
 		52972AD01C5EE00100AE7D4E /* SightAnnotationContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SightAnnotationContent.xib; sourceTree = "<group>"; };
 		52972AD11C5EE00100AE7D4E /* SightAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightAnnotationView.swift; sourceTree = "<group>"; };
 		52972AD81C5EECD300AE7D4E /* SightAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightAnnotation.swift; sourceTree = "<group>"; };
+		5299045B1C703D0F00D0DF05 /* PlantTripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantTripCell.swift; sourceTree = "<group>"; };
+		529904701C7169EC00D0DF05 /* TripConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripConfigurator.swift; sourceTree = "<group>"; };
+		529904711C7169EC00D0DF05 /* TripInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripInteractor.swift; sourceTree = "<group>"; };
+		529904721C7169EC00D0DF05 /* TripModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripModels.swift; sourceTree = "<group>"; };
+		529904731C7169EC00D0DF05 /* TripPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPresenter.swift; sourceTree = "<group>"; };
+		529904741C7169EC00D0DF05 /* TripRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripRouter.swift; sourceTree = "<group>"; };
+		529904751C7169EC00D0DF05 /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
+		529904761C7169EC00D0DF05 /* TripWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripWorker.swift; sourceTree = "<group>"; };
+		529904781C7169EC00D0DF05 /* TripLocationImageGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripLocationImageGridView.swift; sourceTree = "<group>"; };
+		529904811C717F4E00D0DF05 /* LocationAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAnnotationView.swift; sourceTree = "<group>"; };
+		529904831C717FAC00D0DF05 /* TripLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripLocationCell.swift; sourceTree = "<group>"; };
+		529904851C719A1100D0DF05 /* NSError+PMIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+PMIExtension.swift"; sourceTree = "<group>"; };
 		52C25DB01C5F5A1B009BB4EC /* PMIAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMIAPI.swift; sourceTree = "<group>"; };
 		52CD8F1A1C5E532B002DC9DD /* Coordinate2DTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate2DTransform.swift; sourceTree = "<group>"; };
 		52CD8F1B1C5E532B002DC9DD /* NSObject+ClassName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
@@ -262,6 +286,7 @@
 				52972AD01C5EE00100AE7D4E /* SightAnnotationContent.xib */,
 				52972AD11C5EE00100AE7D4E /* SightAnnotationView.swift */,
 				52972AD81C5EECD300AE7D4E /* SightAnnotation.swift */,
+				5299045B1C703D0F00D0DF05 /* PlantTripCell.swift */,
 			);
 			name = View;
 			path = Scenes/Plant/View;
@@ -293,9 +318,36 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		5299046F1C7169EC00D0DF05 /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				529904701C7169EC00D0DF05 /* TripConfigurator.swift */,
+				529904711C7169EC00D0DF05 /* TripInteractor.swift */,
+				529904721C7169EC00D0DF05 /* TripModels.swift */,
+				529904731C7169EC00D0DF05 /* TripPresenter.swift */,
+				529904741C7169EC00D0DF05 /* TripRouter.swift */,
+				529904751C7169EC00D0DF05 /* TripViewController.swift */,
+				529904761C7169EC00D0DF05 /* TripWorker.swift */,
+				529904771C7169EC00D0DF05 /* View */,
+			);
+			name = Trip;
+			path = Scenes/Trip;
+			sourceTree = "<group>";
+		};
+		529904771C7169EC00D0DF05 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				529904781C7169EC00D0DF05 /* TripLocationImageGridView.swift */,
+				529904811C717F4E00D0DF05 /* LocationAnnotationView.swift */,
+				529904831C717FAC00D0DF05 /* TripLocationCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		52B5B6F71C5C4E1E007A2807 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				5299046F1C7169EC00D0DF05 /* Trip */,
 				52FCDEAD1C5CC17A00ABC19D /* Profile */,
 				52FCDEAC1C5CC16A00ABC19D /* Plant */,
 				52FCDE921C5CA1CD00ABC19D /* Camera */,
@@ -325,6 +377,7 @@
 		52CD8F191C5E532B002DC9DD /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				529904851C719A1100D0DF05 /* NSError+PMIExtension.swift */,
 				52CD8F1A1C5E532B002DC9DD /* Coordinate2DTransform.swift */,
 				52CD8F1B1C5E532B002DC9DD /* NSObject+ClassName.swift */,
 				52CD8F1C1C5E532B002DC9DD /* Number+Random.swift */,
@@ -717,7 +770,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5299047F1C7169EC00D0DF05 /* TripWorker.swift in Sources */,
 				52972AD31C5EE00100AE7D4E /* SightAnnotationView.swift in Sources */,
+				529904861C719CEF00D0DF05 /* NSError+PMIExtension.swift in Sources */,
+				5299047E1C7169EC00D0DF05 /* TripViewController.swift in Sources */,
 				52CD8F331C5E532B002DC9DD /* UITabBarItem+UseOriginImage.m in Sources */,
 				52CD8F351C5E532B002DC9DD /* UIView+Factory.swift in Sources */,
 				52C25DB11C5F5A1B009BB4EC /* PMIAPI.swift in Sources */,
@@ -729,16 +785,24 @@
 				52CD8F301C5E532B002DC9DD /* MMTabBarItem.swift in Sources */,
 				52FCDE9C1C5CA1CD00ABC19D /* CameraModels.swift in Sources */,
 				52972AD91C5EECD300AE7D4E /* SightAnnotation.swift in Sources */,
+				5299047B1C7169EC00D0DF05 /* TripModels.swift in Sources */,
 				52FCDEA31C5CA37900ABC19D /* PMITabBarController.swift in Sources */,
 				52CD8F441C5E54E2002DC9DD /* PlantWorker.swift in Sources */,
+				5299045C1C703D0F00D0DF05 /* PlantTripCell.swift in Sources */,
 				52CD8F321C5E532B002DC9DD /* MPXIBView.swift in Sources */,
 				52CD8F431C5E54E2002DC9DD /* PlantViewController.swift in Sources */,
+				5299047A1C7169EC00D0DF05 /* TripInteractor.swift in Sources */,
+				529904841C717FAC00D0DF05 /* TripLocationCell.swift in Sources */,
+				5299047D1C7169EC00D0DF05 /* TripRouter.swift in Sources */,
+				529904791C7169EC00D0DF05 /* TripConfigurator.swift in Sources */,
 				52CD8F411C5E54E2002DC9DD /* PlantPresenter.swift in Sources */,
 				52CD8F341C5E532B002DC9DD /* UITableView+Extension.swift in Sources */,
 				52FCDE9E1C5CA1CD00ABC19D /* CameraRouter.swift in Sources */,
 				52FCDE9B1C5CA1CD00ABC19D /* CameraInteractor.swift in Sources */,
 				52CD8F361C5E532B002DC9DD /* MMTabBarController.m in Sources */,
+				5299047C1C7169EC00D0DF05 /* TripPresenter.swift in Sources */,
 				52CD8F3E1C5E54E2002DC9DD /* PlantConfigurator.swift in Sources */,
+				529904801C7169EC00D0DF05 /* TripLocationImageGridView.swift in Sources */,
 				52CD8F2D1C5E532B002DC9DD /* Number+Random.swift in Sources */,
 				52CD8F421C5E54E2002DC9DD /* PlantRouter.swift in Sources */,
 				52CD8F2F1C5E532B002DC9DD /* MMArrayTableViewProxy.swift in Sources */,
@@ -747,6 +811,7 @@
 				52FCDE9A1C5CA1CD00ABC19D /* CameraConfigurator.swift in Sources */,
 				52CD8F2E1C5E532B002DC9DD /* MMArrayCollectionViewProxy.swift in Sources */,
 				52CD8F311C5E532B002DC9DD /* MPLabel.swift in Sources */,
+				529904821C717F4E00D0DF05 /* LocationAnnotationView.swift in Sources */,
 				52FCDEA01C5CA1CD00ABC19D /* CameraWorker.swift in Sources */,
 				52CD8F2B1C5E532B002DC9DD /* Coordinate2DTransform.swift in Sources */,
 				52FCDEA51C5CA53E00ABC19D /* PMIViewControllerLink.swift in Sources */,

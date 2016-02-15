@@ -45,6 +45,64 @@ struct LocationViewModel
 }
 
 // MARK: - FetchSightsData
+struct Plant_FetchSightDetail_Request
+{
+    var trips: [[String: AnyObject]]
+}
+
+struct Plant_FetchSightDetail_Response
+{
+    var trips: [[String: AnyObject]]
+}
+
+struct Plant_TripList_ViewModel {
+    var trips: [TripCellViewModel]
+}
+
+class TripViewModel: Mappable {
+    var authorID: String = ""
+    var author: String = ""
+    var avatar: String = ""
+
+    var tripID: String = ""
+    var title: String = ""
+    var brief: String = ""
+    var photo: String = ""
+    var days: Int16 = 0
+    var heat: Int = 0
+
+    required init?(_ map: Map) {
+    }
+
+    func mapping(map: Map) -> () {
+        authorID <- map["author.aid"]
+        author <- map["author.name"]
+        avatar <- map["author.avatar"]
+
+        tripID <- map["trip_id"]
+        title <- map["title"]
+        brief <- map["brief"]
+        photo <- map["head_photo"]
+        days <- map["days"]
+        heat <- map["heat"]
+    }
+}
+
+class TripCellViewModel: TripViewModel {
+
+    var locations: [String] = []
+
+    class func viewModelFromDictonary(dictonary: [String: AnyObject]) -> TripCellViewModel? {
+        return Mapper<TripCellViewModel>().map(dictonary)
+    }
+
+    override func mapping(map: Map) -> () {
+        super.mapping(map)
+        locations <- map["locations"]
+    }
+}
+
+// MARK: - FetchSightsData
 struct Plant_FetchSightList_Request
 {
     var region: MKCoordinateRegion;
@@ -55,10 +113,20 @@ struct Plant_FetchSightList_Response
     var sightList: [[String: AnyObject]]
 }
 
+struct Plant_SightList_ViewModel
+{
+    var sightList: [SightViewModel]
+}
+
 class SightViewModel: Mappable {
     var coordinate: CLLocationCoordinate2D?
     var thumbnail: String?
-    var imageCount: UInt?
+    var imageCount: UInt = 0
+    var trips: [[String: AnyObject]] = []
+
+    class func viewModelFromDictonary(dictonary: [String: AnyObject]) -> SightViewModel? {
+        return Mapper<SightViewModel>().map(dictonary)
+    }
 
     required init?(_ map: Map) {
     }
@@ -84,18 +152,6 @@ class SightViewModel: Mappable {
         coordinate <- (map["coordinate"], transform)
         thumbnail <- map["photo"]
         imageCount <- map["count"]
+        trips <- map["trips"]
     }
-
-    class func viewModelFromJSONString(JSONString: String) -> SightViewModel? {
-        return Mapper<SightViewModel>().map(JSONString)
-    }
-
-    class func viewModelFromDictonary(dictonary: [String: AnyObject]) -> SightViewModel? {
-        return Mapper<SightViewModel>().map(dictonary)
-    }
-}
-
-struct SightListViewModel
-{
-    var sightList: [SightViewModel]
 }

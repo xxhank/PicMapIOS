@@ -95,4 +95,11 @@ extension MMArrayTableViewProxy: UITableViewDelegate {
         let cellData = datas[indexPath.row] ;
         self.selectSink.sendNext((indexPath, cellData))
     }
+
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if let datas = self.datas {
+            let cellData = datas[indexPath.row] ;
+            self.modifier(tableView: tableView, tableViewCell: cell, cellData: cellData)
+        }
+    }
 }

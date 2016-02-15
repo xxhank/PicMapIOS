@@ -58,7 +58,7 @@ class SightAnnotationView: MKAnnotationView {
     internal func update() {
         if let annotation = self.annotation as? SightAnnotation {
             let count = annotation.viewModel.imageCount
-            self.contentView?.badgeLabel.text = String.init(format: "%d", count!)
+            self.contentView?.badgeLabel.text = String.init(format: "%d", count)
             guard let urlString = annotation.viewModel.thumbnail else { return }
             if let url = NSURL(string: urlString) {
                 self.contentView?.imageView.hnk_setImageFromURL(url)
@@ -67,7 +67,7 @@ class SightAnnotationView: MKAnnotationView {
             var count: UInt = 0;
             clusterAnnotation.annotations.forEach({ (annotation) -> () in
                 if let annotation = annotation as? SightAnnotation {
-                    count += annotation.viewModel.imageCount!
+                    count += annotation.viewModel.imageCount
                 }
             })
 

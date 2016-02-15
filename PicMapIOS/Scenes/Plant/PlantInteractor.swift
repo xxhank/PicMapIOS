@@ -15,21 +15,23 @@ import XCGLogger
 import SwiftTask
 
 let PlantInteractorErrorDomain = "PlantInteractor"
-enum PlantInteractorError: Int {
+enum PlantInteractorError: ErrorType {
     case General
     case GeocoderFailed
 }
 
-protocol PlantInteractorInput
-{
-    func fetchLocationInformation(request: Plant_FormatLocation_Requset)
-    func fetchSightList(request: Plant_FetchSightList_Request)
-}
+//protocol PlantInteractorInput
+//{
+//    func fetchLocationInformation(request: Plant_FormatLocation_Requset)
+//    func fetchSightList(request: Plant_FetchSightList_Request)
+//    func fetchSightDetail(request: Plant_FetchSightDetail_Request)
+//}
 
 protocol PlantInteractorOutput
 {
     func presentLocationInformation(response: Response<Plant_FormatLocation_Response>)
     func presentSightList(response: Response<Plant_FetchSightList_Response>)
+    func presentSightDetail(response: Response<Plant_FetchSightDetail_Response>)
 }
 
 class PlantInteractor: PlantInteractorInput
@@ -51,8 +53,7 @@ class PlantInteractor: PlantInteractorInput
             // CLPlacemark
             var response: Response<Plant_FormatLocation_Response> = .Error(
                 NSError(domain: PlantInteractorErrorDomain,
-                code: PlantInteractorError.General.rawValue,
-                userInfo: [:]))
+                code: PlantInteractorError.General))
 
             defer {
                 self.output.presentLocationInformation(response)
@@ -60,18 +61,18 @@ class PlantInteractor: PlantInteractorInput
             guard let placemark = placemarks else {
                 XCGLogger.error("\(error)")
                 response = .Error(NSError(domain: PlantInteractorErrorDomain,
-                    code: PlantInteractorError.GeocoderFailed.rawValue,
-                    userInfo: [
-                    NSLocalizedDescriptionKey: mapCLErrorCode((error?.code)!),
-                    "origin": error!]))
+                    code: PlantInteractorError.GeocoderFailed,
+                    desc: mapCLErrorCode((error?.code)!),
+                    error: error!
+                ))
+
                 return
             }
 
             let place = placemark.first! as CLPlacemark
             guard let information = place.addressDictionary else {
                 response = .Error(NSError(domain: PlantInteractorErrorDomain,
-                    code: PlantInteractorError.General.rawValue,
-                    userInfo: [:]))
+                    code: PlantInteractorError.General))
                 return }
 
             response = .Result(Plant_FormatLocation_Response(information: information))
@@ -90,6 +91,11 @@ class PlantInteractor: PlantInteractorInput
                     self.output.presentSightList(Response<Plant_FetchSightList_Response>.Error(error!))
                 }
             }
+    }
+
+    func fetchSightDetail(request: Plant_FetchSightDetail_Request) {
+        let response = Response<Plant_FetchSightDetail_Response>.Result(Plant_FetchSightDetail_Response(trips: request.trips))
+        self.output.presentSightDetail(response)
     }
 }
 

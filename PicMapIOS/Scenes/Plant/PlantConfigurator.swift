@@ -13,53 +13,41 @@ import UIKit
 
 // MARK: Connect View, Interactor, and Presenter
 
-extension PlantViewController: PlantPresenterOutput
-{
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        router.passDataToNextScene(segue)
-    }
-}
-
-extension PlantInteractor: PlantViewControllerOutput
-{
-}
-
-extension PlantPresenter: PlantInteractorOutput
-{
-}
+typealias PlantInteractorInput = PlantViewControllerOutput
+typealias PlantPresenterInput = PlantInteractorOutput
+typealias PlantPresenterOutput = PlantViewControllerInput
 
 class PlantConfigurator
 {
     // MARK: Object lifecycle
-    
+
     class var sharedInstance: PlantConfigurator
     {
         struct Static {
             static var instance: PlantConfigurator?
             static var token: dispatch_once_t = 0
         }
-        
+
         dispatch_once(&Static.token) {
             Static.instance = PlantConfigurator()
         }
-        
+
         return Static.instance!
     }
-    
+
     // MARK: Configuration
-    
+
     func configure(viewController: PlantViewController)
     {
         let router = PlantRouter()
         router.viewController = viewController
-        
+
         let presenter = PlantPresenter()
         presenter.output = viewController
-        
+
         let interactor = PlantInteractor()
         interactor.output = presenter
-        
+
         viewController.output = interactor
         viewController.router = router
     }

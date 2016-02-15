@@ -17,16 +17,18 @@ import XCGLogger
 import PKHUD
 import FBAnnotationClustering
 
-protocol PlantViewControllerInput
+protocol PlantViewControllerInput: class
 {
     func displayLocationInformation(viewModel: ViewModel<LocationViewModel>)
-    func displaySightList(viewModel: ViewModel<SightListViewModel>)
+    func displaySightList(viewModel: ViewModel<Plant_SightList_ViewModel>)
+    func displaySightDetail(viewModel: ViewModel<Plant_TripList_ViewModel>)
 }
 
 protocol PlantViewControllerOutput
 {
     func fetchLocationInformation(request: Plant_FormatLocation_Requset)
     func fetchSightList(request: Plant_FetchSightList_Request)
+    func fetchSightDetail(request: Plant_FetchSightDetail_Request)
 }
 
 class PlantViewController: UIViewController, PlantViewControllerInput
@@ -97,7 +99,7 @@ class PlantViewController: UIViewController, PlantViewControllerInput
         }
     }
 
-    func displaySightList(viewModel: ViewModel<SightListViewModel>) {
+    func displaySightList(viewModel: ViewModel<Plant_SightList_ViewModel>) {
         switch viewModel {
         case .Error(let error):
             PKHUD.sharedHUD.contentView = PKHUDTextView(text: error.localizedDescription)
@@ -115,6 +117,35 @@ class PlantViewController: UIViewController, PlantViewControllerInput
         }
     }
 
+    func displaySightDetail(viewModel: ViewModel<Plant_TripList_ViewModel>) {
+        switch viewModel {
+        case .Error(let error):
+            PKHUD.sharedHUD.contentView = PKHUDTextView(text: error.localizedDescription)
+            PKHUD.sharedHUD.show()
+            PKHUD.sharedHUD.hide(afterDelay: 2.0)
+            break
+        case .Result(let result):
+            proxy?.datas = result.trips
+
+            let MapViewPanelHeight: CGFloat = 200;
+            let ViewPadding: CGFloat = 64 + 49;
+            let detailPanelHeight = CGRectGetHeight(self.view.bounds) - ViewPadding - MapViewPanelHeight;
+
+            if self.detailPanelHeightConstraint.constant != detailPanelHeight {
+                self.view.userInteractionEnabled = false;
+
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    self.detailPanelHeightConstraint.constant = detailPanelHeight;
+                    self.view.layoutIfNeeded() ;
+                }, completion: { (finished) -> Void in
+                    self.view.userInteractionEnabled = true;
+                })
+            }
+
+            break
+        }
+    }
+
     // MARK: - Action
     @IBAction func centerMe() {
         self.centerMapOnLocation(initialLocation, regionRadius: self.regionRadius)
@@ -122,7 +153,6 @@ class PlantViewController: UIViewController, PlantViewControllerInput
 }
 
 // MARK: - Location
-
 extension PlantViewController: MKMapViewDelegate, CLLocationManagerDelegate {
 
     // MARK: - Help Method
@@ -196,18 +226,9 @@ extension PlantViewController: MKMapViewDelegate, CLLocationManagerDelegate {
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         mapView.deselectAnnotation(view.annotation, animated: true)
 
-        proxy?.datas = [1, 2, 3, 4, 5, 6, 7, 7, 8, 9] ;
-
-        self.view.userInteractionEnabled = false;
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
-            let MapViewPanelHeight: CGFloat = 200;
-            let ViewPadding: CGFloat = 64 + 49;
-            let detailPanelHeight = CGRectGetHeight(self.view.bounds) - ViewPadding - MapViewPanelHeight;
-            self.detailPanelHeightConstraint.constant = detailPanelHeight;
-            self.view.layoutIfNeeded() ;
-        }) { (finished) -> Void in
-            self.view.userInteractionEnabled = true;
-        } ;
+        if let annotation = view.annotation as? SightAnnotation {
+            self.output.fetchSightDetail(Plant_FetchSightDetail_Request(trips: annotation.viewModel.trips))
+        }
     }
     func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
 //        if self.scrollView != nil {
@@ -250,7 +271,17 @@ extension PlantViewController
             return "TouristLatestCell"
         }, builder: { (tableView, indexPath, identifier) -> UITableViewCell? in
             return nil;
-        }, modifier: { (tableView, tableViewCell, cellData) -> () in
-        }) ;
+        }, modifier: { (tableView, cell, data) -> () in
+
+            if let tripCell = cell as? PlantTripCell {
+                tripCell.viewModel = data as? TripCellViewModel;
+            }
+        })
+
+        proxy?.selectSignal.observeNext({ (indexPath, viewModel) -> () in
+            if let viewModel = viewModel as? TripCellViewModel {
+                self.router.showTripDetail(viewModel.tripID)
+            }
+        })
     }
 }

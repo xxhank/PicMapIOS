@@ -11,17 +11,19 @@
 
 import UIKit
 
-protocol PlantPresenterInput
-{
-    func presentLocationInformation(response: Response<Plant_FormatLocation_Response>)
-    func presentSightList(response: Response<Plant_FetchSightList_Response>)
-}
+//protocol PlantPresenterInput
+//{
+//    func presentLocationInformation(response: Response<Plant_FormatLocation_Response>)
+//    func presentSightList(response: Response<Plant_FetchSightList_Response>)
+//    func presentSightDetail(response: Response<Plant_FetchSightDetail_Response>)
+//}
 
-protocol PlantPresenterOutput: class
-{
-    func displayLocationInformation(viewModel: ViewModel<LocationViewModel>)
-    func displaySightList(viewModel: ViewModel<SightListViewModel>)
-}
+//protocol PlantPresenterOutput: class
+//{
+//    func displayLocationInformation(viewModel: ViewModel<LocationViewModel>)
+//    func displaySightList(viewModel: ViewModel<Plant_SightList_ViewModel>)
+//    func displaySightDetail(viewModel: ViewModel<Plant_TripList_ViewModel>)
+//}
 
 class PlantPresenter: PlantPresenterInput
 {
@@ -46,13 +48,27 @@ class PlantPresenter: PlantPresenterInput
     func presentSightList(response: Response<Plant_FetchSightList_Response>) {
         switch response {
         case .Error(let error):
-            output.displaySightList(ViewModel<SightListViewModel>.Error(error))
+            output.displaySightList(ViewModel<Plant_SightList_ViewModel>.Error(error))
             break
         case .Result(let result):
             let sightList = result.sightList.map({ (sight) -> SightViewModel in
                 return SightViewModel.viewModelFromDictonary(sight)! })
-            let viewModel = SightListViewModel(sightList: sightList)
-            output.displaySightList(ViewModel<SightListViewModel>.Result(viewModel))
+            let viewModel = Plant_SightList_ViewModel(sightList: sightList)
+            output.displaySightList(ViewModel<Plant_SightList_ViewModel>.Result(viewModel))
+            break
+        }
+    }
+
+    func presentSightDetail(response: Response<Plant_FetchSightDetail_Response>) {
+        switch response {
+        case .Error(let error):
+            output.displaySightDetail(ViewModel<Plant_TripList_ViewModel>.Error(error))
+            break
+        case .Result(let result):
+            let tripList = result.trips.map({ (trip) -> TripCellViewModel in
+                return TripCellViewModel.viewModelFromDictonary(trip)! })
+            let viewModel = Plant_TripList_ViewModel(trips: tripList)
+            output.displaySightDetail(ViewModel<Plant_TripList_ViewModel>.Result(viewModel))
             break
         }
     }
