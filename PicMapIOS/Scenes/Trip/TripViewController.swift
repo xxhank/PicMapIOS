@@ -90,6 +90,11 @@ class TripViewController: UIViewController, TripViewControllerInput
         fetchTripDetailOnLoad()
     }
 
+    // MARK: - IBAction
+    @IBAction func popViewController() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
     // MARK: - Event handling
     func fetchTripDetailOnLoad()
     {
@@ -98,7 +103,6 @@ class TripViewController: UIViewController, TripViewControllerInput
     }
 
     // MARK: - Display logic
-
     func displayTripDetail(viewModel: ViewModel<Trip_FetchTripDetail_ViewModel>)
     {
         switch viewModel {
@@ -110,7 +114,8 @@ class TripViewController: UIViewController, TripViewControllerInput
 
         case .Result(let result):
             let detailViewModel = result.detail;
-
+            self.updateMapViewRegion(detailViewModel.region!)
+            self.mapView.addAnnotations(detailViewModel.annotations)
             self.headView.viewModel = detailViewModel
             proxy?.datas = detailViewModel.locations
             break
@@ -122,20 +127,36 @@ class TripViewController: UIViewController, TripViewControllerInput
 extension TripViewController: MKMapViewDelegate {
     func setupMapView() {
         self.mapView.delegate = self
+        // self.mapView.zoomEnabled = false
+        self.mapView.pitchEnabled = false
+    }
+
+    func updateMapViewRegion(region: MKCoordinateRegion) {
+        // let region: MKCoordinateRegion = self.mapView.regionThatFits(detailViewModel.region!)
+
+        // FIXME: fix bug. see http://stackoverflow.com/questions/1383296/mkmapview-show-incorrectly-saved-region/1671802#1671802
+        // let slightRegion = MKCoordinateRegion(center: region.center,
+        // span: MKCoordinateSpan(latitudeDelta: region.span.latitudeDelta * 0.999,
+        // longitudeDelta: region.span.longitudeDelta * 0.999))
+        // self.mapView.setRegion(slightRegion, animated: false)
+        self.mapView.setRegion(region, animated: false)
     }
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = NSStringFromClass(annotation.dynamicType)
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? LocationAnnotationView
         if annotationView == nil {
             annotationView = LocationAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        }
-        else {
+        } else {
             annotationView?.annotation = annotation
         }
-
+        annotationView?.update()
         return annotationView
     }
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+    }
+
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        XCGLogger.info("\(mapView.region)")
     }
 }
 

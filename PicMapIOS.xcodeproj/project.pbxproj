@@ -28,6 +28,8 @@
 		529904821C717F4E00D0DF05 /* LocationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904811C717F4E00D0DF05 /* LocationAnnotationView.swift */; };
 		529904841C717FAC00D0DF05 /* TripLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904831C717FAC00D0DF05 /* TripLocationCell.swift */; };
 		529904861C719CEF00D0DF05 /* NSError+PMIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529904851C719A1100D0DF05 /* NSError+PMIExtension.swift */; };
+		52AA72301C72896600E87CB7 /* LocationAnnotationContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52AA722F1C72896600E87CB7 /* LocationAnnotationContent.xib */; };
+		52AA72321C72899F00E87CB7 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA72311C72899F00E87CB7 /* LocationAnnotation.swift */; };
 		52C25DB11C5F5A1B009BB4EC /* PMIAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C25DB01C5F5A1B009BB4EC /* PMIAPI.swift */; };
 		52CD8F2B1C5E532B002DC9DD /* Coordinate2DTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F1A1C5E532B002DC9DD /* Coordinate2DTransform.swift */; };
 		52CD8F2C1C5E532B002DC9DD /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F1B1C5E532B002DC9DD /* NSObject+ClassName.swift */; };
@@ -119,6 +121,8 @@
 		529904811C717F4E00D0DF05 /* LocationAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAnnotationView.swift; sourceTree = "<group>"; };
 		529904831C717FAC00D0DF05 /* TripLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripLocationCell.swift; sourceTree = "<group>"; };
 		529904851C719A1100D0DF05 /* NSError+PMIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+PMIExtension.swift"; sourceTree = "<group>"; };
+		52AA722F1C72896600E87CB7 /* LocationAnnotationContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationAnnotationContent.xib; sourceTree = "<group>"; };
+		52AA72311C72899F00E87CB7 /* LocationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		52C25DB01C5F5A1B009BB4EC /* PMIAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMIAPI.swift; sourceTree = "<group>"; };
 		52CD8F1A1C5E532B002DC9DD /* Coordinate2DTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate2DTransform.swift; sourceTree = "<group>"; };
 		52CD8F1B1C5E532B002DC9DD /* NSObject+ClassName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
@@ -337,11 +341,21 @@
 		529904771C7169EC00D0DF05 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				52AA72331C72AC5C00E87CB7 /* Annotation */,
 				529904781C7169EC00D0DF05 /* TripLocationImageGridView.swift */,
-				529904811C717F4E00D0DF05 /* LocationAnnotationView.swift */,
 				529904831C717FAC00D0DF05 /* TripLocationCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		52AA72331C72AC5C00E87CB7 /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				52AA722F1C72896600E87CB7 /* LocationAnnotationContent.xib */,
+				529904811C717F4E00D0DF05 /* LocationAnnotationView.swift */,
+				52AA72311C72899F00E87CB7 /* LocationAnnotation.swift */,
+			);
+			name = Annotation;
 			sourceTree = "<group>";
 		};
 		52B5B6F71C5C4E1E007A2807 /* Scenes */ = {
@@ -649,6 +663,7 @@
 				52FCDEAB1C5CC13900ABC19D /* Camera.storyboard in Resources */,
 				52FCDEBA1C5CC30F00ABC19D /* Plant.storyboard in Resources */,
 				52FCDEB31C5CC20200ABC19D /* Profile.storyboard in Resources */,
+				52AA72301C72896600E87CB7 /* LocationAnnotationContent.xib in Resources */,
 				527C8CFF1C599A5C00BA8B0A /* Assets.xcassets in Resources */,
 				527C8D001C599A5C00BA8B0A /* LaunchScreen.storyboard in Resources */,
 			);
@@ -801,6 +816,7 @@
 				52FCDE9B1C5CA1CD00ABC19D /* CameraInteractor.swift in Sources */,
 				52CD8F361C5E532B002DC9DD /* MMTabBarController.m in Sources */,
 				5299047C1C7169EC00D0DF05 /* TripPresenter.swift in Sources */,
+				52AA72321C72899F00E87CB7 /* LocationAnnotation.swift in Sources */,
 				52CD8F3E1C5E54E2002DC9DD /* PlantConfigurator.swift in Sources */,
 				529904801C7169EC00D0DF05 /* TripLocationImageGridView.swift in Sources */,
 				52CD8F2D1C5E532B002DC9DD /* Number+Random.swift in Sources */,

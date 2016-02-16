@@ -11,6 +11,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 import ObjectMapper
 
@@ -32,6 +33,9 @@ struct Trip_FetchTripDetail_ViewModel
 class TripDetailViewModel: TripViewModel {
     var locations: [TripLocationCellViewModel] = []
     var locationNames: [String] = []
+    var annotations: [MKAnnotation] = []
+    var region: MKCoordinateRegion?
+//
     class func viewModelFromDictonary(dictonary: [String: AnyObject]) -> TripDetailViewModel? {
         return Mapper<TripDetailViewModel>().map(dictonary)
     }
@@ -71,6 +75,27 @@ class TripDetailViewModel: TripViewModel {
                 }
             }
         }
+
+        let latitudes = self.locations.map { (viewModel) -> Double in
+            return viewModel.coordinate.latitude
+        }
+        let longitudes = self.locations.map { (viewModel) -> Double in
+            return viewModel.coordinate.longitude
+        }
+
+        let maxLat: CLLocationDegrees = latitudes.maxElement()!,
+            minLat: CLLocationDegrees = latitudes.minElement()!,
+            maxLng: CLLocationDegrees = longitudes.maxElement()!,
+            minLng: CLLocationDegrees = longitudes.minElement()!;
+
+        // pad our map by 10% around the farthest annotations
+        let MAP_PADDING = 1.1
+        let center = CLLocationCoordinate2D(latitude: (maxLat + minLat) / 2, longitude: (minLng + maxLng) / 2)
+        let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * MAP_PADDING, longitudeDelta: (maxLng - minLng) * MAP_PADDING)
+        region = MKCoordinateRegion(center: center, span: span)
+        annotations = self.locations.map({ (viewModel) -> LocationAnnotation in
+            return LocationAnnotation(viewModel: viewModel)
+        })
     }
 }
 

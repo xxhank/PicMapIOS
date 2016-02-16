@@ -517,13 +517,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fPl-ak-tt5">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="fPl-ak-tt5" secondAttribute="height" multiplier="2:1" id="2ZO-RM-7cc"/>
                                     <constraint firstAttribute="height" constant="250" id="PAu-Z0-FAn"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PAu-Z0-FAn"/>
+                                    </mask>
+                                </variation>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="265" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6MY-KY-FR1">
-                                <rect key="frame" x="0.0" y="350" width="375" height="317"/>
+                                <rect key="frame" x="0.0" y="288" width="375" height="379"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TripLocationCell" rowHeight="381" id="Hbb-Fs-6WK" customClass="TripLocationCell" customModule="PicMapIOS" customModuleProvider="target">
@@ -536,7 +542,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Nt-8p-lpP" userLabel="Header">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MgL-t9-peu" userLabel="icon">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MgL-t9-peu" userLabel="icon">
                                                             <rect key="frame" x="10" y="5" width="19" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="MgL-t9-peu" secondAttribute="height" id="RuZ-tt-JvR"/>
@@ -763,7 +769,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBP-wF-qiI" customClass="TripHeadView" customModule="PicMapIOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="200" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="138" width="375" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="e8e-O8-O3x">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
@@ -771,8 +777,25 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8u-pB-W3f" userLabel="Header">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="0gd-Y3-xSI">
-                                                <rect key="frame" x="20" y="8" width="40" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7O-zJ-ojh" userLabel="icon">
+                                                <rect key="frame" x="10" y="13" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="L7O-zJ-ojh" secondAttribute="height" id="GfC-0V-1tK"/>
+                                                    <constraint firstAttribute="width" constant="15" id="of7-Nm-x9h"/>
+                                                </constraints>
+                                                <state key="normal" image="iconbutton_backround"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="GfC-0V-1tK"/>
+                                                        <exclude reference="of7-Nm-x9h"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="popViewController" destination="phX-fy-bJS" eventType="touchUpInside" id="aql-nI-rVc"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="0gd-Y3-xSI">
+                                                <rect key="frame" x="48" y="8" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="qNo-K8-DGa"/>
                                                     <constraint firstAttribute="width" constant="40" id="zCO-Gy-7yg"/>
@@ -782,7 +805,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipw-ws-TP8">
-                                                <rect key="frame" x="80" y="19" width="207" height="18"/>
+                                                <rect key="frame" x="108" y="19" width="179" height="18"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="kvd-e4-AIj"/>
@@ -817,6 +840,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="L7O-zJ-ojh" firstAttribute="centerY" secondItem="n8u-pB-W3f" secondAttribute="centerY" id="3MK-nk-zqt"/>
                                             <constraint firstAttribute="height" constant="55" id="FRO-Lo-Bcu"/>
                                             <constraint firstItem="JvC-3C-a9K" firstAttribute="leading" secondItem="hkB-TH-8fB" secondAttribute="trailing" constant="8" id="J3s-Gh-MJU"/>
                                             <constraint firstItem="0gd-Y3-xSI" firstAttribute="leading" secondItem="n8u-pB-W3f" secondAttribute="leading" constant="20" id="OLW-Xz-fNY"/>
@@ -825,12 +849,15 @@
                                             <constraint firstItem="0gd-Y3-xSI" firstAttribute="centerY" secondItem="n8u-pB-W3f" secondAttribute="centerY" id="Ybf-6r-k3c"/>
                                             <constraint firstItem="Ipw-ws-TP8" firstAttribute="centerY" secondItem="n8u-pB-W3f" secondAttribute="centerY" id="Zm8-a0-bRT"/>
                                             <constraint firstItem="JvC-3C-a9K" firstAttribute="centerY" secondItem="n8u-pB-W3f" secondAttribute="centerY" id="e3x-cd-bKi"/>
+                                            <constraint firstItem="L7O-zJ-ojh" firstAttribute="leading" secondItem="n8u-pB-W3f" secondAttribute="leading" constant="10" id="lzg-Ib-ue6"/>
                                             <constraint firstItem="hkB-TH-8fB" firstAttribute="leading" secondItem="Ipw-ws-TP8" secondAttribute="trailing" constant="10" id="mSR-Ra-iIs"/>
                                             <constraint firstItem="hkB-TH-8fB" firstAttribute="centerY" secondItem="n8u-pB-W3f" secondAttribute="centerY" id="sfh-AK-Wsv"/>
+                                            <constraint firstItem="0gd-Y3-xSI" firstAttribute="leading" secondItem="L7O-zJ-ojh" secondAttribute="trailing" constant="8" id="usB-2l-4dY"/>
                                             <constraint firstAttribute="trailing" secondItem="JvC-3C-a9K" secondAttribute="trailing" id="uue-x9-6Tc"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="OLW-Xz-fNY"/>
                                                 <exclude reference="YPq-bJ-c5z"/>
                                             </mask>
                                         </variation>
@@ -1009,7 +1036,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fO0-QU-gq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="679"/>
+            <point key="canvasLocation" x="944" y="678"/>
         </scene>
     </scenes>
     <resources>
@@ -1032,6 +1059,7 @@
         <image name="icon_tourist_data_mileage_black" width="8" height="8"/>
         <image name="icon_tourist_data_photo_black" width="10" height="7"/>
         <image name="iconbutton_Ellipsisblack" width="15" height="3"/>
+        <image name="iconbutton_backround" width="30" height="30"/>
         <image name="iconbutton_follow" width="15" height="15"/>
         <image name="iconbutton_search" width="29" height="29"/>
         <image name="landscape" width="250" height="178"/>
