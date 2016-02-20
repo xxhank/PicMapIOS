@@ -12,7 +12,6 @@ import ReactiveCocoa
 
 typealias MMTableViewCellBuilder = (tableView: UITableView, indexPath: NSIndexPath, identifier: String) -> UITableViewCell?;
 typealias MMTableViewCellIdentifier = (tableView: UITableView, indexPath: NSIndexPath) -> String;
-typealias MMTableViewCellModifier = (tableView: UITableView, tableViewCell: UITableViewCell, cellData : AnyObject) -> () ;
 
 class MMArrayTableViewProxy: NSObject {
     var tableView: UITableView? {
@@ -30,20 +29,14 @@ class MMArrayTableViewProxy: NSObject {
         }
     }
     var identifier: MMTableViewCellIdentifier
-    var builder: MMTableViewCellBuilder
-    var modifier: MMTableViewCellModifier
+    var builder: MMTableViewCellBuilder?
 
     required init(
-        tableView: UITableView
-    , identifier: MMTableViewCellIdentifier
-    , builder: MMTableViewCellBuilder
-    , modifier: MMTableViewCellModifier) {
+        tableView: UITableView, identifier: MMTableViewCellIdentifier) {
             self.tableView = tableView
-
             self.identifier = identifier
-            self.builder = builder
-            self.modifier = modifier
             super.init()
+            self.tableView?.tableFooterView = UIView()
         }
 
     let (selectSignal, selectSink) = Signal < (NSIndexPath, AnyObject?), NSError > .pipe()
@@ -58,31 +51,31 @@ extension MMArrayTableViewProxy: UITableViewDataSource {
     }
 
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let datas = self.datas {
-            let identifier: String = self.identifier(tableView: tableView, indexPath: indexPath)
-            var cell: UITableViewCell
-            if let dequeueCell = tableView.dequeueReusableCellWithIdentifier(identifier) {
-                cell = dequeueCell;
-            } else {
-                cell = self.builder(tableView: tableView, indexPath: indexPath, identifier: identifier)! ;
+        let identifier: String = self.identifier(tableView: tableView, indexPath: indexPath)
+        var cell: UITableViewCell? = nil
+        if let dequeueCell = tableView.dequeueReusableCellWithIdentifier(identifier) {
+            cell = dequeueCell;
+        } else {
+            if let builder = self.builder {
+                cell = builder(tableView: tableView, indexPath: indexPath, identifier: identifier)!
             }
-            let cellData = datas[indexPath.row] ;
-            self.modifier(tableView: tableView, tableViewCell: cell, cellData: cellData)
-            cell.selectionStyle = .None;
-            return cell;
         }
-
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: ".Default") ;
-        cell.textLabel?.text = "Can not create cell at \(indexPath)";
-        return cell;
+        if cell == nil {
+            cell = UITableViewCell(style: .Default, reuseIdentifier: ".Default") ;
+            cell!.textLabel?.text = "Can not create cell at \(indexPath)";
+        }
+        cell!.selectionStyle = .None;
+        return cell!;
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if let datas = self.datas {
             let identifier: String = self.identifier(tableView: tableView, indexPath: indexPath)
             return tableView.fd_heightForCellWithIdentifier(identifier) { (tableViewCell: AnyObject!) -> Void in
-                let cellData = datas[indexPath.row] ;
-                self.modifier(tableView: tableView, tableViewCell: tableViewCell as! UITableViewCell, cellData: cellData)
+                if var cell = tableViewCell as? SupportViewModel {
+                    let cellData = datas[indexPath.row]
+                    cell.viewModel = cellData
+                }
             }
         }
         return UITableViewAutomaticDimension;
@@ -98,8 +91,10 @@ extension MMArrayTableViewProxy: UITableViewDelegate {
 
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if let datas = self.datas {
-            let cellData = datas[indexPath.row] ;
-            self.modifier(tableView: tableView, tableViewCell: cell, cellData: cellData)
+            if var cell = cell as? SupportViewModel {
+                let cellData = datas[indexPath.row]
+                cell.viewModel = cellData
+            }
         }
     }
 }

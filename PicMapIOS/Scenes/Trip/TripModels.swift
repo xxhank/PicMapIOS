@@ -64,11 +64,10 @@ class TripDetailViewModel: TripViewModel {
                     locationCellViewModel.index = index
                     locationCellViewModel.city = locationName
 
-                    let coordinate = location["coordinate"] as! [String: AnyObject]
-                    let latitude = coordinate["lat"] as! Double
-                    let longitude = coordinate["lng"] as! Double
-
-                    locationCellViewModel.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    let coordinateJSON = location["coordinate"] as! [String: AnyObject]
+                    if let coordinate = CLLocationCoordinate2D(coordinate: coordinateJSON) {
+                        locationCellViewModel.coordinate = coordinate
+                    }
 
                     self.locationNames.append(locationName)
                     self.locations.append(locationCellViewModel)

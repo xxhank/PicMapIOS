@@ -23,11 +23,11 @@ pod 'SwiftHEXColors'
 pod 'UITableView+FDTemplateLayoutCell'
 
 #pod 'ReactiveCocoa' 监听 对象值变化
-pod 'PagingMenuController'
+pod 'PagingMenuController', :git=>"https://github.com/xxhank/PagingMenuController.git"
 pod 'SwiftTask'
 pod 'SwiftTryCatch', :git => 'https://github.com/ravero/SwiftTryCatch.git'
 pod "PKHUD"
-pod 'TagListView'
+pod 'TagListView', :git => 'https://github.com/xxhank/TagListView.git'
 
 target :PicMapIOSTests do
     pod 'Quick'

@@ -25,13 +25,14 @@ class TripInteractor: TripInteractorInput
 {
     var output: TripInteractorOutput!
     var worker: TripWorker!
-
+    var tripDetail: [String: AnyObject]?
     // MARK: - Business logic
     func fetchTripDetail(request: Trip_FetchTripDetail_Request) -> () {
         PMIAPI.fetchJSON("trips/\(request.tripID).json", parameters: [:])
             .success { (responseData) -> Void in
                 if let responseData = responseData as? [String: AnyObject] {
                     let response = Trip_FetchTripDetail_Response(tripData: responseData)
+                    self.tripDetail = responseData
                     self.output.presentTripDetail(Response.Result(response))
                 } else {
                     let error = NSError(domain: TripInteractorErrorDomain,

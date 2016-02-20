@@ -31,7 +31,7 @@ protocol PlantViewControllerOutput
     func fetchSightDetail(request: Plant_FetchSightDetail_Request)
 }
 
-class PlantViewController: UIViewController, PlantViewControllerInput
+class PlantViewController: PMIViewController, PlantViewControllerInput
 {
     // MARK: - CleanSwift
     var output: PlantViewControllerOutput!
@@ -72,15 +72,9 @@ class PlantViewController: UIViewController, PlantViewControllerInput
 
         setupMapView()
         setupDetailView()
-        doSomethingOnLoad()
     }
 
     // MARK: Event handling
-    func doSomethingOnLoad()
-    {
-        // NOTE: Ask the Interactor to do some work
-        // let request = PlantRequest()
-    }
 
     // MARK: Display logic
     func displayLocationInformation(viewModel: ViewModel<LocationViewModel>) {
@@ -269,13 +263,6 @@ extension PlantViewController
 
         proxy = MMArrayTableViewProxy(tableView: self.touristListView, identifier: { (tableView, indexPath) -> String in
             return "TouristLatestCell"
-        }, builder: { (tableView, indexPath, identifier) -> UITableViewCell? in
-            return nil;
-        }, modifier: { (tableView, cell, data) -> () in
-
-            if let tripCell = cell as? PlantTripCell {
-                tripCell.viewModel = data as? TripCellViewModel;
-            }
         })
 
         proxy?.selectSignal.observeNext({ (indexPath, viewModel) -> () in

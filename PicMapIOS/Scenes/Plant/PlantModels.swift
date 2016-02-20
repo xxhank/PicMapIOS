@@ -68,8 +68,12 @@ class TripViewModel: Mappable {
     var title: String = ""
     var brief: String = ""
     var photo: String = ""
-    var days: Int16 = 0
-    var heat: Int = 0
+
+    var days = 0
+    var miles = 0.0
+    var follow = 0
+    var heat = 0
+    var fans = 0
 
     required init?(_ map: Map) {
     }
@@ -83,8 +87,12 @@ class TripViewModel: Mappable {
         title <- map["title"]
         brief <- map["brief"]
         photo <- map["head_photo"]
-        days <- map["days"]
+
+        miles <- map["distance"]
         heat <- map["heat"]
+        days <- map["days"]
+        follow <- map["follow"]
+        fans <- map["fans"]
     }
 }
 
@@ -135,12 +143,7 @@ class SightViewModel: Mappable {
         typealias CoordinateDictionary = [String: AnyObject]
 
         let transform = TransformOf < CLLocationCoordinate2D, CoordinateDictionary >(fromJSON: { (dictionary) -> CLLocationCoordinate2D? in
-            if let dictionary = dictionary,
-                let latitude = dictionary["lat"] as! Double?,
-                let longitude = dictionary["lng"] as! Double? {
-                    return CLLocationCoordinate2DMake(latitude, longitude)
-                }
-            return nil
+            return CLLocationCoordinate2D(coordinate: dictionary)
         }, toJSON: { (coordinate) -> CoordinateDictionary? in
             if let coordinate = coordinate {
                 return ["lat" : "\(coordinate.latitude)",

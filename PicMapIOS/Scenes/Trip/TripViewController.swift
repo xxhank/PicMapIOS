@@ -22,6 +22,7 @@ protocol TripViewControllerInput: class
 
 protocol TripViewControllerOutput
 {
+    var tripDetail: [String: AnyObject]? { get }
     func fetchTripDetail(request: Trip_FetchTripDetail_Request)
 }
 
@@ -56,7 +57,7 @@ class TripHeadView: UIView {
     }
 }
 
-class TripViewController: UIViewController, TripViewControllerInput
+class TripViewController: PMIViewController, TripViewControllerInput
 {
     // MARK: - Clean Swift
     var output: TripViewControllerOutput!
@@ -88,11 +89,6 @@ class TripViewController: UIViewController, TripViewControllerInput
         setupLocationListView()
 
         fetchTripDetailOnLoad()
-    }
-
-    // MARK: - IBAction
-    @IBAction func popViewController() {
-        self.navigationController?.popViewControllerAnimated(true)
     }
 
     // MARK: - Event handling
@@ -163,14 +159,9 @@ extension TripViewController: MKMapViewDelegate {
 // MARK: - LocationListView
 extension TripViewController {
     func setupLocationListView() {
-        proxy = MMArrayTableViewProxy(tableView: self.locationListView, identifier: { (tableView, indexPath) -> String in
-            return "TripLocationCell"
-        }, builder: { (tableView, indexPath, identifier) -> UITableViewCell? in
-            return nil;
-        }, modifier: { (tableView, cell, data) -> () in
-            if let tripCell = cell as? TripLocationCell {
-                tripCell.viewModel = data as? TripLocationCellViewModel;
-            }
-        }) ;
+        proxy = MMArrayTableViewProxy(tableView: self.locationListView,
+            identifier: { (tableView, indexPath) -> String in
+                return "TripLocationCell"
+            })
     }
 }
