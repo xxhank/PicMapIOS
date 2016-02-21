@@ -107,8 +107,8 @@ class Tourist_FetchDetail_ViewModel: Mappable
         miles <- map["distance"]
         heat <- map["heat"]
         days <- map["days"]
-        follow <- map["follow"]
-        fans <- map["fans"]
+        follow <- map["follow-count"]
+        fans <- map["fans-count"]
 
         let formatter = NSDateFormatter()
         formatter.dateFormat = "YYYY年MM月"

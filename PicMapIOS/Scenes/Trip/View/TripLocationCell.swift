@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TripLocationCell: UITableViewCell {
+class TripLocationCell: UITableViewCell, SupportViewModel {
     @IBOutlet weak var locationView: UILabel!
     @IBOutlet weak var streetView: UILabel!
     @IBOutlet weak var cityView: MPLabel!
@@ -16,9 +16,9 @@ class TripLocationCell: UITableViewCell {
     @IBOutlet weak var heatView: MPLabel!
     @IBOutlet weak var imagesView: TripLocationImageGridView!
 
-    var viewModel: TripLocationCellViewModel? {
+    var viewModel: AnyObject! {
         didSet {
-            if let viewModel = viewModel as TripLocationCellViewModel! {
+            if let viewModel = viewModel as? TripLocationCellViewModel {
                 locationView.text = viewModel.location
                 streetView.text = viewModel.street
                 cityView.text = viewModel.city

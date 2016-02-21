@@ -10,7 +10,7 @@ import UIKit
 import TagListView
 import Haneke
 
-class PlantTripCell: UITableViewCell {
+class PlantTripCell: UITableViewCell, SupportViewModel {
     @IBOutlet weak var nameView: UILabel!
     @IBOutlet weak var avatarView: UIImageView!
 
@@ -19,9 +19,9 @@ class PlantTripCell: UITableViewCell {
     @IBOutlet weak var tripBriefView: UILabel!
     @IBOutlet weak var locationsView: TagListView!
 
-    var viewModel: TripCellViewModel? {
+    var viewModel: AnyObject! {
         didSet {
-            if let viewModel = viewModel as TripCellViewModel! {
+            if let viewModel = viewModel as? TripCellViewModel {
                 nameView.text = viewModel.author
                 if let url = NSURL(string: viewModel.avatar) {
                     avatarView.hnk_setImageFromURL(url, placeholder: UIImage(named: "avatar"), format: nil, failure: nil, success: nil)

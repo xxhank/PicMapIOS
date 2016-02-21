@@ -36,3 +36,24 @@ extension CLLocationCoordinate2D {
             }
     }
 }
+
+import ObjectMapper
+
+public class CoordinateTransform: TransformType {
+    public typealias Object = CLLocationCoordinate2D
+    public typealias JSON = [String: AnyObject]
+
+    public init() { }
+
+    public func transformFromJSON(value: AnyObject?) -> Object? {
+        return CLLocationCoordinate2D(coordinate: value as? [String: AnyObject])
+    }
+
+    public func transformToJSON(value: Object?) -> JSON? {
+        if let coordinate = value {
+            return ["lat" : "\(coordinate.latitude)",
+                "lng": "\(coordinate.longitude)"]
+        }
+        return nil
+    }
+}

@@ -9,7 +9,7 @@
 import UIKit
 import TagListView
 
-class TouristTripListCell: UITableViewCell {
+class TouristTripListCell: UITableViewCell, SupportViewModel {
     @IBOutlet weak var tripTitleView: UILabel!
     @IBOutlet weak var daysView: UIButton!
     @IBOutlet weak var milesView: UIButton!
@@ -20,9 +20,9 @@ class TouristTripListCell: UITableViewCell {
     @IBOutlet weak var topPhotosView: TripLocationImageGridView!
     @IBOutlet weak var locationsView: TagListView!
 
-    var viewModel: TripCellViewModel? {
+    var viewModel: AnyObject! {
         didSet {
-            if let viewModel = viewModel as TripCellViewModel! {
+            if let viewModel = viewModel as? TripCellViewModel {
                 tripTitleView.text = viewModel.title
                 daysView.setTitle("\(viewModel.days)", forState: .Normal)
                 milesView.setTitle("\(Int(viewModel.miles))", forState: .Normal)
@@ -34,6 +34,7 @@ class TouristTripListCell: UITableViewCell {
                     locationsView.addTag(location)
                 })
                 photoView.imageURL = viewModel.photo
+                topPhotosView.datas = viewModel.topPhotos
             }
         }
     }

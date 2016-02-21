@@ -38,7 +38,7 @@ class MMArrayCollectionViewProxy: NSObject {
     var identifier: MMCollectionViewCellIdentifier
     var builder: MMCollectionViewCellBuilder?
     var measurer: MMCollectionViewCellMeasurer
-
+    var templateCells: [String: UICollectionViewCell] = [:]
     required init(
         collectionView: UICollectionView
     , identifier: MMCollectionViewCellIdentifier
@@ -84,6 +84,33 @@ extension MMArrayCollectionViewProxy: UICollectionViewDataSource {
 }
 
 extension MMArrayCollectionViewProxy: UICollectionViewDelegateFlowLayout {
+    func collectionView(collectionView: UICollectionView, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+    {
+        let identifier: String = self.identifier(collectionView: collectionView, indexPath: indexPath)
+
+        var templateCell = templateCells[identifier]
+        if templateCell == nil {
+            templateCell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath)
+            templateCells[identifier] = templateCell
+        }
+        let cellView = templateCell as UICollectionViewCell!
+        if var cell = cellView as? SupportViewModel {
+            let cellData = self.dataAtIndexPath(indexPath)
+            cell.viewModel = cellData
+
+            let heightFenceConstraint = NSLayoutConstraint(item: cellView.contentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: collectionView.frame.height)
+            cellView.contentView.addConstraint(heightFenceConstraint)
+            // Auto layout engine does its math
+            let fittingSize = cellView.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+
+            cellView.contentView.removeConstraint(heightFenceConstraint) ;
+
+            return fittingSize
+        }
+
+        return CGSizeZero
+    }
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
         return self.measurer(collectionView: collectionView, collectionViewLayout: collectionViewLayout, indexPath: indexPath) ;

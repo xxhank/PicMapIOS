@@ -9,6 +9,7 @@
 import UIKit
 import UITableView_FDTemplateLayoutCell
 import ReactiveCocoa
+import XCGLogger
 
 typealias MMTableViewCellBuilder = (tableView: UITableView, indexPath: NSIndexPath, identifier: String) -> UITableViewCell?;
 typealias MMTableViewCellIdentifier = (tableView: UITableView, indexPath: NSIndexPath) -> String;
@@ -75,6 +76,8 @@ extension MMArrayTableViewProxy: UITableViewDataSource {
                 if var cell = tableViewCell as? SupportViewModel {
                     let cellData = datas[indexPath.row]
                     cell.viewModel = cellData
+                } else {
+                    XCGLogger.warning("\(tableViewCell) not conforms to SupportViewModel")
                 }
             }
         }
@@ -94,6 +97,8 @@ extension MMArrayTableViewProxy: UITableViewDelegate {
             if var cell = cell as? SupportViewModel {
                 let cellData = datas[indexPath.row]
                 cell.viewModel = cellData
+            } else {
+                XCGLogger.warning("\(cell) not conforms to SupportViewModel")
             }
         }
     }
