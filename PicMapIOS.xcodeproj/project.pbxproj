@@ -69,6 +69,8 @@
 		52CD8F421C5E54E2002DC9DD /* PlantRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F3B1C5E54E2002DC9DD /* PlantRouter.swift */; };
 		52CD8F431C5E54E2002DC9DD /* PlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F3C1C5E54E2002DC9DD /* PlantViewController.swift */; };
 		52CD8F441C5E54E2002DC9DD /* PlantWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F3D1C5E54E2002DC9DD /* PlantWorker.swift */; };
+		52D188191C7B56CD00B1CCEF /* TouristFollowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D188181C7B56CD00B1CCEF /* TouristFollowsController.swift */; };
+		52D1881B1C7B571000B1CCEF /* TouristFollowsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1881A1C7B571000B1CCEF /* TouristFollowsCell.swift */; };
 		52FCDE9A1C5CA1CD00ABC19D /* CameraConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE931C5CA1CD00ABC19D /* CameraConfigurator.swift */; };
 		52FCDE9B1C5CA1CD00ABC19D /* CameraInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE941C5CA1CD00ABC19D /* CameraInteractor.swift */; };
 		52FCDE9C1C5CA1CD00ABC19D /* CameraModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE951C5CA1CD00ABC19D /* CameraModels.swift */; };
@@ -183,6 +185,8 @@
 		52CD8F3B1C5E54E2002DC9DD /* PlantRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantRouter.swift; path = Scenes/Plant/PlantRouter.swift; sourceTree = "<group>"; };
 		52CD8F3C1C5E54E2002DC9DD /* PlantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantViewController.swift; path = Scenes/Plant/PlantViewController.swift; sourceTree = "<group>"; };
 		52CD8F3D1C5E54E2002DC9DD /* PlantWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantWorker.swift; path = Scenes/Plant/PlantWorker.swift; sourceTree = "<group>"; };
+		52D188181C7B56CD00B1CCEF /* TouristFollowsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouristFollowsController.swift; sourceTree = "<group>"; };
+		52D1881A1C7B571000B1CCEF /* TouristFollowsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouristFollowsCell.swift; sourceTree = "<group>"; };
 		52FCDE931C5CA1CD00ABC19D /* CameraConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraConfigurator.swift; sourceTree = "<group>"; };
 		52FCDE941C5CA1CD00ABC19D /* CameraInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraInteractor.swift; sourceTree = "<group>"; };
 		52FCDE951C5CA1CD00ABC19D /* CameraModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraModels.swift; sourceTree = "<group>"; };
@@ -410,6 +414,8 @@
 				52AA72571C76E9A300E87CB7 /* TouristTripsViewController.swift */,
 				52AA725B1C76F3ED00E87CB7 /* TouristPhotosController.swift */,
 				52AA725D1C76F40A00E87CB7 /* TouristCollectionController.swift */,
+				52D188181C7B56CD00B1CCEF /* TouristFollowsController.swift */,
+				52D1881A1C7B571000B1CCEF /* TouristFollowsCell.swift */,
 			);
 			name = Tourist;
 			path = Scenes/Tourist;
@@ -892,6 +898,7 @@
 				52AA72531C72E15A00E87CB7 /* TouristViewController.swift in Sources */,
 				5299045C1C703D0F00D0DF05 /* PlantTripCell.swift in Sources */,
 				52CD8F321C5E532B002DC9DD /* MPXIBView.swift in Sources */,
+				52D1881B1C7B571000B1CCEF /* TouristFollowsCell.swift in Sources */,
 				52CD8F431C5E54E2002DC9DD /* PlantViewController.swift in Sources */,
 				5299047A1C7169EC00D0DF05 /* TripInteractor.swift in Sources */,
 				529904841C717FAC00D0DF05 /* TripLocationCell.swift in Sources */,
@@ -920,6 +927,7 @@
 				52CD8F311C5E532B002DC9DD /* MPLabel.swift in Sources */,
 				529904821C717F4E00D0DF05 /* LocationAnnotationView.swift in Sources */,
 				52FCDEA01C5CA1CD00ABC19D /* CameraWorker.swift in Sources */,
+				52D188191C7B56CD00B1CCEF /* TouristFollowsController.swift in Sources */,
 				52AA72351C72C6F900E87CB7 /* PMIViewController.swift in Sources */,
 				52AA72601C771A3100E87CB7 /* PMIImageView.swift in Sources */,
 				52CD8F2B1C5E532B002DC9DD /* Coordinate2DTransform.swift in Sources */,
