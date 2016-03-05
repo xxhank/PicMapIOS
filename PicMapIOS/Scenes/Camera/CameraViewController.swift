@@ -80,9 +80,9 @@ extension CameraViewController {
 extension CameraViewController {
     func setupPhotoListView() {
         proxy = MM2DArrayCollectionViewProxy(collectionView: photoListView, identifier: { (collectionView, indexPath) -> String in
-            return "CamerPhotosCell"
+            return "CameraPhotosCell"
         }, sectionIdentifier: { (collectionView, kind, indexPath) -> String in
-            return "CamerPhotosSectionHeader"
+            return "CameraPhotosSectionHeader"
         }, builder: { (collectionView, indexPath) -> UICollectionViewCell? in
             return nil
         }, measurer: { (collectionView, collectionViewLayout, indexPath) -> CGSize in

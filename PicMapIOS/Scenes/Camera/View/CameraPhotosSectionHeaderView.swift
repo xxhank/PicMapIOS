@@ -8,6 +8,21 @@
 
 import UIKit
 
-class CameraPhotosSectionHeaderView: UICollectionReusableView {
-        
+class CameraPhotosSectionHeaderView: UICollectionReusableView, SupportViewModel {
+    
+    @IBOutlet weak var locationView: UILabel!
+    @IBOutlet weak var streetView: UILabel!
+    @IBOutlet weak var cityView: UILabel!
+    @IBOutlet weak var dateView: UILabel!
+    
+    var viewModel: AnyObject! {
+        didSet {
+            if let viewModel = viewModel as? PhotosFromAlbumSectionViewModel {
+                locationView.text = viewModel.location
+                streetView.text = viewModel.street
+                cityView.text = viewModel.city
+                dateView.text = viewModel.date
+            }
+        }
+    }
 }

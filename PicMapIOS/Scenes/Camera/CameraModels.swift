@@ -10,6 +10,7 @@
 //
 
 import UIKit
+import Photos
 
 struct Camera_LoadPhotosFromAlbum_Request {
 }
@@ -40,9 +41,9 @@ struct PhotosFromAlbumViewModel {
             }
 
             var photoViewModels = [PhotosFromAlbumPhotoViewModel]()
-            let photos = group["photos"] as! [[String: Any]]
+            let photos = group["photos"] as! [[String: AnyObject]]
             for photo in photos {
-                photoViewModels.append(PhotosFromAlbumPhotoViewModel(asset: photo))
+                photoViewModels.append(PhotosFromAlbumPhotoViewModel(photoData: photo))
             }
             let sectionViewModel = PhotosFromAlbumSectionViewModel(
                 location: location,
@@ -73,10 +74,55 @@ class PhotosFromAlbumSectionViewModel {
     }
 }
 
-class PhotosFromAlbumPhotoViewModel {
-    var asset: Any!
+class PhotoLoader {
+    class var sharedLoader: PhotoLoader {
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+            static var instance: PhotoLoader? = nil
+        }
+        dispatch_once(&Static.onceToken) {
+            Static.instance = PhotoLoader()
+        }
+        return Static.instance!
+    }
 
-    init(asset: Any) {
-        self.asset = asset
+    var imageManager = PHCachingImageManager()
+
+    func loadImage(asset: PHAsset, cellSize: CGSize, completion: (image: UIImage?) -> Void) {
+
+        let scale = UIScreen.mainScreen().scale;
+        let AssetGridThumbnailSize = CGSize(width: cellSize.width * scale, height: cellSize.height * scale)
+
+        self.imageManager.requestImageForAsset(asset, targetSize: AssetGridThumbnailSize, contentMode: .AspectFill, options: nil) { (image, info) -> Void in
+            completion(image: image)
+        }
+
+//        self.imageManager.requestImageDataForAsset(asset, options: <#T##PHImageRequestOptions?#>, resultHandler: <#T##(NSData?, String?, UIImageOrientation, [NSObject : AnyObject]?) -> Void#>)
+//
+//        [self.imageManager requestImageForAsset:asset
+//            targetSize:AssetGridThumbnailSize
+//            contentMode:PHImageContentModeAspectFill
+//            options:nil
+//            resultHandler:^(UIImage *result, NSDictionary *info) {
+//            // Set the cell's thumbnail image if it's still showing the same asset.
+//            if ([cell.representedAssetIdentifier isEqualToString:asset.localIdentifier]) {
+//            cell.thumbnailImage = result;
+//            }
+//            }];
+    }
+}
+
+class PhotosFromAlbumPhotoViewModel {
+    var photoData: [String: AnyObject]!
+    init(photoData: [String: AnyObject]) {
+        self.photoData = photoData
+    }
+
+    func loadImage(cellSize: CGSize, completion: (image: UIImage?) -> Void) {
+        if let asset = photoData["asset"] as? PHAsset {
+            PhotoLoader.sharedLoader.loadImage(asset, cellSize: cellSize, completion: completion)
+        } else {
+            completion(image: nil)
+        }
     }
 }

@@ -7,5 +7,5 @@
 //
 
 protocol SupportViewModel {
-    var viewModel: Any! { get set }
+    var viewModel: AnyObject! { get set }
 }

@@ -26,28 +26,41 @@ class LoadPhotosFromAlbumWorker
 
         let result = PHAssetCollection.fetchAssetCollectionsWithType(.Moment, subtype: .Any, options: nil)
         result.enumerateObjectsUsingBlock { (collection, index, stop) -> Void in
-            PMILogInfo("\(collection.startDate)")
-            PMILogInfo("\(collection.localizedLocationNames)")
-            PMILogInfo("\(collection.approximateLocation)")
-            PMILogInfo("\(collection.estimatedAssetCount)")
+            // PMILogInfo("\(collection.startDate)")
+            // PMILogInfo("\(collection.localizedLocationNames)")
+            // PMILogInfo("\(collection.approximateLocation)")
+            // PMILogInfo("\(collection.estimatedAssetCount)")
 
             if collection.estimatedAssetCount == 0 {
                 return
             }
-            var group: [String: Any] = [
-                "date": collection.startDate,
-                "coordinate": collection.approximateLocation,
-                "city": "", "street": "", "location": "",
-                "photos": [[String: Any]]()]
 
-            groups.append(group)
-
-            var photos: [[String: Any]] = group["photos"] as! [[String: Any]]
+            var photos: [[String: AnyObject]] = []
             PHAsset.fetchAssetsInAssetCollection(collection as! PHAssetCollection, options: nil)
                 .enumerateObjectsUsingBlock { (asset, index, stop) -> Void in
-                    let photo: [String: Any] = ["asset": asset]
+                    let photo: [String: AnyObject] = ["asset": asset]
                     photos.append(photo)
                 }
+            let locationNames = collection.localizedLocationNames
+            let locationName = locationNames.count > 0 ? locationNames[0] : ""
+
+            var coordinate: CLLocationCoordinate2D?
+            let locationOption = collection.approximateLocation
+            if let location = locationOption as CLLocation! {
+                coordinate = location.coordinate
+            }
+
+            var date = collection.startDate
+            if date == nil {
+                date = collection.endDate
+            }
+            let group: [String: Any] = [
+                "date": date!! as NSDate,
+                "coordinate": coordinate,
+                "city": "", "street": "", "location": locationName,
+                "photos": photos]
+
+            groups.append(group)
         }
 
         completion(result: Result(value: ["groups": groups]))

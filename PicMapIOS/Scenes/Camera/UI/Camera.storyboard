@@ -37,6 +37,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G3K-tc-cfH">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="dYK-bB-kqo">
                                     <size key="itemSize" width="134" height="137"/>
                                     <size key="headerReferenceSize" width="50" height="35"/>
@@ -60,6 +61,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="Fma-ki-DfB" firstAttribute="top" secondItem="Qnh-cg-xWo" secondAttribute="top" constant="3" id="18c-Qz-PkO"/>
                                             <constraint firstItem="wzd-Tp-l36" firstAttribute="leading" secondItem="Qnh-cg-xWo" secondAttribute="leading" id="Bk4-dZ-KU0"/>
@@ -68,9 +70,13 @@
                                             <constraint firstAttribute="trailing" secondItem="Fma-ki-DfB" secondAttribute="trailing" constant="3" id="ryP-d8-F3z"/>
                                             <constraint firstItem="wzd-Tp-l36" firstAttribute="top" secondItem="Qnh-cg-xWo" secondAttribute="top" id="v96-1k-dU0"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="markView" destination="Fma-ki-DfB" id="wfV-A6-jFd"/>
+                                            <outlet property="photoView" destination="wzd-Tp-l36" id="atr-oQ-KyC"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CamerPhotosSectionHeader" id="5KA-Ih-Euh" customClass="CameraPhotosSectionHeaderView" customModule="PicMapIOS" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CameraPhotosSectionHeader" id="5KA-Ih-Euh" customClass="CameraPhotosSectionHeaderView" customModule="PicMapIOS" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="64" width="320" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -91,7 +97,7 @@
                                                         </mask>
                                                     </variation>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWN-eg-oYS">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWN-eg-oYS" userLabel="Location">
                                                     <rect key="frame" x="49" y="4" width="30" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="hjR-BN-23h"/>
@@ -105,7 +111,7 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SightLocation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwK-w2-a5t">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SightLocation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwK-w2-a5t" userLabel="Street">
                                                     <rect key="frame" x="49" y="19" width="67" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.25490196078431371" green="0.29411764705882354" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
@@ -125,8 +131,8 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="insets" value="8,0"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18.6 Km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cao-2e-r82">
-                                                    <rect key="frame" x="236" y="12" width="39" height="12"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-9-10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cao-2e-r82" userLabel="Date">
+                                                    <rect key="frame" x="223" y="12" width="52" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="iXy-Te-56e"/>
                                                     </constraints>
@@ -164,12 +170,19 @@
                                             </variation>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="3xT-Bn-PUL" firstAttribute="leading" secondItem="5KA-Ih-Euh" secondAttribute="leading" id="Fwz-pp-gfR"/>
                                         <constraint firstAttribute="bottom" secondItem="3xT-Bn-PUL" secondAttribute="bottom" id="MQG-Kw-VUT"/>
                                         <constraint firstAttribute="trailing" secondItem="3xT-Bn-PUL" secondAttribute="trailing" id="dOi-xF-tyz"/>
                                         <constraint firstItem="3xT-Bn-PUL" firstAttribute="top" secondItem="5KA-Ih-Euh" secondAttribute="top" id="nla-84-3gJ"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="cityView" destination="NR7-Im-7jX" id="6ca-Jd-sVo"/>
+                                        <outlet property="dateView" destination="Cao-2e-r82" id="iZA-MH-be3"/>
+                                        <outlet property="locationView" destination="IWN-eg-oYS" id="uAZ-zp-dtk"/>
+                                        <outlet property="streetView" destination="AwK-w2-a5t" id="Xde-Uu-afL"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
