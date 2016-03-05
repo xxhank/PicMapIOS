@@ -67,8 +67,8 @@ class TouristCollectionController: UIViewController {
         cityProxy = MMArrayCollectionViewProxy(collectionView: self.cityListView, identifier: { (collectionView, indexPath) -> String in
             return "TouristLocationsCityCell"
         }, measurer: { (collectionView, collectionViewLayout, indexPath) -> CGSize in
-            let location = self.cityProxy?.dataAtIndexPath(indexPath)
-            if let text = location!.name {
+            if let location = self.cityProxy?.dataAtIndexPath(indexPath) as? LocationComponent {
+                let text = location.name
                 let size = NSString(string: text)
                     .boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max),
                     options: NSStringDrawingOptions.UsesLineFragmentOrigin,

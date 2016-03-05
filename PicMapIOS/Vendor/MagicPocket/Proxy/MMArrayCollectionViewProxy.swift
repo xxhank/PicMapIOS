@@ -8,17 +8,12 @@
 
 import UIKit
 import ReactiveCocoa
-import XCGLogger
 
 typealias MMCollectionViewCellBuilder = (collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionViewCell?;
 typealias MMCollectionViewCellIdentifier = (collectionView: UICollectionView, indexPath: NSIndexPath) -> String;
 typealias MMCollectionViewCellMeasurer = (collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, indexPath: NSIndexPath) -> CGSize
 
 typealias MMCollectionViewSectionIdentifier = (collectionView: UICollectionView, kind: String, indexPath: NSIndexPath) -> String ;
-
-protocol SupportViewModel {
-    var viewModel: AnyObject! { get set }
-}
 
 class MMArrayCollectionViewProxy: NSObject {
     var collectionView: UICollectionView? {
@@ -27,7 +22,7 @@ class MMArrayCollectionViewProxy: NSObject {
             self.collectionView?.delegate = self;
         }
     }
-    var datas: AnyObject? {
+    var datas: [AnyObject]! {
         didSet {
             self.collectionView?.dataSource = self;
             self.collectionView?.delegate = self;
@@ -57,11 +52,11 @@ class MMArrayCollectionViewProxy: NSObject {
 
     // MARK: - Data Mapping
     func datasInSection(section: Int) -> [AnyObject] {
-        return self.datas! as! [AnyObject]
+        return self.datas
     }
 
     func dataAtIndexPath(indexPath: NSIndexPath) -> AnyObject {
-        return self.datas![indexPath.row]
+        return self.datasInSection(0) [indexPath.row]
     }
 }
 
@@ -123,7 +118,7 @@ extension MMArrayCollectionViewProxy: UICollectionViewDelegate {
             view.viewModel = self.dataAtIndexPath(indexPath)
         }
         else {
-            XCGLogger.warning("\(cell) not conforms to SupportViewModel")
+            PMILogWarning("\(cell) not conforms to SupportViewModel")
         }
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -133,7 +128,7 @@ extension MMArrayCollectionViewProxy: UICollectionViewDelegate {
 }
 
 class MM2DArrayCollectionViewProxy: MMArrayCollectionViewProxy {
-    var sections: [String]? = []
+    var sections: [AnyObject]!
     var sectionIdentifier: MMCollectionViewSectionIdentifier
     required init(
         collectionView: UICollectionView
@@ -156,10 +151,10 @@ class MM2DArrayCollectionViewProxy: MMArrayCollectionViewProxy {
 
     // MARK: - Data Mapping
     override func datasInSection(section: Int) -> [AnyObject] {
-        if let sections = sections {
-            let datas = self.datas as! [String: [AnyObject]]
-            let key = sections[section] as String!
-            return datas[key]!
+        if let datas = self.datas {
+            return datas[section] as! [AnyObject]
+        } else {
+            PMILogWarning("covert \(self.datas) to [[any]] failed")
         }
         return []
     }
@@ -171,7 +166,6 @@ class MM2DArrayCollectionViewProxy: MMArrayCollectionViewProxy {
 // class
 
 extension MM2DArrayCollectionViewProxy /*: UICollectionViewDataSource*/ {
-
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         if let sections = sections {
             return sections.count
@@ -201,7 +195,7 @@ extension MM2DArrayCollectionViewProxy /*: UICollectionViewDataSource*/ {
             }
         }
         else {
-            XCGLogger.warning("\(view) not conforms to SupportViewModel")
+            PMILogWarning("\(view) not conforms to SupportViewModel")
         }
     }
 }

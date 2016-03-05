@@ -81,7 +81,7 @@ class Tourist_FetchDetail_ViewModel: Mappable
     var avatar = ""
     var aid = ""
     var trips : [TripCellViewModel] = []
-    var photoList: [String: [PhotoViewModel]] = [:]
+    var photoList: [[PhotoViewModel]] = []
     var photoDateList: [String] = []
 
     var days = 0
@@ -113,18 +113,23 @@ class Tourist_FetchDetail_ViewModel: Mappable
         let formatter = NSDateFormatter()
         formatter.dateFormat = "YYYY年MM月"
 
+        var photoListMapper = [String: [PhotoViewModel]]()
         if let photos = map["photos"].currentValue as? [[String: AnyObject]] {
             for photo in photos {
                 let photoViewModel = PhotoViewModel.viewModelFromDictonary(photo)
                 let dateText = formatter.stringFromDate((photoViewModel?.time)!)
-                if photoList[dateText] == nil {
-                    photoList[dateText] = []
+                if photoListMapper[dateText] == nil {
+                    photoListMapper[dateText] = []
                 }
-                photoList[dateText]?.append(photoViewModel!)
+                photoListMapper[dateText]?.append(photoViewModel!)
             }
         }
-        photoDateList = photoList.keys.sort { (left, right) -> Bool in
+        photoDateList = photoListMapper.keys.sort { (left, right) -> Bool in
             return left.compare(right) == .OrderedDescending
+        }
+
+        for photoDate in photoDateList {
+            photoList.append(photoListMapper[photoDate]!)
         }
 
         locationList = mappingLocations(map["locations"].currentValue as! [LocationElement])

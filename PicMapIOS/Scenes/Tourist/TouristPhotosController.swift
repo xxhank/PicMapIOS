@@ -15,7 +15,7 @@ class TouristPhotosController: UIViewController {
 
     //
     var photoDateList: [String]!
-    var photoList: [String: [PhotoViewModel]]! {
+    var photoList: [[PhotoViewModel]]! {
         didSet {
             diplayPhotoList()
         }
