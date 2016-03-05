@@ -1,4 +1,4 @@
-platform :ios, ‘8.0’ 
+platform :ios, '8.0'
 use_frameworks!
 
 pod 'MBProgressHUD'
@@ -36,4 +36,14 @@ end
 
 target :PicMapIOSUITests do
     #pod 'JAMTestHelper'
+end
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if target.name == 'PagingMenuController'
+            target.build_configurations.each do |config|
+                config.build_settings['OTHER_LDFLAGS'] ||= ['$(inherited)', '-framework "SnapKit"']
+            end
+        end
+    end
 end

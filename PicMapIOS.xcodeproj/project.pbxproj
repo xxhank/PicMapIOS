@@ -49,6 +49,17 @@
 		52AA725C1C76F3ED00E87CB7 /* TouristPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA725B1C76F3ED00E87CB7 /* TouristPhotosController.swift */; };
 		52AA725E1C76F40A00E87CB7 /* TouristCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA725D1C76F40A00E87CB7 /* TouristCollectionController.swift */; };
 		52AA72601C771A3100E87CB7 /* PMIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA725F1C771A3100E87CB7 /* PMIImageView.swift */; };
+		52BC59F91C8A70760023D11D /* CameraConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC59F21C8A70760023D11D /* CameraConfigurator.swift */; };
+		52BC59FA1C8A70760023D11D /* CameraInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC59F31C8A70760023D11D /* CameraInteractor.swift */; };
+		52BC59FB1C8A70760023D11D /* CameraModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC59F41C8A70760023D11D /* CameraModels.swift */; };
+		52BC59FC1C8A70760023D11D /* CameraPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC59F51C8A70760023D11D /* CameraPresenter.swift */; };
+		52BC59FD1C8A70760023D11D /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC59F61C8A70760023D11D /* CameraRouter.swift */; };
+		52BC59FE1C8A70760023D11D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC59F71C8A70760023D11D /* CameraViewController.swift */; };
+		52BC59FF1C8A70760023D11D /* CameraWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC59F81C8A70760023D11D /* CameraWorker.swift */; };
+		52BC5A051C8A70930023D11D /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BC5A011C8A70930023D11D /* Camera.storyboard */; };
+		52BC5A061C8A70930023D11D /* CameraPhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC5A031C8A70930023D11D /* CameraPhotosCell.swift */; };
+		52BC5A071C8A70930023D11D /* CameraPhotosSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC5A041C8A70930023D11D /* CameraPhotosSectionHeaderView.swift */; };
+		52BC5A091C8A727D0023D11D /* PMIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC5A081C8A727D0023D11D /* PMIViewModel.swift */; };
 		52C25DB11C5F5A1B009BB4EC /* PMIAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C25DB01C5F5A1B009BB4EC /* PMIAPI.swift */; };
 		52CD8F2B1C5E532B002DC9DD /* Coordinate2DTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F1A1C5E532B002DC9DD /* Coordinate2DTransform.swift */; };
 		52CD8F2C1C5E532B002DC9DD /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F1B1C5E532B002DC9DD /* NSObject+ClassName.swift */; };
@@ -71,17 +82,11 @@
 		52CD8F441C5E54E2002DC9DD /* PlantWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8F3D1C5E54E2002DC9DD /* PlantWorker.swift */; };
 		52D188191C7B56CD00B1CCEF /* TouristFollowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D188181C7B56CD00B1CCEF /* TouristFollowsController.swift */; };
 		52D1881B1C7B571000B1CCEF /* TouristFollowsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1881A1C7B571000B1CCEF /* TouristFollowsCell.swift */; };
-		52FCDE9A1C5CA1CD00ABC19D /* CameraConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE931C5CA1CD00ABC19D /* CameraConfigurator.swift */; };
-		52FCDE9B1C5CA1CD00ABC19D /* CameraInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE941C5CA1CD00ABC19D /* CameraInteractor.swift */; };
-		52FCDE9C1C5CA1CD00ABC19D /* CameraModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE951C5CA1CD00ABC19D /* CameraModels.swift */; };
-		52FCDE9D1C5CA1CD00ABC19D /* CameraPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE961C5CA1CD00ABC19D /* CameraPresenter.swift */; };
-		52FCDE9E1C5CA1CD00ABC19D /* CameraRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE971C5CA1CD00ABC19D /* CameraRouter.swift */; };
-		52FCDE9F1C5CA1CD00ABC19D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE981C5CA1CD00ABC19D /* CameraViewController.swift */; };
-		52FCDEA01C5CA1CD00ABC19D /* CameraWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDE991C5CA1CD00ABC19D /* CameraWorker.swift */; };
+		52FAE6331C8A7F1500BC9D1E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FAE6321C8A7F1500BC9D1E /* Logger.swift */; };
+		52FAE6351C8AEF5E00BC9D1E /* SupportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FAE6341C8AEF5E00BC9D1E /* SupportViewModel.swift */; };
 		52FCDEA31C5CA37900ABC19D /* PMITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDEA21C5CA37900ABC19D /* PMITabBarController.swift */; };
 		52FCDEA51C5CA53E00ABC19D /* PMIViewControllerLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDEA41C5CA53E00ABC19D /* PMIViewControllerLink.swift */; };
 		52FCDEA71C5CAF1900ABC19D /* PMIViewControllerLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDEA61C5CAF1900ABC19D /* PMIViewControllerLinkTests.swift */; };
-		52FCDEAB1C5CC13900ABC19D /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FCDEAA1C5CC13900ABC19D /* Camera.storyboard */; };
 		52FCDEB31C5CC20200ABC19D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FCDEB21C5CC20200ABC19D /* Profile.storyboard */; };
 		52FCDEBA1C5CC30F00ABC19D /* Plant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FCDEB91C5CC30F00ABC19D /* Plant.storyboard */; };
 		52FCDEBC1C5CC7F200ABC19D /* PMITabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FCDEBB1C5CC7F200ABC19D /* PMITabBarControllerTests.swift */; };
@@ -163,6 +168,17 @@
 		52AA725B1C76F3ED00E87CB7 /* TouristPhotosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouristPhotosController.swift; sourceTree = "<group>"; };
 		52AA725D1C76F40A00E87CB7 /* TouristCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouristCollectionController.swift; sourceTree = "<group>"; };
 		52AA725F1C771A3100E87CB7 /* PMIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMIImageView.swift; sourceTree = "<group>"; };
+		52BC59F21C8A70760023D11D /* CameraConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraConfigurator.swift; sourceTree = "<group>"; };
+		52BC59F31C8A70760023D11D /* CameraInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraInteractor.swift; sourceTree = "<group>"; };
+		52BC59F41C8A70760023D11D /* CameraModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraModels.swift; sourceTree = "<group>"; };
+		52BC59F51C8A70760023D11D /* CameraPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPresenter.swift; sourceTree = "<group>"; };
+		52BC59F61C8A70760023D11D /* CameraRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
+		52BC59F71C8A70760023D11D /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		52BC59F81C8A70760023D11D /* CameraWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraWorker.swift; sourceTree = "<group>"; };
+		52BC5A011C8A70930023D11D /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
+		52BC5A031C8A70930023D11D /* CameraPhotosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPhotosCell.swift; sourceTree = "<group>"; };
+		52BC5A041C8A70930023D11D /* CameraPhotosSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPhotosSectionHeaderView.swift; sourceTree = "<group>"; };
+		52BC5A081C8A727D0023D11D /* PMIViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PMIViewModel.swift; path = Models/PMIViewModel.swift; sourceTree = "<group>"; };
 		52C25DB01C5F5A1B009BB4EC /* PMIAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMIAPI.swift; sourceTree = "<group>"; };
 		52CD8F1A1C5E532B002DC9DD /* Coordinate2DTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate2DTransform.swift; sourceTree = "<group>"; };
 		52CD8F1B1C5E532B002DC9DD /* NSObject+ClassName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
@@ -186,18 +202,12 @@
 		52CD8F3C1C5E54E2002DC9DD /* PlantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantViewController.swift; path = Scenes/Plant/PlantViewController.swift; sourceTree = "<group>"; };
 		52CD8F3D1C5E54E2002DC9DD /* PlantWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlantWorker.swift; path = Scenes/Plant/PlantWorker.swift; sourceTree = "<group>"; };
 		52D188181C7B56CD00B1CCEF /* TouristFollowsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouristFollowsController.swift; sourceTree = "<group>"; };
-		52D1881A1C7B571000B1CCEF /* TouristFollowsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouristFollowsCell.swift; sourceTree = "<group>"; };
-		52FCDE931C5CA1CD00ABC19D /* CameraConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraConfigurator.swift; sourceTree = "<group>"; };
-		52FCDE941C5CA1CD00ABC19D /* CameraInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraInteractor.swift; sourceTree = "<group>"; };
-		52FCDE951C5CA1CD00ABC19D /* CameraModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraModels.swift; sourceTree = "<group>"; };
-		52FCDE961C5CA1CD00ABC19D /* CameraPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPresenter.swift; sourceTree = "<group>"; };
-		52FCDE971C5CA1CD00ABC19D /* CameraRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRouter.swift; sourceTree = "<group>"; };
-		52FCDE981C5CA1CD00ABC19D /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		52FCDE991C5CA1CD00ABC19D /* CameraWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraWorker.swift; sourceTree = "<group>"; };
+		52D1881A1C7B571000B1CCEF /* TouristFollowsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TouristFollowsCell.swift; path = ../TouristFollowsCell.swift; sourceTree = "<group>"; };
+		52FAE6321C8A7F1500BC9D1E /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		52FAE6341C8AEF5E00BC9D1E /* SupportViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportViewModel.swift; sourceTree = "<group>"; };
 		52FCDEA21C5CA37900ABC19D /* PMITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PMITabBarController.swift; path = Controller/PMITabBarController.swift; sourceTree = "<group>"; };
 		52FCDEA41C5CA53E00ABC19D /* PMIViewControllerLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMIViewControllerLink.swift; sourceTree = "<group>"; };
 		52FCDEA61C5CAF1900ABC19D /* PMIViewControllerLinkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMIViewControllerLinkTests.swift; sourceTree = "<group>"; };
-		52FCDEAA1C5CC13900ABC19D /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Camera.storyboard; path = UI/Camera.storyboard; sourceTree = "<group>"; };
 		52FCDEB21C5CC20200ABC19D /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		52FCDEB91C5CC30F00ABC19D /* Plant.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Plant.storyboard; sourceTree = "<group>"; };
 		52FCDEBB1C5CC7F200ABC19D /* PMITabBarControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMITabBarControllerTests.swift; sourceTree = "<group>"; };
@@ -352,6 +362,7 @@
 		52972AD51C5EE58000AE7D4E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				52BC5A081C8A727D0023D11D /* PMIViewModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -415,7 +426,6 @@
 				52AA725B1C76F3ED00E87CB7 /* TouristPhotosController.swift */,
 				52AA725D1C76F40A00E87CB7 /* TouristCollectionController.swift */,
 				52D188181C7B56CD00B1CCEF /* TouristFollowsController.swift */,
-				52D1881A1C7B571000B1CCEF /* TouristFollowsCell.swift */,
 			);
 			name = Tourist;
 			path = Scenes/Tourist;
@@ -431,6 +441,7 @@
 				529FC1091C7872A3001B4A33 /* TouristLocationsCountryCell.swift */,
 				529FC10B1C7872B5001B4A33 /* TouristLocationsCityCell.swift */,
 				529FC10D1C78731D001B4A33 /* TouristLocationsLocationCell.swift */,
+				52D1881A1C7B571000B1CCEF /* TouristFollowsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -438,13 +449,47 @@
 		52B5B6F71C5C4E1E007A2807 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				52BC59F11C8A70600023D11D /* Camera */,
 				52AA72451C72E15A00E87CB7 /* Tourist */,
 				5299046F1C7169EC00D0DF05 /* Trip */,
 				52FCDEAD1C5CC17A00ABC19D /* Profile */,
 				52FCDEAC1C5CC16A00ABC19D /* Plant */,
-				52FCDE921C5CA1CD00ABC19D /* Camera */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		52BC59F11C8A70600023D11D /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				52BC5A001C8A70930023D11D /* UI */,
+				52BC5A021C8A70930023D11D /* View */,
+				52BC59F21C8A70760023D11D /* CameraConfigurator.swift */,
+				52BC59F31C8A70760023D11D /* CameraInteractor.swift */,
+				52BC59F41C8A70760023D11D /* CameraModels.swift */,
+				52BC59F51C8A70760023D11D /* CameraPresenter.swift */,
+				52BC59F61C8A70760023D11D /* CameraRouter.swift */,
+				52BC59F71C8A70760023D11D /* CameraViewController.swift */,
+				52BC59F81C8A70760023D11D /* CameraWorker.swift */,
+			);
+			name = Camera;
+			path = Scenes/Camera;
+			sourceTree = "<group>";
+		};
+		52BC5A001C8A70930023D11D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				52BC5A011C8A70930023D11D /* Camera.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		52BC5A021C8A70930023D11D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52BC5A031C8A70930023D11D /* CameraPhotosCell.swift */,
+				52BC5A041C8A70930023D11D /* CameraPhotosSectionHeaderView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		52CD8F171C5E532B002DC9DD /* Vendor */ = {
@@ -458,6 +503,7 @@
 		52CD8F181C5E532B002DC9DD /* MagicPocket */ = {
 			isa = PBXGroup;
 			children = (
+				52FAE6311C8A7EF900BC9D1E /* Logger */,
 				52CD8F191C5E532B002DC9DD /* Foundation */,
 				52CD8F1D1C5E532B002DC9DD /* Proxy */,
 				52CD8F201C5E532B002DC9DD /* View */,
@@ -482,6 +528,7 @@
 			children = (
 				52CD8F1E1C5E532B002DC9DD /* MMArrayCollectionViewProxy.swift */,
 				52CD8F1F1C5E532B002DC9DD /* MMArrayTableViewProxy.swift */,
+				52FAE6341C8AEF5E00BC9D1E /* SupportViewModel.swift */,
 			);
 			path = Proxy;
 			sourceTree = "<group>";
@@ -511,20 +558,12 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		52FCDE921C5CA1CD00ABC19D /* Camera */ = {
+		52FAE6311C8A7EF900BC9D1E /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				52FCDEA91C5CC11D00ABC19D /* UI */,
-				52FCDE931C5CA1CD00ABC19D /* CameraConfigurator.swift */,
-				52FCDE941C5CA1CD00ABC19D /* CameraInteractor.swift */,
-				52FCDE951C5CA1CD00ABC19D /* CameraModels.swift */,
-				52FCDE961C5CA1CD00ABC19D /* CameraPresenter.swift */,
-				52FCDE971C5CA1CD00ABC19D /* CameraRouter.swift */,
-				52FCDE981C5CA1CD00ABC19D /* CameraViewController.swift */,
-				52FCDE991C5CA1CD00ABC19D /* CameraWorker.swift */,
+				52FAE6321C8A7F1500BC9D1E /* Logger.swift */,
 			);
-			name = Camera;
-			path = Scenes/Camera;
+			name = Logger;
 			sourceTree = "<group>";
 		};
 		52FCDEA11C5CA33F00ABC19D /* Controller */ = {
@@ -549,14 +588,6 @@
 				52FCDED91C5D05A500ABC19D /* PMITestCase.swift */,
 			);
 			name = Tests;
-			sourceTree = "<group>";
-		};
-		52FCDEA91C5CC11D00ABC19D /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				52FCDEAA1C5CC13900ABC19D /* Camera.storyboard */,
-			);
-			name = UI;
 			sourceTree = "<group>";
 		};
 		52FCDEAC1C5CC16A00ABC19D /* Plant */ = {
@@ -739,8 +770,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				527C8D011C599A5C00BA8B0A /* Main.storyboard in Resources */,
+				52BC5A051C8A70930023D11D /* Camera.storyboard in Resources */,
 				52972AD21C5EE00100AE7D4E /* SightAnnotationContent.xib in Resources */,
-				52FCDEAB1C5CC13900ABC19D /* Camera.storyboard in Resources */,
 				52FCDEBA1C5CC30F00ABC19D /* Plant.storyboard in Resources */,
 				52FCDEB31C5CC20200ABC19D /* Profile.storyboard in Resources */,
 				52AA72301C72896600E87CB7 /* LocationAnnotationContent.xib in Resources */,
@@ -870,14 +901,17 @@
 				52AA725A1C76EC8400E87CB7 /* TouristTripListCell.swift in Sources */,
 				528AC8781C78274A00C4DDE5 /* TouristPhotoListCell.swift in Sources */,
 				52972AD31C5EE00100AE7D4E /* SightAnnotationView.swift in Sources */,
+				52FAE6331C8A7F1500BC9D1E /* Logger.swift in Sources */,
 				529904861C719CEF00D0DF05 /* NSError+PMIExtension.swift in Sources */,
 				529FC10C1C7872B5001B4A33 /* TouristLocationsCityCell.swift in Sources */,
 				52AA72511C72E15A00E87CB7 /* TouristPresenter.swift in Sources */,
 				529FC10E1C78731D001B4A33 /* TouristLocationsLocationCell.swift in Sources */,
 				5299047E1C7169EC00D0DF05 /* TripViewController.swift in Sources */,
 				52CD8F331C5E532B002DC9DD /* UITabBarItem+UseOriginImage.m in Sources */,
+				52BC59FE1C8A70760023D11D /* CameraViewController.swift in Sources */,
 				52CD8F351C5E532B002DC9DD /* UIView+Factory.swift in Sources */,
 				52C25DB11C5F5A1B009BB4EC /* PMIAPI.swift in Sources */,
+				52BC59FB1C8A70760023D11D /* CameraModels.swift in Sources */,
 				52AA72541C72E15A00E87CB7 /* TouristWorker.swift in Sources */,
 				52CD8F3F1C5E54E2002DC9DD /* PlantInteractor.swift in Sources */,
 				52CD8F401C5E54E2002DC9DD /* PlantModels.swift in Sources */,
@@ -886,9 +920,9 @@
 				52AA725C1C76F3ED00E87CB7 /* TouristPhotosController.swift in Sources */,
 				527C8CFE1C599A5C00BA8B0A /* AppDelegate.swift in Sources */,
 				52CD8F2C1C5E532B002DC9DD /* NSObject+ClassName.swift in Sources */,
+				52BC59F91C8A70760023D11D /* CameraConfigurator.swift in Sources */,
 				52CD8F301C5E532B002DC9DD /* MMTabBarItem.swift in Sources */,
 				52AA72561C76BC9B00E87CB7 /* TouristHeadView.swift in Sources */,
-				52FCDE9C1C5CA1CD00ABC19D /* CameraModels.swift in Sources */,
 				52972AD91C5EECD300AE7D4E /* SightAnnotation.swift in Sources */,
 				5299047B1C7169EC00D0DF05 /* TripModels.swift in Sources */,
 				52FCDEA31C5CA37900ABC19D /* PMITabBarController.swift in Sources */,
@@ -896,6 +930,8 @@
 				52AA724E1C72E15A00E87CB7 /* TouristConfigurator.swift in Sources */,
 				52CD8F441C5E54E2002DC9DD /* PlantWorker.swift in Sources */,
 				52AA72531C72E15A00E87CB7 /* TouristViewController.swift in Sources */,
+				52FAE6351C8AEF5E00BC9D1E /* SupportViewModel.swift in Sources */,
+				52BC5A071C8A70930023D11D /* CameraPhotosSectionHeaderView.swift in Sources */,
 				5299045C1C703D0F00D0DF05 /* PlantTripCell.swift in Sources */,
 				52CD8F321C5E532B002DC9DD /* MPXIBView.swift in Sources */,
 				52D1881B1C7B571000B1CCEF /* TouristFollowsCell.swift in Sources */,
@@ -909,28 +945,28 @@
 				52AA72501C72E15A00E87CB7 /* TouristModels.swift in Sources */,
 				52CD8F411C5E54E2002DC9DD /* PlantPresenter.swift in Sources */,
 				52CD8F341C5E532B002DC9DD /* UITableView+Extension.swift in Sources */,
-				52FCDE9E1C5CA1CD00ABC19D /* CameraRouter.swift in Sources */,
-				52FCDE9B1C5CA1CD00ABC19D /* CameraInteractor.swift in Sources */,
+				52BC5A091C8A727D0023D11D /* PMIViewModel.swift in Sources */,
 				52CD8F361C5E532B002DC9DD /* MMTabBarController.m in Sources */,
+				52BC59FA1C8A70760023D11D /* CameraInteractor.swift in Sources */,
 				5299047C1C7169EC00D0DF05 /* TripPresenter.swift in Sources */,
 				52AA72321C72899F00E87CB7 /* LocationAnnotation.swift in Sources */,
+				52BC59FC1C8A70760023D11D /* CameraPresenter.swift in Sources */,
 				52CD8F3E1C5E54E2002DC9DD /* PlantConfigurator.swift in Sources */,
 				529904801C7169EC00D0DF05 /* TripLocationImageGridView.swift in Sources */,
+				52BC59FF1C8A70760023D11D /* CameraWorker.swift in Sources */,
 				52CD8F2D1C5E532B002DC9DD /* Number+Random.swift in Sources */,
 				52CD8F421C5E54E2002DC9DD /* PlantRouter.swift in Sources */,
 				52CD8F2F1C5E532B002DC9DD /* MMArrayTableViewProxy.swift in Sources */,
-				52FCDE9D1C5CA1CD00ABC19D /* CameraPresenter.swift in Sources */,
-				52FCDE9F1C5CA1CD00ABC19D /* CameraViewController.swift in Sources */,
 				52AA724F1C72E15A00E87CB7 /* TouristInteractor.swift in Sources */,
-				52FCDE9A1C5CA1CD00ABC19D /* CameraConfigurator.swift in Sources */,
 				52CD8F2E1C5E532B002DC9DD /* MMArrayCollectionViewProxy.swift in Sources */,
 				52CD8F311C5E532B002DC9DD /* MPLabel.swift in Sources */,
 				529904821C717F4E00D0DF05 /* LocationAnnotationView.swift in Sources */,
-				52FCDEA01C5CA1CD00ABC19D /* CameraWorker.swift in Sources */,
 				52D188191C7B56CD00B1CCEF /* TouristFollowsController.swift in Sources */,
 				52AA72351C72C6F900E87CB7 /* PMIViewController.swift in Sources */,
+				52BC5A061C8A70930023D11D /* CameraPhotosCell.swift in Sources */,
 				52AA72601C771A3100E87CB7 /* PMIImageView.swift in Sources */,
 				52CD8F2B1C5E532B002DC9DD /* Coordinate2DTransform.swift in Sources */,
+				52BC59FD1C8A70760023D11D /* CameraRouter.swift in Sources */,
 				52FCDEA51C5CA53E00ABC19D /* PMIViewControllerLink.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
