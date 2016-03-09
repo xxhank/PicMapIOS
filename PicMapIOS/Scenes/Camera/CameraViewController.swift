@@ -11,6 +11,7 @@
 
 import UIKit
 import PKHUD
+import ReactiveCocoa
 
 protocol CameraViewControllerInput: class {
     func displayPhotosFromAlbum(viewModel: ViewModel<PhotosFromAlbumViewModel>)
@@ -88,5 +89,14 @@ extension CameraViewController {
         }, measurer: { (collectionView, collectionViewLayout, indexPath) -> CGSize in
             return MMCollectionViewCellSquareSize(collectionView, column: 4)
         })
+
+        proxy?.selectAction = Action < (NSIndexPath, AnyObject?), Void, NSError > { (indexPath, viewModel) in
+            return SignalProducer<Void, NSError> { observer, disposable in
+                if let photoViewModel = viewModel as? PhotosFromAlbumPhotoViewModel {
+                    photoViewModel.selected.value = !photoViewModel.selected.value
+                }
+                observer.sendCompleted()
+            }
+        }
     }
 }

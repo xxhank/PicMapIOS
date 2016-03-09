@@ -11,6 +11,7 @@
 
 import UIKit
 import Photos
+import ReactiveCocoa
 
 struct Camera_LoadPhotosFromAlbum_Request {
 }
@@ -96,24 +97,13 @@ class PhotoLoader {
         self.imageManager.requestImageForAsset(asset, targetSize: AssetGridThumbnailSize, contentMode: .AspectFill, options: nil) { (image, info) -> Void in
             completion(image: image)
         }
-
-//        self.imageManager.requestImageDataForAsset(asset, options: <#T##PHImageRequestOptions?#>, resultHandler: <#T##(NSData?, String?, UIImageOrientation, [NSObject : AnyObject]?) -> Void#>)
-//
-//        [self.imageManager requestImageForAsset:asset
-//            targetSize:AssetGridThumbnailSize
-//            contentMode:PHImageContentModeAspectFill
-//            options:nil
-//            resultHandler:^(UIImage *result, NSDictionary *info) {
-//            // Set the cell's thumbnail image if it's still showing the same asset.
-//            if ([cell.representedAssetIdentifier isEqualToString:asset.localIdentifier]) {
-//            cell.thumbnailImage = result;
-//            }
-//            }];
     }
 }
 
 class PhotosFromAlbumPhotoViewModel {
     var photoData: [String: AnyObject]!
+    var selected = MutableProperty< Bool>(false)
+
     init(photoData: [String: AnyObject]) {
         self.photoData = photoData
     }

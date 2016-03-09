@@ -16,6 +16,8 @@ typealias MMCollectionViewCellMeasurer = (collectionView: UICollectionView, coll
 typealias MMCollectionViewSectionIdentifier = (collectionView: UICollectionView, kind: String, indexPath: NSIndexPath) -> String ;
 
 class MMArrayCollectionViewProxy: NSObject {
+    typealias IndexPathViewModel = (NSIndexPath, AnyObject?)
+
     var collectionView: UICollectionView? {
         didSet {
             self.collectionView?.dataSource = self;
@@ -47,9 +49,9 @@ class MMArrayCollectionViewProxy: NSObject {
             self.collectionView?.dataSource = self;
             self.collectionView?.delegate = self;
         }
-
-    let (selectSignal, selectSink) = Signal < (NSIndexPath, AnyObject?), NSError > .pipe()
-
+    var selectAction: Action<IndexPathViewModel , Void, NSError>?
+    var deselectAction: Action<IndexPathViewModel , Void, NSError>?
+    
     // MARK: - Data Mapping
     func datasInSection(section: Int) -> [AnyObject] {
         return self.datas
@@ -121,9 +123,15 @@ extension MMArrayCollectionViewProxy: UICollectionViewDelegate {
             PMILogWarning("\(cell) not conforms to SupportViewModel")
         }
     }
+
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cellData = self.dataAtIndexPath(indexPath)
-        selectSink.sendNext((indexPath, cellData))
+        selectAction?.apply((indexPath, cellData)).start()
+    }
+
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        let cellData = self.dataAtIndexPath(indexPath)
+        deselectAction?.apply((indexPath, cellData)).start()
     }
 }
 
