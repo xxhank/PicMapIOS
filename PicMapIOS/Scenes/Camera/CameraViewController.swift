@@ -19,6 +19,10 @@ protocol CameraViewControllerInput: class {
 
 protocol CameraViewControllerOutput {
     func loadPhotosFromAlbum(request: Camera_LoadPhotosFromAlbum_Request)
+
+    // MARK: Pick Image
+    func pickPhotoAtIndexPath(indexPath: NSIndexPath, picked: Bool)
+    var pickedPhotos: [String: [PhotoGroup]]? { get }
 }
 
 class CameraViewController: UIViewController, CameraViewControllerInput {
@@ -94,6 +98,7 @@ extension CameraViewController {
             return SignalProducer<Void, NSError> { observer, disposable in
                 if let photoViewModel = viewModel as? PhotosFromAlbumPhotoViewModel {
                     photoViewModel.selected.value = !photoViewModel.selected.value
+                    self.output.pickPhotoAtIndexPath(indexPath, picked: photoViewModel.selected.value)
                 }
                 observer.sendCompleted()
             }

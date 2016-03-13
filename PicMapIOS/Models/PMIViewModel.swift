@@ -9,10 +9,20 @@
 import Foundation
 import ObjectMapper
 
-class PMIViewModel<T: Mappable>: Mappable {
-    class func viewModelFromDictonary(dictonary: [String: AnyObject]) -> T? {
-        return Mapper<T>().map(dictonary)
+protocol MappableViewModel: Mappable {
+    typealias ViewModel: Mappable
+    static func viewModelFromDictonary(dictonary: [String: AnyObject]) -> ViewModel?;
+}
+
+extension MappableViewModel {
+    static func viewModelFromDictonary(dictonary: [String: AnyObject]) -> ViewModel? {
+        return Mapper<ViewModel>().map(dictonary)
     }
+}
+
+class PMIMappableViewModel: MappableViewModel {
+    typealias ViewModel = PMIMappableViewModel
+
     required init?(_ map: Map) {
     }
     func mapping(map: Map) -> () {

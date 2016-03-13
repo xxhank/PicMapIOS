@@ -11,7 +11,6 @@
 
 import UIKit
 
-let CameraInteractorErrorDomain = "CameraInteractor"
 enum CameraInteractorError: ErrorType {
     case General
 }
@@ -26,36 +25,47 @@ class CameraInteractor: CameraInteractorInput
     var output: CameraInteractorOutput!
     var worker: LoadPhotosFromAlbumWorker!
 
-    // MARK: - Business logic
-    // func doSomething(request: CameraRequest)
-    // {
-    // NOTE: Create some Worker to do the work
+    /**
+     选中的图片, 结构如下
+     ```
+     ["photos": [
+     >>>>{date:NSData
+     >>>>coordinate:CLLocationCoordinate2D
+     >>>>city:String
+     >>>>street:String
+     >>>>locationString
+     >>>>photos:[{"asset": PHAsset}]}
+     ]]
+     ```
+     */
+    private var _pickedPhotos : [String: [PhotoGroup]] = ["photos": []]
+    var pickedPhotos: [String: [PhotoGroup]]? {
+        if pickedIndexPaths.isEmpty {
+            return _pickedPhotos
+        }
 
-    // worker = CameraWorker()
-    // worker.doSomeWork()
+        var pickedSections: [PhotoGroup] = []
+        for (section, photoIndexs) in pickedIndexPaths {
+            let sectionData = self.loadedPhotos[section]
+            let sectionPhotos = sectionData.photos
 
-    // NOTE: Pass the result to the Presenter
+            var photos: [[String: AnyObject]] = []
 
-    // let response = CameraResponse()
-    // output.presentSomething(response)
-//        PMIAPI.fetchJSON("<#action#>", parameters: [:])
-//            .success { (responseData) -> Void in
-//                if let responseData = responseData as? [String: AnyObject] {
-//                    let response = <#Response#>(detail: responseData)
-//                    self.output.<#present#>(Response.Result(response))
-//                } else {
-//                    let error = NSError(domain: CameraInteractorErrorDomain,
-//                        code: CameraInteractorError.General)
-//
-//                    self.output.<#present#>(Response.Error(error))
-//                }
-//            }.failure { (error, isCancelled) -> Void in
-//                if !isCancelled {
-//                    self.output.<#present#>(Response.Error(error!))
-//                }
-//            }
-    // }
+            photoIndexs.enumerateKeysAndObjectsUsingBlock({ (key, value, stop) -> Void in
+                let photoIndex = (key as! NSNumber).integerValue
+                photos.append(sectionPhotos[photoIndex])
+            })
 
+            let pickedSection = sectionData
+            pickedSection.photos = photos
+            pickedSections.append(pickedSection)
+        }
+        _pickedPhotos = ["photos": pickedSections]
+        pickedIndexPaths.removeAll(keepCapacity: true)
+        return _pickedPhotos
+    }
+    var loadedPhotos: [PhotoGroup] = []
+    var pickedIndexPaths: [Int: NSMutableDictionary] = [:]
     func loadPhotosFromAlbum(request: Camera_LoadPhotosFromAlbum_Request) -> () {
         if worker == nil {
             worker = LoadPhotosFromAlbumWorker()
@@ -63,6 +73,7 @@ class CameraInteractor: CameraInteractorInput
         worker.loadPhotosFromAlbum { (result) -> Void in
             switch result {
             case .Success(let result):
+                self.loadedPhotos = result["groups"]!
                 let response = Camera_LoadPhotosFromAlbum_Response(photos: result)
                 self.output.presentPhotosFromAlbum(Response.Result(response))
                 break
@@ -70,6 +81,20 @@ class CameraInteractor: CameraInteractorInput
                 self.output.presentPhotosFromAlbum(Response.Error(error))
                 break
             }
+        }
+    }
+
+    func pickPhotoAtIndexPath(indexPath: NSIndexPath, picked: Bool) {
+        var section = pickedIndexPaths[indexPath.section]
+        if section == nil {
+            section = NSMutableDictionary(capacity: 1)
+            pickedIndexPaths[indexPath.section] = section
+        }
+
+        if picked {
+            section?.setObject(1, forKey: indexPath.row)
+        } else {
+            section?.removeObjectForKey(indexPath.row)
         }
     }
 }

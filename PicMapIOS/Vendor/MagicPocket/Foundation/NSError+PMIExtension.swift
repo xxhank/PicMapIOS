@@ -7,11 +7,20 @@
 //
 import Foundation
 
+public extension ErrorType {
+    func toNSError(localizedDescription: String? = nil, underlyingError: NSError? = nil, extraInformation: [NSObject : AnyObject]? = nil) -> NSError {
+        return NSError(domain: self._domain, code: self._code, desc: localizedDescription, error: underlyingError, info: extraInformation)
+    }
+    var error: NSError {
+        return NSError(domain: self._domain, code: self._code)
+    }
+}
+
 public extension NSError {
 
-    convenience init(domain: String, code: ErrorType, desc: String? = nil, error: NSError? = nil, info: [NSObject : AnyObject]? = nil) {
-        self.init(domain: domain,
-            code: code._code,
+    convenience init(errorType: ErrorType, desc: String? = nil, error: NSError? = nil, info: [NSObject : AnyObject]? = nil) {
+        self.init(domain: errorType._domain,
+            code: errorType._code,
             desc: desc,
             error: error,
             info: info)

@@ -13,7 +13,6 @@ import Haneke
 typealias PMIAPIProgress = (bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64)
 typealias PMIAPITask = Task<PMIAPIProgress, AnyObject, NSError>
 
-let PMIAPIErrorDomain = "PMIAPI"
 let PMIAPIErrorRequestKey = "request"
 
 enum PMIAPIError: ErrorType {
@@ -40,8 +39,8 @@ class PMIAPI {
                 if value != nil {
                     fulfill(value!)
                 } else {
-                    let error = NSError(domain: PMIAPIErrorDomain,
-                        code: PMIAPIError.NotResult,
+                    let error = NSError(
+                        errorType: PMIAPIError.NotResult,
                         desc: "not result value",
                         info: [PMIAPIErrorRequestKey: URL])
                     reject(error)

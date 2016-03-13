@@ -17,22 +17,22 @@ struct Camera_LoadPhotosFromAlbum_Request {
 }
 
 struct Camera_LoadPhotosFromAlbum_Response {
-    var photos: [String: Any]
+    var photos: [String : [PhotoGroup]]
 }
 
 struct PhotosFromAlbumViewModel {
     var sections: [PhotosFromAlbumSectionViewModel]!
     var photoViewModels: [[PhotosFromAlbumPhotoViewModel]]!
 
-    static func viewModelFromDictonary(dictonary: [String: Any]) -> PhotosFromAlbumViewModel? {
-        let groups = dictonary["groups"] as! [[String: Any]]
+    static func viewModelFromDictonary(dictonary: [String: [PhotoGroup]]) -> PhotosFromAlbumViewModel? {
+        let groups = dictonary["groups"]!
         var sections = [PhotosFromAlbumSectionViewModel]()
         var photoViewModelsArray = [[PhotosFromAlbumPhotoViewModel]]()
         for group in groups {
-            let city = group["city"] as! String
-            let street = group["street"] as! String
-            let location = group["location"] as! String
-            let date = group["date"] as? NSDate
+            let city = group.city // ["city"] as! String
+            let street = group.street // ["street"] as! String
+            let location = group.location // ["location"] as! String
+            let date = group.date // ["date"] as? NSDate
 
             var dateString = ""
             if date != nil {
@@ -42,7 +42,7 @@ struct PhotosFromAlbumViewModel {
             }
 
             var photoViewModels = [PhotosFromAlbumPhotoViewModel]()
-            let photos = group["photos"] as! [[String: AnyObject]]
+            let photos = group.photos // ["photos"] as! [[String: AnyObject]]
             for photo in photos {
                 photoViewModels.append(PhotosFromAlbumPhotoViewModel(photoData: photo))
             }
@@ -102,7 +102,7 @@ class PhotoLoader {
 
 class PhotosFromAlbumPhotoViewModel {
     var photoData: [String: AnyObject]!
-    var selected = MutableProperty< Bool>(false)
+    var selected = MutableProperty<Bool>(false)
 
     init(photoData: [String: AnyObject]) {
         self.photoData = photoData

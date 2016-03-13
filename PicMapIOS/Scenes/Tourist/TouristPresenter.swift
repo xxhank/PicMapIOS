@@ -11,7 +11,6 @@
 
 import UIKit
 
-let TouristPresenterErrorDomain = "TouristPresenter"
 enum TouristPresenterError: ErrorType {
     case General
 }

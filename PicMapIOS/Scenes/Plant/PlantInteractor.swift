@@ -14,7 +14,6 @@ import CoreLocation
 import XCGLogger
 import SwiftTask
 
-let PlantInteractorErrorDomain = "PlantInteractor"
 enum PlantInteractorError: ErrorType {
     case General
     case GeocoderFailed
@@ -52,16 +51,14 @@ class PlantInteractor: PlantInteractorInput
         self.geocoder.reverseGeocodeLocation(request.location) { (placemarks, error: NSError?) -> Void in
             // CLPlacemark
             var response: Response<Plant_FormatLocation_Response> = .Error(
-                NSError(domain: PlantInteractorErrorDomain,
-                code: PlantInteractorError.General))
+                NSError(errorType: PlantInteractorError.General))
 
             defer {
                 self.output.presentLocationInformation(response)
             }
             guard let placemark = placemarks else {
                 XCGLogger.error("\(error)")
-                response = .Error(NSError(domain: PlantInteractorErrorDomain,
-                    code: PlantInteractorError.GeocoderFailed,
+                response = .Error(NSError(errorType: PlantInteractorError.GeocoderFailed,
                     desc: mapCLErrorCode((error?.code)!),
                     error: error!
                 ))
@@ -71,8 +68,7 @@ class PlantInteractor: PlantInteractorInput
 
             let place = placemark.first! as CLPlacemark
             guard let information = place.addressDictionary else {
-                response = .Error(NSError(domain: PlantInteractorErrorDomain,
-                    code: PlantInteractorError.General))
+                response = .Error(NSError(errorType: PlantInteractorError.General))
                 return }
 
             response = .Result(Plant_FormatLocation_Response(information: information))

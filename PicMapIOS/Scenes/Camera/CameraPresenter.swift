@@ -11,7 +11,6 @@
 
 import UIKit
 
-let CameraPresenterErrorDomain = "CameraPresenter"
 enum CameraPresenterError: ErrorType {
     case General
 }

@@ -91,7 +91,15 @@ class TripLocationImageGridView: HorizontalListView {
         #endif
 
         if let imageView = cell.contentView.subviews.first as? UIImageView {
-            imageView.hnk_setImageFromURL(NSURL(string: (data as! String))!)
+            if let urlString = data as? String {
+                imageView.hnk_setImageFromURL(NSURL(string: urlString)!)
+            } else if let albumPhotoViewModel = data as?PhotosFromAlbumPhotoViewModel {
+                albumPhotoViewModel.loadImage(cell.bounds.size, completion: { (image) -> Void in
+                    imageView.image = image
+                })
+            } else {
+                PMILogWarning("not support model:\(data)")
+            }
         }
     }
 }

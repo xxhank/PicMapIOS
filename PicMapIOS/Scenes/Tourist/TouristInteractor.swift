@@ -11,7 +11,6 @@
 
 import UIKit
 
-let TouristInteractorErrorDomain = "TouristInteractor"
 enum TouristInteractorError: ErrorType {
     case General
 }
@@ -34,8 +33,7 @@ class TouristInteractor: TouristInteractorInput
                     let response = Tourist_FetchDetail_Response(detail: responseData)
                     self.output.presentTouristDetail(Response.Result(response))
                 } else {
-                    let error = NSError(domain: TouristInteractorErrorDomain,
-                        code: TouristInteractorError.General)
+                    let error = NSError(errorType: TouristInteractorError.General)
 
                     self.output.presentTouristDetail(Response.Error(error))
                 }

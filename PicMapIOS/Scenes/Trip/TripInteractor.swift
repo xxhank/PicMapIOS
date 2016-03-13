@@ -11,7 +11,6 @@
 
 import UIKit
 
-let TripInteractorErrorDomain = "TripInteractor"
 enum TripInteractorError: ErrorType {
     case General
 }
@@ -35,8 +34,7 @@ class TripInteractor: TripInteractorInput
                     self.tripDetail = responseData
                     self.output.presentTripDetail(Response.Result(response))
                 } else {
-                    let error = NSError(domain: TripInteractorErrorDomain,
-                        code: TripInteractorError.General)
+                    let error = NSError(errorType: TripInteractorError.General)
 
                     self.output.presentTripDetail(Response.Error(error))
                 }

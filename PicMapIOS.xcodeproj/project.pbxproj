@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		521C1EFA1C5999A6004FBD89 /* PicMapIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521C1EF91C5999A6004FBD89 /* PicMapIOSUITests.swift */; };
+		52373E401C94FB470092283C /* TripEditLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52373E3F1C94FB470092283C /* TripEditLocationCell.swift */; };
+		524CC0481C95098B00D309BF /* TripEditConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC0411C95098B00D309BF /* TripEditConfigurator.swift */; };
+		524CC0491C95098B00D309BF /* TripEditInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC0421C95098B00D309BF /* TripEditInteractor.swift */; };
+		524CC04A1C95098B00D309BF /* TripEditModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC0431C95098B00D309BF /* TripEditModels.swift */; };
+		524CC04B1C95098B00D309BF /* TripEditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC0441C95098B00D309BF /* TripEditPresenter.swift */; };
+		524CC04C1C95098B00D309BF /* TripEditRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC0451C95098B00D309BF /* TripEditRouter.swift */; };
+		524CC04D1C95098B00D309BF /* TripEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC0461C95098B00D309BF /* TripEditViewController.swift */; };
+		524CC04E1C95098B00D309BF /* TripEditWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC0471C95098B00D309BF /* TripEditWorker.swift */; };
+		526E4E3E1C95283B00B1366D /* PMIMappableViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526E4E3D1C95283B00B1366D /* PMIMappableViewModelTests.swift */; };
 		527C8CFE1C599A5C00BA8B0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C8CF71C599A5C00BA8B0A /* AppDelegate.swift */; };
 		527C8CFF1C599A5C00BA8B0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527C8CF91C599A5C00BA8B0A /* Assets.xcassets */; };
 		527C8D001C599A5C00BA8B0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527C8CFA1C599A5C00BA8B0A /* LaunchScreen.storyboard */; };
@@ -127,6 +136,15 @@
 		521C1EF51C5999A6004FBD89 /* PicMapIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicMapIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		521C1EF91C5999A6004FBD89 /* PicMapIOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicMapIOSUITests.swift; sourceTree = "<group>"; };
 		521C1EFB1C5999A6004FBD89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52373E3F1C94FB470092283C /* TripEditLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripEditLocationCell.swift; path = ../Camera/View/TripEditLocationCell.swift; sourceTree = "<group>"; };
+		524CC0411C95098B00D309BF /* TripEditConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripEditConfigurator.swift; sourceTree = "<group>"; };
+		524CC0421C95098B00D309BF /* TripEditInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripEditInteractor.swift; sourceTree = "<group>"; };
+		524CC0431C95098B00D309BF /* TripEditModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripEditModels.swift; sourceTree = "<group>"; };
+		524CC0441C95098B00D309BF /* TripEditPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripEditPresenter.swift; sourceTree = "<group>"; };
+		524CC0451C95098B00D309BF /* TripEditRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripEditRouter.swift; sourceTree = "<group>"; };
+		524CC0461C95098B00D309BF /* TripEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripEditViewController.swift; sourceTree = "<group>"; };
+		524CC0471C95098B00D309BF /* TripEditWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripEditWorker.swift; sourceTree = "<group>"; };
+		526E4E3D1C95283B00B1366D /* PMIMappableViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMIMappableViewModelTests.swift; sourceTree = "<group>"; };
 		527C8CF71C599A5C00BA8B0A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		527C8CF91C599A5C00BA8B0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		527C8CFB1C599A5C00BA8B0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -316,6 +334,22 @@
 			path = PicMapIOSUITests;
 			sourceTree = "<group>";
 		};
+		524CC0401C95098B00D309BF /* TripEdit */ = {
+			isa = PBXGroup;
+			children = (
+				524CC0411C95098B00D309BF /* TripEditConfigurator.swift */,
+				524CC0421C95098B00D309BF /* TripEditInteractor.swift */,
+				524CC0431C95098B00D309BF /* TripEditModels.swift */,
+				524CC0441C95098B00D309BF /* TripEditPresenter.swift */,
+				524CC0451C95098B00D309BF /* TripEditRouter.swift */,
+				524CC0461C95098B00D309BF /* TripEditViewController.swift */,
+				524CC0471C95098B00D309BF /* TripEditWorker.swift */,
+				52373E3F1C94FB470092283C /* TripEditLocationCell.swift */,
+			);
+			name = TripEdit;
+			path = Scenes/TripEdit;
+			sourceTree = "<group>";
+		};
 		527C8CF61C599A5C00BA8B0A /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +483,7 @@
 		52B5B6F71C5C4E1E007A2807 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				524CC0401C95098B00D309BF /* TripEdit */,
 				52BC59F11C8A70600023D11D /* Camera */,
 				52AA72451C72E15A00E87CB7 /* Tourist */,
 				5299046F1C7169EC00D0DF05 /* Trip */,
@@ -579,6 +614,7 @@
 		52FCDEA81C5CAF3600ABC19D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				526E4E3D1C95283B00B1366D /* PMIMappableViewModelTests.swift */,
 				52FCDEA61C5CAF1900ABC19D /* PMIViewControllerLinkTests.swift */,
 				52FCDEBB1C5CC7F200ABC19D /* PMITabBarControllerTests.swift */,
 				52FCDECD1C5CF2C200ABC19D /* Test.storyboard */,
@@ -910,6 +946,7 @@
 				52CD8F331C5E532B002DC9DD /* UITabBarItem+UseOriginImage.m in Sources */,
 				52BC59FE1C8A70760023D11D /* CameraViewController.swift in Sources */,
 				52CD8F351C5E532B002DC9DD /* UIView+Factory.swift in Sources */,
+				524CC0491C95098B00D309BF /* TripEditInteractor.swift in Sources */,
 				52C25DB11C5F5A1B009BB4EC /* PMIAPI.swift in Sources */,
 				52BC59FB1C8A70760023D11D /* CameraModels.swift in Sources */,
 				52AA72541C72E15A00E87CB7 /* TouristWorker.swift in Sources */,
@@ -917,6 +954,7 @@
 				52CD8F401C5E54E2002DC9DD /* PlantModels.swift in Sources */,
 				52972ACE1C5E71F000AE7D4E /* Either.swift in Sources */,
 				52AA725E1C76F40A00E87CB7 /* TouristCollectionController.swift in Sources */,
+				524CC04D1C95098B00D309BF /* TripEditViewController.swift in Sources */,
 				52AA725C1C76F3ED00E87CB7 /* TouristPhotosController.swift in Sources */,
 				527C8CFE1C599A5C00BA8B0A /* AppDelegate.swift in Sources */,
 				52CD8F2C1C5E532B002DC9DD /* NSObject+ClassName.swift in Sources */,
@@ -924,6 +962,8 @@
 				52CD8F301C5E532B002DC9DD /* MMTabBarItem.swift in Sources */,
 				52AA72561C76BC9B00E87CB7 /* TouristHeadView.swift in Sources */,
 				52972AD91C5EECD300AE7D4E /* SightAnnotation.swift in Sources */,
+				524CC04E1C95098B00D309BF /* TripEditWorker.swift in Sources */,
+				524CC04C1C95098B00D309BF /* TripEditRouter.swift in Sources */,
 				5299047B1C7169EC00D0DF05 /* TripModels.swift in Sources */,
 				52FCDEA31C5CA37900ABC19D /* PMITabBarController.swift in Sources */,
 				52AA72581C76E9A300E87CB7 /* TouristTripsViewController.swift in Sources */,
@@ -935,14 +975,17 @@
 				5299045C1C703D0F00D0DF05 /* PlantTripCell.swift in Sources */,
 				52CD8F321C5E532B002DC9DD /* MPXIBView.swift in Sources */,
 				52D1881B1C7B571000B1CCEF /* TouristFollowsCell.swift in Sources */,
+				524CC04A1C95098B00D309BF /* TripEditModels.swift in Sources */,
 				52CD8F431C5E54E2002DC9DD /* PlantViewController.swift in Sources */,
 				5299047A1C7169EC00D0DF05 /* TripInteractor.swift in Sources */,
 				529904841C717FAC00D0DF05 /* TripLocationCell.swift in Sources */,
 				52AA72521C72E15A00E87CB7 /* TouristRouter.swift in Sources */,
+				52373E401C94FB470092283C /* TripEditLocationCell.swift in Sources */,
 				5299047D1C7169EC00D0DF05 /* TripRouter.swift in Sources */,
 				529904791C7169EC00D0DF05 /* TripConfigurator.swift in Sources */,
 				529FC10F1C78A884001B4A33 /* TouristLocationsCountryCell.swift in Sources */,
 				52AA72501C72E15A00E87CB7 /* TouristModels.swift in Sources */,
+				524CC04B1C95098B00D309BF /* TripEditPresenter.swift in Sources */,
 				52CD8F411C5E54E2002DC9DD /* PlantPresenter.swift in Sources */,
 				52CD8F341C5E532B002DC9DD /* UITableView+Extension.swift in Sources */,
 				52BC5A091C8A727D0023D11D /* PMIViewModel.swift in Sources */,
@@ -962,6 +1005,7 @@
 				52CD8F311C5E532B002DC9DD /* MPLabel.swift in Sources */,
 				529904821C717F4E00D0DF05 /* LocationAnnotationView.swift in Sources */,
 				52D188191C7B56CD00B1CCEF /* TouristFollowsController.swift in Sources */,
+				524CC0481C95098B00D309BF /* TripEditConfigurator.swift in Sources */,
 				52AA72351C72C6F900E87CB7 /* PMIViewController.swift in Sources */,
 				52BC5A061C8A70930023D11D /* CameraPhotosCell.swift in Sources */,
 				52AA72601C771A3100E87CB7 /* PMIImageView.swift in Sources */,
@@ -978,6 +1022,7 @@
 				52FCDEDA1C5D05A500ABC19D /* PMITestCase.swift in Sources */,
 				52FCDEBC1C5CC7F200ABC19D /* PMITabBarControllerTests.swift in Sources */,
 				52FCDED81C5D057400ABC19D /* TestViewControllerNoNib.swift in Sources */,
+				526E4E3E1C95283B00B1366D /* PMIMappableViewModelTests.swift in Sources */,
 				52FCDED51C5CF85000ABC19D /* TestViewController.swift in Sources */,
 				52FCDEA71C5CAF1900ABC19D /* PMIViewControllerLinkTests.swift in Sources */,
 			);

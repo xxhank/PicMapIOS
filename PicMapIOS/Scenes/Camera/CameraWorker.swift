@@ -15,22 +15,59 @@ import Photos
 
 import Result
 
+class PhotoGroup {
+    var date: NSDate?
+    var coordinate: CLLocationCoordinate2D?
+    var city: String
+    var street: String
+    var location: String
+    var photos: [[String: AnyObject]]
+
+    init(date: NSDate?,
+        coordinate: CLLocationCoordinate2D?,
+        city: String,
+        street: String,
+        location: String,
+        photos: [[String: AnyObject]]) {
+            self.date = date
+            self.coordinate = coordinate
+            self.city = city
+            self.street = street
+            self.location = location
+            self.photos = photos
+        }
+}
+
 class LoadPhotosFromAlbumWorker
 {
     var assetsLibrary = ALAssetsLibrary()
     var assertGroups: [ALAssetsGroup] = []
     // MARK: - Business Logic
-    func loadPhotosFromAlbum(completion: (result: Result < [String: Any], NSError >) -> Void)
+    /**
+     从相册中加载图片
+
+     - Parameter completion: 加载成功之后的回调block
+
+     - Throws:
+
+     - Returns: call 返回如下数据结构<br>
+     ```
+     ["groups": [
+     >>>>{date:NSData
+     >>>>coordinate:CLLocationCoordinate2D
+     >>>>city:String
+     >>>>street:String
+     >>>>locationString
+     >>>>photos:[{"asset": PHAsset}]}
+     ]]
+     ```
+     */
+    func loadPhotosFromAlbum(completion: (result: Result < [String: [PhotoGroup]], NSError >) -> Void)
     {
-        var groups: [[String: Any]] = []
+        var groups: [PhotoGroup] = []
 
         let result = PHAssetCollection.fetchAssetCollectionsWithType(.Moment, subtype: .Any, options: nil)
         result.enumerateObjectsUsingBlock { (collection, index, stop) -> Void in
-            // PMILogInfo("\(collection.startDate)")
-            // PMILogInfo("\(collection.localizedLocationNames)")
-            // PMILogInfo("\(collection.approximateLocation)")
-            // PMILogInfo("\(collection.estimatedAssetCount)")
-
             if collection.estimatedAssetCount == 0 {
                 return
             }
@@ -54,37 +91,16 @@ class LoadPhotosFromAlbumWorker
             if date == nil {
                 date = collection.endDate
             }
-            let group: [String: Any] = [
-                "date": date!! as NSDate,
-                "coordinate": coordinate,
-                "city": "", "street": "", "location": locationName,
-                "photos": photos]
-
+            let group = PhotoGroup(
+                date: date!!,
+                coordinate: coordinate,
+                city: "",
+                street: "",
+                location: locationName,
+                photos: photos)
             groups.append(group)
         }
 
         completion(result: Result(value: ["groups": groups]))
-//        var errors: [NSError] = []
-//
-//        assetsLibrary.enumerateGroupsWithTypes(ALAssetsGroupSavedPhotos, usingBlock: { (group: ALAssetsGroup!, stop) -> Void in
-//            self.assertGroups.append(group)
-//
-//            let ALAssetsGroupPropertyName: String
-//            let ALAssetsGroupPropertyType: String
-//            let ALAssetsGroupPropertyPersistentID: String
-//            let ALAssetsGroupPropertyURL: String
-//
-//group.valueForProperty( )
-//            group.enumerateAssetsUsingBlock({ (asset, index, stop) -> Void in
-//            })
-//        }) { (error) -> Void in
-//            errors.append(error)
-//        }
-//
-//        if errors.count > 0 {
-//            completion(result: Result(error: errors[0]))
-//        } else {
-//            completion(result: Result(value: assertGroups))
-//        }
     }
 }
