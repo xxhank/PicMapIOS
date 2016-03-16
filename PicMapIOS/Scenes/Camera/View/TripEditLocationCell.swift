@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import KMPlaceholderTextView
 
 class TripEditLocationCell: UITableViewCell, SupportViewModel {
     @IBOutlet weak var locationView: UILabel!
     @IBOutlet weak var streetView: UILabel!
     @IBOutlet weak var cityView: MPLabel!
     @IBOutlet weak var imagesView: TripLocationImageGridView!
+
+    @IBOutlet weak var introTextField: UITextField!
+    @IBOutlet weak var briefTextField: KMPlaceholderTextView!
+
+    override func awakeFromNib() {
+        var inset = self.briefTextField.textContainerInset
+        inset.left = 10
+        inset.right = 10
+        self.briefTextField.textContainerInset = inset
+    }
 
     var viewModel: AnyObject! {
         didSet {

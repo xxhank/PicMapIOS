@@ -101,15 +101,15 @@ class PhotoLoader {
 }
 
 class PhotosFromAlbumPhotoViewModel {
-    var photoData: [String: AnyObject]!
+    var photoData: Photo!
     var selected = MutableProperty<Bool>(false)
 
-    init(photoData: [String: AnyObject]) {
+    init(photoData: Photo) {
         self.photoData = photoData
     }
 
     func loadImage(cellSize: CGSize, completion: (image: UIImage?) -> Void) {
-        if let asset = photoData["asset"] as? PHAsset {
+        if let asset = photoData.asset {
             PhotoLoader.sharedLoader.loadImage(asset, cellSize: cellSize, completion: completion)
         } else {
             completion(image: nil)

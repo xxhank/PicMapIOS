@@ -21,6 +21,8 @@ protocol TripEditViewControllerOutput
 {
     var tripModel: [String: [PhotoGroup]]? { set get }
     func formatModel(request: TripEditFormatModelRequest)
+    func saveTrip()
+    func cacheTrip()
 }
 
 class TripEditViewController: UIViewController, TripEditViewControllerInput
@@ -47,10 +49,16 @@ extension TripEditViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+
         setupTripView()
-        
+
         doSomethingOnLoad()
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        if self.isMovingFromParentViewController() {
+            /// pop out
+        }
     }
 }
 
@@ -86,5 +94,8 @@ extension TripEditViewController {
             }
             break
         }
+    }
+    @IBAction func saveTrip(sender: AnyObject) {
+        output.saveTrip()
     }
 }

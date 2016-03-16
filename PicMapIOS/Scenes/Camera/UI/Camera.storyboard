@@ -215,7 +215,7 @@
             </objects>
             <point key="canvasLocation" x="823" y="453"/>
         </scene>
-        <!--Trip Edit View Controller-->
+        <!--游记-->
         <scene sceneID="awI-I6-XC0">
             <objects>
                 <viewController id="sEX-o6-LXl" customClass="TripEditViewController" customModule="PicMapIOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -227,7 +227,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="232" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fUi-ln-oIr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="232" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fUi-ln-oIr">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -235,7 +235,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="232"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OhQ-GS-VfC" id="aLb-RG-HXB">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="231"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="232"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8U-SC-pE4" userLabel="Header">
@@ -304,31 +304,32 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waA-MI-Dez" customClass="TripLocationImageGridView" customModule="PicMapIOS" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="35" width="320" height="60"/>
+                                                    <rect key="frame" x="0.0" y="35" width="320" height="58"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OQK-Xa-uz5">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lNg-9O-miv">
-                                                                <size key="itemSize" width="50" height="50"/>
+                                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="lNg-9O-miv">
+                                                                <size key="itemSize" width="50" height="38"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
                                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationImageCell" id="6mu-3y-7d6">
-                                                                    <rect key="frame" x="0.0" y="5" width="50" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="5" width="50" height="38"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="38"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jti-Gf-8oe">
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jti-Gf-8oe">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     </view>
+                                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstItem="jti-Gf-8oe" firstAttribute="top" secondItem="6mu-3y-7d6" secondAttribute="top" id="DbM-7n-kki"/>
                                                                         <constraint firstAttribute="bottom" secondItem="jti-Gf-8oe" secondAttribute="bottom" id="How-hD-2fG"/>
@@ -339,13 +340,13 @@
                                                             </cells>
                                                         </collectionView>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.1764705882" green="0.2156862745" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="OQK-Xa-uz5" firstAttribute="top" secondItem="waA-MI-Dez" secondAttribute="top" id="34m-eE-JjA"/>
                                                         <constraint firstAttribute="trailing" secondItem="OQK-Xa-uz5" secondAttribute="trailing" id="Z5B-7R-VCI"/>
                                                         <constraint firstItem="OQK-Xa-uz5" firstAttribute="leading" secondItem="waA-MI-Dez" secondAttribute="leading" id="dDb-kI-SdX"/>
-                                                        <constraint firstAttribute="width" secondItem="waA-MI-Dez" secondAttribute="height" multiplier="5:1" constant="20" id="vEB-RD-Cih"/>
-                                                        <constraint firstAttribute="bottom" secondItem="OQK-Xa-uz5" secondAttribute="bottom" id="zxp-AX-V6K"/>
+                                                        <constraint firstAttribute="width" secondItem="waA-MI-Dez" secondAttribute="height" multiplier="5:1" constant="30" id="vEB-RD-Cih"/>
+                                                        <constraint firstAttribute="bottom" secondItem="OQK-Xa-uz5" secondAttribute="bottom" constant="10" id="zxp-AX-V6K"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="cellIdentifier" value="LocationImageCell"/>
@@ -363,46 +364,54 @@
                                                         <outlet property="contentView" destination="OQK-Xa-uz5" id="WlJ-fa-5bd"/>
                                                     </connections>
                                                 </view>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dyg-GK-wkQ">
-                                                    <rect key="frame" x="15" y="105" width="290" height="35"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Why You Come Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dyg-GK-wkQ" customClass="MPTextField" customModule="PicMapIOS" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="103" width="320" height="35"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="Qqk-do-zUf"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="insets" value="15,0"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3lg-D6-wwY">
-                                                    <rect key="frame" x="15" y="150" width="290" height="60"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3lg-D6-wwY" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
+                                                    <rect key="frame" x="0.0" y="148" width="320" height="60"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="P1e-RO-LxY"/>
                                                     </constraints>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="What did gou got from here"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="waA-MI-Dez" secondAttribute="trailing" id="0ey-PL-NDV"/>
-                                                <constraint firstItem="dyg-GK-wkQ" firstAttribute="leading" secondItem="aLb-RG-HXB" secondAttribute="leading" constant="15" id="1DV-Tk-njn"/>
-                                                <constraint firstItem="3lg-D6-wwY" firstAttribute="leading" secondItem="aLb-RG-HXB" secondAttribute="leading" constant="15" id="8Gh-Vu-g5D"/>
+                                                <constraint firstItem="dyg-GK-wkQ" firstAttribute="leading" secondItem="aLb-RG-HXB" secondAttribute="leading" id="1DV-Tk-njn"/>
+                                                <constraint firstItem="3lg-D6-wwY" firstAttribute="leading" secondItem="aLb-RG-HXB" secondAttribute="leading" id="8Gh-Vu-g5D"/>
                                                 <constraint firstItem="D8U-SC-pE4" firstAttribute="top" secondItem="aLb-RG-HXB" secondAttribute="top" id="N1h-wP-sRo"/>
                                                 <constraint firstItem="waA-MI-Dez" firstAttribute="top" secondItem="D8U-SC-pE4" secondAttribute="bottom" id="Pz8-11-2rL"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3lg-D6-wwY" secondAttribute="bottom" constant="10" id="Qa8-9X-17Z"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3lg-D6-wwY" secondAttribute="bottom" id="Qa8-9X-17Z"/>
                                                 <constraint firstItem="dyg-GK-wkQ" firstAttribute="top" secondItem="waA-MI-Dez" secondAttribute="bottom" constant="10" id="U1y-bF-xAT"/>
-                                                <constraint firstAttribute="trailing" secondItem="3lg-D6-wwY" secondAttribute="trailing" constant="15" id="YFn-aP-Xm0"/>
-                                                <constraint firstAttribute="trailing" secondItem="dyg-GK-wkQ" secondAttribute="trailing" constant="15" id="i99-OB-5dJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="3lg-D6-wwY" secondAttribute="trailing" id="YFn-aP-Xm0"/>
+                                                <constraint firstAttribute="trailing" secondItem="dyg-GK-wkQ" secondAttribute="trailing" id="i99-OB-5dJ"/>
                                                 <constraint firstItem="waA-MI-Dez" firstAttribute="leading" secondItem="aLb-RG-HXB" secondAttribute="leading" id="nMM-eq-i4v"/>
                                                 <constraint firstItem="3lg-D6-wwY" firstAttribute="top" secondItem="dyg-GK-wkQ" secondAttribute="bottom" constant="10" id="xMb-IR-Whc"/>
                                                 <constraint firstItem="D8U-SC-pE4" firstAttribute="leading" secondItem="aLb-RG-HXB" secondAttribute="leading" id="yCP-ad-rux"/>
                                                 <constraint firstAttribute="trailing" secondItem="D8U-SC-pE4" secondAttribute="trailing" id="zgA-6W-BNm"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.92156862745098034" green="0.96078431372549022" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
+                                            <outlet property="briefTextField" destination="3lg-D6-wwY" id="ed0-KN-9bN"/>
                                             <outlet property="cityView" destination="DtZ-DZ-Ju2" id="5Zf-am-NWO"/>
                                             <outlet property="imagesView" destination="waA-MI-Dez" id="xCD-4w-rYh"/>
+                                            <outlet property="introTextField" destination="dyg-GK-wkQ" id="RTw-Vu-dhG"/>
                                             <outlet property="locationView" destination="RNe-IG-4l7" id="3zG-I4-Wpe"/>
                                             <outlet property="streetView" destination="dp6-Ie-hiS" id="lgr-rY-gU4"/>
                                         </connections>
@@ -418,6 +427,15 @@
                             <constraint firstAttribute="trailing" secondItem="fUi-ln-oIr" secondAttribute="trailing" id="w7e-Jr-Gdd"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="游记" id="6zv-xf-3nf">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Tcz-eP-H3C">
+                            <connections>
+                                <action selector="saveTrip:" destination="sEX-o6-LXl" id="kmT-aD-maO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tripView" destination="fUi-ln-oIr" id="ukd-Ql-SDd"/>
                     </connections>

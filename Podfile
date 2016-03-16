@@ -28,6 +28,8 @@ pod 'SwiftTask'
 pod 'SwiftTryCatch', :git => 'https://github.com/ravero/SwiftTryCatch.git'
 pod "PKHUD"
 pod 'TagListView', :git => 'https://github.com/xxhank/TagListView.git'
+pod 'KMPlaceholderTextView'
+pod 'IQKeyboardManagerSwift'
 
 target :PicMapIOSTests do
     pod 'Quick'

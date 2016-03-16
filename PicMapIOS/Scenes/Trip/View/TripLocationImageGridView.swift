@@ -40,9 +40,9 @@ class HorizontalListView: UIView {
     }
 
     func updateCell(cell: UICollectionViewCell, withData data: AnyObject, atIndexPath indexPath: NSIndexPath) {
-        #if TARGET_INTERFACE_BUILDER
-        cell.layer.borderWidth = 1
-        #endif
+//        #if TARGET_INTERFACE_BUILDER
+//        cell.layer.borderWidth = 1
+//        #endif
     }
 }
 
@@ -55,7 +55,9 @@ extension HorizontalListView: UICollectionViewDataSource, UICollectionViewDelega
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath)
+        #if TARGET_INTERFACE_BUILDER
         cell.layer.borderWidth = 1
+        #endif
         return cell
     }
 

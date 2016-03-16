@@ -25,6 +25,9 @@ class CameraInteractor: CameraInteractorInput
     var output: CameraInteractorOutput!
     var worker: LoadPhotosFromAlbumWorker!
 
+    var loadedPhotos: [PhotoGroup] = []
+    var pickedIndexPaths: [Int: NSMutableDictionary] = [:]
+
     /**
      选中的图片, 结构如下
      ```
@@ -49,14 +52,14 @@ class CameraInteractor: CameraInteractorInput
             let sectionData = self.loadedPhotos[section]
             let sectionPhotos = sectionData.photos
 
-            var photos: [[String: AnyObject]] = []
+            var photos: [Photo] = []
 
             photoIndexs.enumerateKeysAndObjectsUsingBlock({ (key, value, stop) -> Void in
                 let photoIndex = (key as! NSNumber).integerValue
                 photos.append(sectionPhotos[photoIndex])
             })
 
-            let pickedSection = sectionData
+            let pickedSection = sectionData.clone()
             pickedSection.photos = photos
             pickedSections.append(pickedSection)
         }
@@ -64,8 +67,6 @@ class CameraInteractor: CameraInteractorInput
         pickedIndexPaths.removeAll(keepCapacity: true)
         return _pickedPhotos
     }
-    var loadedPhotos: [PhotoGroup] = []
-    var pickedIndexPaths: [Int: NSMutableDictionary] = [:]
     func loadPhotosFromAlbum(request: Camera_LoadPhotosFromAlbum_Request) -> () {
         if worker == nil {
             worker = LoadPhotosFromAlbumWorker()

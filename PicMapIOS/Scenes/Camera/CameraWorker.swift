@@ -15,20 +15,34 @@ import Photos
 
 import Result
 
+class Photo {
+    var identifier: String
+    var asset: PHAsset?
+
+    init(identifier: String, asset: PHAsset?) {
+        self.identifier = identifier
+        self.asset = asset
+    }
+}
+
 class PhotoGroup {
     var date: NSDate?
     var coordinate: CLLocationCoordinate2D?
     var city: String
     var street: String
     var location: String
-    var photos: [[String: AnyObject]]
+    var photos: [Photo]
+    var identifier: String
 
-    init(date: NSDate?,
+    init(
+        identifier: String,
+        date: NSDate?,
         coordinate: CLLocationCoordinate2D?,
         city: String,
         street: String,
         location: String,
-        photos: [[String: AnyObject]]) {
+        photos: [Photo]) {
+            self.identifier = identifier
             self.date = date
             self.coordinate = coordinate
             self.city = city
@@ -36,6 +50,16 @@ class PhotoGroup {
             self.location = location
             self.photos = photos
         }
+    func clone() -> PhotoGroup {
+        return PhotoGroup(
+            identifier: self.identifier,
+            date: self.date,
+            coordinate: self.coordinate,
+            city: self.city,
+            street: self.street,
+            location: self.location,
+            photos: self.photos)
+    }
 }
 
 class LoadPhotosFromAlbumWorker
@@ -72,14 +96,14 @@ class LoadPhotosFromAlbumWorker
                 return
             }
 
-            var photos: [[String: AnyObject]] = []
+            var photos: [Photo] = []
             PHAsset.fetchAssetsInAssetCollection(collection as! PHAssetCollection, options: nil)
                 .enumerateObjectsUsingBlock { (asset, index, stop) -> Void in
-                    let photo: [String: AnyObject] = ["asset": asset]
+                    let photo = Photo(identifier: asset.localIdentifier, asset: asset as? PHAsset)
                     photos.append(photo)
                 }
             let locationNames = collection.localizedLocationNames
-            let locationName = locationNames.count > 0 ? locationNames[0] : ""
+            let locationName = locationNames.count > 0 ? locationNames[0] : "Unknown"
 
             var coordinate: CLLocationCoordinate2D?
             let locationOption = collection.approximateLocation
@@ -92,10 +116,11 @@ class LoadPhotosFromAlbumWorker
                 date = collection.endDate
             }
             let group = PhotoGroup(
+                identifier: collection.localIdentifier,
                 date: date!!,
                 coordinate: coordinate,
-                city: "",
-                street: "",
+                city: "Unknown",
+                street: "Unknown",
                 location: locationName,
                 photos: photos)
             groups.append(group)
