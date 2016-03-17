@@ -57,7 +57,8 @@ extension TripEditViewController {
 
     override func viewWillDisappear(animated: Bool) {
         if self.isMovingFromParentViewController() {
-            /// pop out
+            /// cache the trip data
+            output.cacheTrip()
         }
     }
 }

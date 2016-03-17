@@ -35,4 +35,28 @@ class TripEditInteractor: TripEditInteractorInput
             output.presentTripModel(Response.Error(NSError(errorType: TripEditInteractorError.InvalidTripModel)))
         }
     }
+
+    func saveTrip() {
+
+        guard let tripModel = tripModel else { return }
+
+        let path = NSTemporaryDirectory() + "/trip/\(Int64(NSDate().timeIntervalSince1970*1000)).plist"
+        try! NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
+
+        let photoGroups = tripModel["photos"]!
+        var persistentTripModel = [[String: AnyObject]]()
+        for photoGroup in photoGroups {
+            var persistentPhotos = [String]()
+            for photo in photoGroup.photos {
+                persistentPhotos.append(photo.identifier)
+            }
+
+            persistentTripModel.append(["group-identifier": photoGroup.identifier
+            , "photos": persistentPhotos])
+        }
+
+        (persistentTripModel as NSArray).writeToFile(path, atomically: true)
+    }
+    func cacheTrip() {
+    }
 }
